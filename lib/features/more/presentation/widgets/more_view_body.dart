@@ -42,7 +42,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                 // ));
               },
               child: Padding(
-                padding: EdgeInsetsDirectional.only(end: 24),
+                padding: const EdgeInsetsDirectional.only(end: 24),
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [

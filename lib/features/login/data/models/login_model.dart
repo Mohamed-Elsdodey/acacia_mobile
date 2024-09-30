@@ -6,18 +6,18 @@ class LoginModel {
   LoginModel({this.data, this.message, this.status});
 
   LoginModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
     message = json['message'].cast<String>();
     status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['message'] = this.message;
-    data['status'] = this.status;
+    data['message'] = message;
+    data['status'] = status;
     return data;
   }
 }
@@ -41,20 +41,20 @@ class Data {
     if (json['students'] != null) {
       students = <Students>[];
       json['students'].forEach((v) {
-        students!.add(new Students.fromJson(v));
+        students!.add(Students.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['phone'] = this.phone;
-    data['token'] = this.token;
-    if (this.students != null) {
-      data['students'] = this.students!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['email'] = email;
+    data['phone'] = phone;
+    data['token'] = token;
+    if (students != null) {
+      data['students'] = students!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -101,8 +101,8 @@ class Students {
     negativePoint = json['negative_point'];
     totalPoint = json['total_point'];
     numberOfViolations = json['number_of_violations'];
-    row = json['row'] != null ? new Row.fromJson(json['row']) : null;
-    room = json['room'] != null ? new Row.fromJson(json['room']) : null;
+    row = json['row'] != null ? Row.fromJson(json['row']) : null;
+    room = json['room'] != null ? Row.fromJson(json['room']) : null;
     newNotificationCount = json['new_notification_count'];
     schoolRank = json['school_rank'];
     rowRank = json['row_rank'];
@@ -110,25 +110,25 @@ class Students {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['image'] = this.image;
-    data['phone'] = this.phone;
-    data['positive_point'] = this.positivePoint;
-    data['negative_point'] = this.negativePoint;
-    data['total_point'] = this.totalPoint;
-    data['number_of_violations'] = this.numberOfViolations;
-    if (this.row != null) {
-      data['row'] = this.row!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['image'] = image;
+    data['phone'] = phone;
+    data['positive_point'] = positivePoint;
+    data['negative_point'] = negativePoint;
+    data['total_point'] = totalPoint;
+    data['number_of_violations'] = numberOfViolations;
+    if (row != null) {
+      data['row'] = row!.toJson();
     }
-    if (this.room != null) {
-      data['room'] = this.room!.toJson();
+    if (room != null) {
+      data['room'] = room!.toJson();
     }
-    data['new_notification_count'] = this.newNotificationCount;
-    data['school_rank'] = this.schoolRank;
-    data['row_rank'] = this.rowRank;
-    data['room_rank'] = this.roomRank;
+    data['new_notification_count'] = newNotificationCount;
+    data['school_rank'] = schoolRank;
+    data['row_rank'] = rowRank;
+    data['room_rank'] = roomRank;
     return data;
   }
 }
@@ -145,9 +145,9 @@ class Row {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
     return data;
   }
 }

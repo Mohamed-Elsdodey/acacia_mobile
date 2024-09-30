@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:evaluation_and_follow_up/features/schoolCode/data/repositories/school_code_repo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/errors/failures.dart';
 import '../../../data/models/school_code_model.dart';

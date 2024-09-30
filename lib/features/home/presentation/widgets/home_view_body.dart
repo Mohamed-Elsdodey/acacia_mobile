@@ -274,14 +274,17 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                     date.month.toString();
                                               });
                                               // widget.onTap(selectedManthNum);
-                                              BlocProvider.of<
-                                                          AcademicReportCubit>(
-                                                      context)
-                                                  .getAcademicReport(
-                                                      month: selectedManthNum1,
-                                                      studentId: childernData
-                                                          .id!
-                                                          .toString());
+                                              if (context.mounted) {
+                                                BlocProvider.of<
+                                                            AcademicReportCubit>(
+                                                        context)
+                                                    .getAcademicReport(
+                                                        month:
+                                                            selectedManthNum1,
+                                                        studentId: childernData
+                                                            .id!
+                                                            .toString());
+                                              }
                                             }
                                           });
                                         },
@@ -600,13 +603,16 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                   date.month.toString();
                                             });
                                             // widget.onTap(selectedManthNum);
-                                            BlocProvider.of<
-                                                        AcademicReportCubit>(
-                                                    context)
-                                                .getAcademicReport(
-                                                    month: selectedManthNum2,
-                                                    studentId: childernData.id!
-                                                        .toString());
+                                            if (context.mounted) {
+                                              BlocProvider.of<
+                                                          AcademicReportCubit>(
+                                                      context)
+                                                  .getAcademicReport(
+                                                      month: selectedManthNum2,
+                                                      studentId: childernData
+                                                          .id!
+                                                          .toString());
+                                            }
                                           }
                                         });
                                       },
