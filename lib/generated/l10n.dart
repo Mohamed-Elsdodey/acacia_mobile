@@ -339,6 +339,26 @@ class S {
       args: [],
     );
   }
+
+  /// `عفواً`
+  String get warning {
+    return Intl.message(
+      'عفواً',
+      name: 'warning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لقد انتهت صلاحية الجلسة برجاء تسجيل الدخول مرة أخرى.`
+  String get warning_massge {
+    return Intl.message(
+      'لقد انتهت صلاحية الجلسة برجاء تسجيل الدخول مرة أخرى.',
+      name: 'warning_massge',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -55,6 +55,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "room": MessageLookupByLibrary.simpleMessage("الفصل: "),
         "row": MessageLookupByLibrary.simpleMessage("الصف: "),
         "school_code": MessageLookupByLibrary.simpleMessage("كود المدرسة"),
+        "warning": MessageLookupByLibrary.simpleMessage("عفواً"),
+        "warning_massge": MessageLookupByLibrary.simpleMessage(
+            "لقد انتهت صلاحية الجلسة برجاء تسجيل الدخول مرة أخرى."),
         "welcome": MessageLookupByLibrary.simpleMessage("أهلا بكم فى مدرسة ")
       };
 }

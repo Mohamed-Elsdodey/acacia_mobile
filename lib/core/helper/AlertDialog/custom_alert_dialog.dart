@@ -20,8 +20,10 @@ class CustomAlertDialog {
       title: title,
       desc: desc,
       style: AlertStyle(
-          titleStyle: const TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          titleStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).primaryColor),
           descStyle: const TextStyle(
             fontSize: 18,
           ),
@@ -34,7 +36,7 @@ class CustomAlertDialog {
                 Navigator.pop(context);
               },
           width: 120,
-          color: Colors.black,
+          color: Theme.of(context).primaryColor,
           child: Text(
             textButton ?? S.of(context).ok,
             style: const TextStyle(
