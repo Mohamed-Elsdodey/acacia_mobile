@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "choose_school": MessageLookupByLibrary.simpleMessage("تحديد المدرسة"),
         "classes": MessageLookupByLibrary.simpleMessage("الحصص"),
         "data_acount": MessageLookupByLibrary.simpleMessage("بيانات الحساب"),
+        "date": MessageLookupByLibrary.simpleMessage("التاريخ: "),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "error": MessageLookupByLibrary.simpleMessage("خطأ"),
         "exams": MessageLookupByLibrary.simpleMessage("الاختبارات"),
@@ -40,12 +41,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "more": MessageLookupByLibrary.simpleMessage("المزيد"),
         "motivation": MessageLookupByLibrary.simpleMessage("التحفيز"),
+        "nagative": MessageLookupByLibrary.simpleMessage("عقوبة"),
         "next": MessageLookupByLibrary.simpleMessage("متابعة"),
         "no_childern": MessageLookupByLibrary.simpleMessage("لا يوجد أبناء"),
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "p_choose_school":
             MessageLookupByLibrary.simpleMessage("من فضلك أدخل كود المدرسة!❤"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "points": MessageLookupByLibrary.simpleMessage("النقاط: "),
+        "positive": MessageLookupByLibrary.simpleMessage("تميز"),
         "rank_room":
             MessageLookupByLibrary.simpleMessage("الترتيب على الفصل: "),
         "rank_row": MessageLookupByLibrary.simpleMessage("الترتيب على الصف: "),
@@ -55,6 +59,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "room": MessageLookupByLibrary.simpleMessage("الفصل: "),
         "row": MessageLookupByLibrary.simpleMessage("الصف: "),
         "school_code": MessageLookupByLibrary.simpleMessage("كود المدرسة"),
+        "st_info": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
+        "subject": MessageLookupByLibrary.simpleMessage("المادة الدراسية: "),
+        "teacher": MessageLookupByLibrary.simpleMessage("اسم مدرس المادة: "),
+        "total_nagative":
+            MessageLookupByLibrary.simpleMessage("رصيد العقوبات أصبح: "),
+        "total_point":
+            MessageLookupByLibrary.simpleMessage("الرصيد الإجمالي: "),
+        "total_positive":
+            MessageLookupByLibrary.simpleMessage("رصيد التميزات أصبح: "),
         "warning": MessageLookupByLibrary.simpleMessage("عفواً"),
         "warning_massge": MessageLookupByLibrary.simpleMessage(
             "لقد انتهت صلاحية الجلسة برجاء تسجيل الدخول مرة أخرى."),

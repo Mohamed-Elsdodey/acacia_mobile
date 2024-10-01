@@ -359,6 +359,106 @@ class S {
       args: [],
     );
   }
+
+  /// `حالة الطالب: `
+  String get st_info {
+    return Intl.message(
+      'حالة الطالب: ',
+      name: 'st_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `النقاط: `
+  String get points {
+    return Intl.message(
+      'النقاط: ',
+      name: 'points',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الرصيد الإجمالي: `
+  String get total_point {
+    return Intl.message(
+      'الرصيد الإجمالي: ',
+      name: 'total_point',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `المادة الدراسية: `
+  String get subject {
+    return Intl.message(
+      'المادة الدراسية: ',
+      name: 'subject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `اسم مدرس المادة: `
+  String get teacher {
+    return Intl.message(
+      'اسم مدرس المادة: ',
+      name: 'teacher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `التاريخ: `
+  String get date {
+    return Intl.message(
+      'التاريخ: ',
+      name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `رصيد التميزات أصبح: `
+  String get total_positive {
+    return Intl.message(
+      'رصيد التميزات أصبح: ',
+      name: 'total_positive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `رصيد العقوبات أصبح: `
+  String get total_nagative {
+    return Intl.message(
+      'رصيد العقوبات أصبح: ',
+      name: 'total_nagative',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تميز`
+  String get positive {
+    return Intl.message(
+      'تميز',
+      name: 'positive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `عقوبة`
+  String get nagative {
+    return Intl.message(
+      'عقوبة',
+      name: 'nagative',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
