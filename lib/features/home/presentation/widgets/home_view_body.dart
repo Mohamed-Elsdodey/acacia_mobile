@@ -1,17 +1,14 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
-import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
-import 'package:evaluation_and_follow_up/features/login/presentation/views/login_view.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
-import '../../../../core/helper/AlertDialog/custom_alert_dialog.dart';
 import '../../../../core/helper/SharedPreferences/pref.dart';
 import '../../../../core/models/childern_model.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/methods.dart';
 import '../../../../core/widgets/childern_info.dart';
 import '../../../../core/widgets/custom_error_massage.dart';
 import '../../../../core/widgets/custom_loading_widget.dart';
@@ -60,22 +57,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               builder: (context, state) {
                 if (state is ChildernSuccess) {
                   if (state.childernModel.status == 401) {
-                    Future.delayed(Duration.zero, () {
-                      if (context.mounted) {
-                        CustomAlertDialog.alertWithButton(
-                            context: context,
-                            type: AlertType.error,
-                            title: S.of(context).warning,
-                            desc: S.of(context).warning_massge,
-                            isCloseButton: false,
-                            isOverlayTapDismiss: false,
-                            onPressed: () {
-                              GoTo.pushReplacement(context, const LoginView());
-                            });
-                      }
-                    });
-
-                    return const Expanded(child: CustomLoadingWidget());
+                    return invalidToken(context);
                   } else {
                     List<DataChildern>? listChildern = state.childernModel.data;
                     if (listChildern != null) {
@@ -197,23 +179,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 builder: (context, state) {
                   if (state is AcademicReportSuccess) {
                     if (state.academicReportModel.status == 401) {
-                      Future.delayed(Duration.zero, () {
-                        if (context.mounted) {
-                          CustomAlertDialog.alertWithButton(
-                              context: context,
-                              type: AlertType.error,
-                              title: S.of(context).warning,
-                              desc: S.of(context).warning_massge,
-                              isCloseButton: false,
-                              isOverlayTapDismiss: false,
-                              onPressed: () {
-                                GoTo.pushReplacement(
-                                    context, const LoginView());
-                              });
-                        }
-                      });
-
-                      return const Expanded(child: CustomLoadingWidget());
+                      return invalidToken(context);
                     } else {
                       AcademicReportModel academicReportMode =
                           state.academicReportModel;
@@ -527,23 +493,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 builder: (context, state) {
                   if (state is SubjectReportSuccess) {
                     if (state.subjectReportModel.status == 401) {
-                      Future.delayed(Duration.zero, () {
-                        if (context.mounted) {
-                          CustomAlertDialog.alertWithButton(
-                              context: context,
-                              type: AlertType.error,
-                              title: S.of(context).warning,
-                              desc: S.of(context).warning_massge,
-                              isCloseButton: false,
-                              isOverlayTapDismiss: false,
-                              onPressed: () {
-                                GoTo.pushReplacement(
-                                    context, const LoginView());
-                              });
-                        }
-                      });
-
-                      return const Expanded(child: CustomLoadingWidget());
+                      return invalidToken(context);
                     } else {
                       SubjectReportModel subjectReportModel =
                           state.subjectReportModel;
