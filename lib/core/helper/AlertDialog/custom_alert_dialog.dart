@@ -50,6 +50,64 @@ class CustomAlertDialog {
     ).show();
   }
 
+  static alertWithTwoButton({
+    required BuildContext context,
+    required AlertType type,
+    required String title,
+    required String desc,
+    required String textButton1,
+    required String textButton2,
+    required void Function() onPressedToButton1,
+    required void Function() onPressedToButton2,
+    bool isOverlayTapDismiss = true,
+    bool isCloseButton = true,
+  }) {
+    return Alert(
+      context: context,
+      type: type,
+      title: title,
+      desc: desc,
+      style: AlertStyle(
+          titleStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).primaryColor),
+          descStyle: const TextStyle(
+            fontSize: 18,
+          ),
+          isOverlayTapDismiss: isOverlayTapDismiss,
+          isCloseButton: isCloseButton),
+      buttons: [
+        DialogButton(
+          onPressed: onPressedToButton1,
+          width: 120,
+          color: Colors.grey.withOpacity(.3),
+          child: Text(
+            textButton1,
+            style: const TextStyle(
+              fontWeight: FontWeight.w200,
+              fontSize: 16,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        DialogButton(
+          onPressed: onPressedToButton2,
+          width: 120,
+          color: Theme.of(context).primaryColor,
+          child: Text(
+            textButton2,
+            style: const TextStyle(
+              fontWeight: FontWeight.w200,
+              fontSize: 16,
+              color: Colors.white,
+            ),
+          ),
+        )
+      ],
+    ).show();
+  }
+
   // static alertDelete({
   //   required BuildContext context,
   //   required Widget contentButton,

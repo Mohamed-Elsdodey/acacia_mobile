@@ -43,6 +43,9 @@
   "total_positive": "رصيد التميزات أصبح: ",
   "total_nagative": "رصيد العقوبات أصبح: ",
   "positive": "تميز",
-  "nagative": "عقوبة"
+  "nagative": "عقوبة",
+
+  "logout_massge": "هل تريد بالفعل تسجيل الخروج؟",
+  "no": "لا"
 
 }

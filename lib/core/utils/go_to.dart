@@ -19,7 +19,7 @@ class GoTo {
     );
   }
 
-  static pop(BuildContext context, Widget screen) {
+  static pop(BuildContext context) {
     Navigator.pop(context);
   }
 }

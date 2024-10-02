@@ -1,7 +1,13 @@
+import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
+import '../../../../core/helper/AlertDialog/custom_alert_dialog.dart';
+import '../../../../core/helper/SharedPreferences/pref.dart';
 import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../generated/l10n.dart';
+import '../../../login/presentation/views/login_view.dart';
 import '../../data/models/more_item_model.dart';
 
 class MoreViewBody extends StatefulWidget {
@@ -107,6 +113,29 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                       break;
                     case 5:
                       // createAlertDialogLogout();
+                      CustomAlertDialog.alertWithTwoButton(
+                          context: context,
+                          type: AlertType.warning,
+                          title: S.of(context).logout,
+                          desc: S.of(context).logout_massge,
+                          isCloseButton: false,
+                          isOverlayTapDismiss: false,
+                          textButton1: S.of(context).no,
+                          textButton2: S.of(context).ok,
+                          onPressedToButton1: () {
+                            GoTo.pop(context);
+                          },
+                          onPressedToButton2: () {
+                            Pref.saveBoolToPref(
+                                key: AppStrings.isLoginKey, value: false);
+                            Pref.removeKey(key: AppStrings.parantTokenKey);
+                            Pref.removeKey(key: AppStrings.parantPhoneKey);
+                            Pref.removeKey(key: AppStrings.parantEmailKey);
+                            Pref.removeKey(key: AppStrings.parantIdKey);
+                            Pref.removeKey(key: AppStrings.childernIdKey);
+
+                            GoTo.pushReplacement(context, const LoginView());
+                          });
                       break;
                   }
                 },

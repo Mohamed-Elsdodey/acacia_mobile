@@ -39,10 +39,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "logout_massge": MessageLookupByLibrary.simpleMessage(
+            "هل تريد بالفعل تسجيل الخروج؟"),
         "more": MessageLookupByLibrary.simpleMessage("المزيد"),
         "motivation": MessageLookupByLibrary.simpleMessage("التحفيز"),
         "nagative": MessageLookupByLibrary.simpleMessage("عقوبة"),
         "next": MessageLookupByLibrary.simpleMessage("متابعة"),
+        "no": MessageLookupByLibrary.simpleMessage("لا"),
         "no_childern": MessageLookupByLibrary.simpleMessage("لا يوجد أبناء"),
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "p_choose_school":

@@ -459,6 +459,26 @@ class S {
       args: [],
     );
   }
+
+  /// `هل تريد بالفعل تسجيل الخروج؟`
+  String get logout_massge {
+    return Intl.message(
+      'هل تريد بالفعل تسجيل الخروج؟',
+      name: 'logout_massge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لا`
+  String get no {
+    return Intl.message(
+      'لا',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
