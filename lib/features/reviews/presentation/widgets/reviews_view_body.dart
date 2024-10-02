@@ -26,9 +26,12 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
           if (state is ReviewsSuccess) {
             if (state.reviewsModel.status == 401) {
               return invalidToken(context);
+            } else if (state.reviewsModel.status == 403) {
+              return Center(child: Text(S.of(context).no_reviews));
             } else {
               List<ReviewItem>? listReviews = state.reviewsModel.data;
-              if (listReviews != null) {
+
+              if (listReviews!.isNotEmpty) {
                 return ListView.separated(
                   itemBuilder: (context, index) => ReviewsListItem(
                     reviewItem: listReviews[index],
@@ -39,8 +42,7 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
                   itemCount: listReviews.length,
                 );
               } else {
-                return Expanded(
-                    child: Center(child: Text(S.of(context).no_childern)));
+                return Center(child: Text(S.of(context).no_reviews));
               }
             }
           } else if (state is ReviewsFailure) {

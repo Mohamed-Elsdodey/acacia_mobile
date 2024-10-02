@@ -59,8 +59,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   if (state.childernModel.status == 401) {
                     return invalidToken(context);
                   } else {
-                    List<DataChildern>? listChildern = state.childernModel.data;
-                    if (listChildern != null) {
+                    List<DataChildern> listChildern = state.childernModel.data!;
+
+                    if (listChildern.isNotEmpty) {
                       if (childernId == -1) {
                         childernId = listChildern[0].id!;
                         childernData = listChildern[0];
@@ -150,9 +151,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         ],
                       );
                     } else {
-                      return Expanded(
-                          child:
-                              Center(child: Text(S.of(context).no_childern)));
+                      return Center(child: Text(S.of(context).no_childern));
                     }
                   }
                 } else if (state is ChildernFailure) {
@@ -469,7 +468,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                     }
                   } else if (state is AcademicReportFailure) {
                     return CustomErrorMassage(errorMassage: state.errorMassage);
-                  } else {
+                  } else if (state is AcademicReportLoading) {
                     return SizedBox(
                       height: 250,
                       child: Card(
@@ -485,6 +484,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         child: const CustomLoadingWidget(),
                       ),
                     );
+                  } else {
+                    return const SizedBox();
                   }
                 },
               ),
@@ -764,7 +765,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                     }
                   } else if (state is SubjectReportFailure) {
                     return CustomErrorMassage(errorMassage: state.errorMassage);
-                  } else {
+                  } else if (state is SubjectReportLoading) {
                     return SizedBox(
                       height: 250,
                       child: Card(
@@ -780,6 +781,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         child: const CustomLoadingWidget(),
                       ),
                     );
+                  } else {
+                    return const SizedBox();
                   }
                 },
               ),

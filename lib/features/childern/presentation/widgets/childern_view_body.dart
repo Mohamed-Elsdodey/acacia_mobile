@@ -24,7 +24,7 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
         builder: (context, state) {
           if (state is ChildernSuccess) {
             List<DataChildern>? listChildern = state.childernModel.data;
-            if (listChildern != null) {
+            if (listChildern!.isNotEmpty) {
               return ListView.separated(
                 itemBuilder: (context, index) => ChildernInfo(
                   childernInfo: listChildern[index],

@@ -479,6 +479,16 @@ class S {
       args: [],
     );
   }
+
+  /// `لا يوجد تحفيز`
+  String get no_reviews {
+    return Intl.message(
+      'لا يوجد تحفيز',
+      name: 'no_reviews',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

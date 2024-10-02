@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("متابعة"),
         "no": MessageLookupByLibrary.simpleMessage("لا"),
         "no_childern": MessageLookupByLibrary.simpleMessage("لا يوجد أبناء"),
+        "no_reviews": MessageLookupByLibrary.simpleMessage("لا يوجد تحفيز"),
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "p_choose_school":
             MessageLookupByLibrary.simpleMessage("من فضلك أدخل كود المدرسة!❤"),
