@@ -64,6 +64,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                       if (childernId == -1) {
                         childernId = listChildern[0].id!;
                         childernData = listChildern[0];
+                        Pref.saveIntToPref(
+                            key: AppStrings.childernIdKey, value: childernId);
                         BlocProvider.of<AcademicReportCubit>(context)
                             .getAcademicReport(
                                 month: DateTime.now().month.toString(),
