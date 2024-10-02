@@ -400,6 +400,36 @@ class S {
     );
   }
 
+  /// `اسم المدرس: `
+  String get sub_teacher {
+    return Intl.message(
+      'اسم المدرس: ',
+      name: 'sub_teacher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الدرجة الكلية: `
+  String get total_degree {
+    return Intl.message(
+      'الدرجة الكلية: ',
+      name: 'total_degree',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `درجة الطالب: `
+  String get st_degree {
+    return Intl.message(
+      'درجة الطالب: ',
+      name: 'st_degree',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `اسم مدرس المادة: `
   String get teacher {
     return Intl.message(
@@ -515,6 +545,16 @@ class S {
     return Intl.message(
       'كلمة المرور غير صحيحة',
       name: 'no_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لا يوجد إختبارات`
+  String get no_exams {
+    return Intl.message(
+      'لا يوجد إختبارات',
+      name: 'no_exams',
       desc: '',
       args: [],
     );

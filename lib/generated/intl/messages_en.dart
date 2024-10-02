@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_childern": MessageLookupByLibrary.simpleMessage("لا يوجد أبناء"),
         "no_email":
             MessageLookupByLibrary.simpleMessage("البريدالإلكتروني غير صحيح"),
+        "no_exams": MessageLookupByLibrary.simpleMessage("لا يوجد إختبارات"),
         "no_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة"),
         "no_reviews": MessageLookupByLibrary.simpleMessage("لا يوجد تحفيز"),
@@ -69,9 +70,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "room": MessageLookupByLibrary.simpleMessage("رقم الفصل: "),
         "row": MessageLookupByLibrary.simpleMessage("رقم الصف: "),
         "school_code": MessageLookupByLibrary.simpleMessage("كود المدرسة"),
+        "st_degree": MessageLookupByLibrary.simpleMessage("درجة الطالب: "),
         "st_info": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
+        "sub_teacher": MessageLookupByLibrary.simpleMessage("اسم المدرس: "),
         "subject": MessageLookupByLibrary.simpleMessage("المادة الدراسية: "),
         "teacher": MessageLookupByLibrary.simpleMessage("اسم مدرس المادة: "),
+        "total_degree": MessageLookupByLibrary.simpleMessage("الدرجة الكلية: "),
         "total_nagative":
             MessageLookupByLibrary.simpleMessage("رصيد العقوبات أصبح: "),
         "total_point":

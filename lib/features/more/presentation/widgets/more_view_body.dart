@@ -7,6 +7,7 @@ import '../../../../core/helper/SharedPreferences/pref.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../generated/l10n.dart';
+import '../../../exams/presentation/views/exams_view.dart';
 import '../../../login/presentation/views/login_view.dart';
 import '../../data/models/more_item_model.dart';
 
@@ -84,10 +85,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                 onTap: () {
                   switch (index) {
                     case 0:
-                      // push(ExamsTab(
-                      //     studentId: saveData.getChildId().isNotEmpty
-                      //         ? saveData.getChildId()
-                      //         : ''));
+                      GoTo.push(context, const ExamsView());
                       break;
                     case 1:
                       // push(StudentDataScreen(

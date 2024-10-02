@@ -28,4 +28,7 @@ class AppAssets {
   static String frame4 = "assets/images/more/frame4.png";
   static String frame5 = "assets/images/more/frame5.png";
   static String frame6 = "assets/images/more/frame6.png";
+
+  ///home
+  static String exam = "assets/images/exam.png";
 }
