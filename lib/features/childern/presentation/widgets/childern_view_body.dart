@@ -41,7 +41,7 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
           } else if (state is ChildernFailure) {
             return CustomErrorMassage(errorMassage: state.errorMassage);
           } else {
-            return const Expanded(child: CustomLoadingWidget());
+            return const CustomLoadingWidget();
           }
         },
       ),
