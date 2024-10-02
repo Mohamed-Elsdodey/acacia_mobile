@@ -26,7 +26,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   String email = '', password = '', schoolName = '';
-
+  bool obscureText = true;
   @override
   void initState() {
     getData();
@@ -121,7 +121,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     child: CustomTextFormField(
                       hintText: S.of(context).password,
                       fillColor: Colors.white60,
-                      obscureText: true,
+                      obscureText: obscureText,
+                      prefixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            obscureText = !obscureText;
+                          });
+                        },
+                        icon: Icon(obscureText
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                      ),
                       filled: true,
                       isBorder: false,
                       onSaved: (value) {
@@ -132,25 +142,39 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   BlocConsumer<LoginCubit, LoginState>(
                     listener: (context, state) {
                       if (state is LoginSuccess) {
-                        Pref.saveIntToPref(
-                            key: AppStrings.parantIdKey,
-                            value: state.loginModel.data!.id!);
-                        Pref.saveStringToPref(
-                            key: AppStrings.paranNameKey,
-                            value: state.loginModel.data!.name!);
-                        Pref.saveStringToPref(
-                            key: AppStrings.parantEmailKey,
-                            value: state.loginModel.data!.email!);
-                        Pref.saveStringToPref(
-                            key: AppStrings.parantPhoneKey,
-                            value: state.loginModel.data!.phone!);
-                        Pref.saveStringToPref(
-                            key: AppStrings.parantTokenKey,
-                            value: state.loginModel.data!.token!);
-                        Pref.saveBoolToPref(
-                            key: AppStrings.isLoginKey, value: true);
-                        GoTo.pushReplacement(
-                            context, const BottomNavigationBarView());
+                        if (state.loginModel.status == 403) {
+                          CustomAlertDialog.alertWithButton(
+                              context: context,
+                              type: AlertType.error,
+                              title: S.of(context).error,
+                              desc: S.of(context).no_email);
+                        } else if (state.loginModel.status == 422) {
+                          CustomAlertDialog.alertWithButton(
+                              context: context,
+                              type: AlertType.error,
+                              title: S.of(context).error,
+                              desc: S.of(context).no_password);
+                        } else {
+                          Pref.saveIntToPref(
+                              key: AppStrings.parantIdKey,
+                              value: state.loginModel.data!.id!);
+                          Pref.saveStringToPref(
+                              key: AppStrings.paranNameKey,
+                              value: state.loginModel.data!.name!);
+                          Pref.saveStringToPref(
+                              key: AppStrings.parantEmailKey,
+                              value: state.loginModel.data!.email!);
+                          Pref.saveStringToPref(
+                              key: AppStrings.parantPhoneKey,
+                              value: state.loginModel.data!.phone!);
+                          Pref.saveStringToPref(
+                              key: AppStrings.parantTokenKey,
+                              value: state.loginModel.data!.token!);
+                          Pref.saveBoolToPref(
+                              key: AppStrings.isLoginKey, value: true);
+                          GoTo.pushReplacement(
+                              context, const BottomNavigationBarView());
+                        }
                       } else if (state is LoginFailure) {
                         CustomAlertDialog.alertWithButton(
                             context: context,
@@ -169,8 +193,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                             onTap: () {
                               if (formState.currentState!.validate()) {
                                 formState.currentState!.save();
-                                BlocProvider.of<LoginCubit>(context)
-                                    .login(email: email, password: password);
+                                if (RegExp(AppStrings.emailException)
+                                    .hasMatch(email)) {
+                                  BlocProvider.of<LoginCubit>(context)
+                                      .login(email: email, password: password);
+                                } else {
+                                  CustomAlertDialog.alertWithButton(
+                                      context: context,
+                                      type: AlertType.error,
+                                      title: S.of(context).error,
+                                      desc: S.of(context).invalid_email);
+                                }
                               } else {
                                 autoValidateMode = AutovalidateMode.always;
                                 setState(() {});

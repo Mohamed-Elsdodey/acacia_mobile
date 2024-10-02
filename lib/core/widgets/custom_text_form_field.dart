@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../generated/l10n.dart';
+import '../utils/app_strings.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
     this.controller,
@@ -36,39 +37,56 @@ class CustomTextFormField extends StatelessWidget {
   final Color? fillColor;
 
   @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  String? lang;
+
+  @override
+  void didChangeDependencies() {
+    lang = Localizations.localeOf(context).toString();
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Card(
       child: SizedBox(
         height: 48,
         child: TextFormField(
-          controller: controller,
-          validator: isValidator == true
+          controller: widget.controller,
+          validator: widget.isValidator == true
               ? (value) {
                   if (value?.isEmpty ?? true) {
-                    return validatorMassage ?? S.of(context).field_is_required;
+                    return widget.validatorMassage ??
+                        S.of(context).field_is_required;
                   } else {
                     return null;
                   }
                 }
               : null,
           // textAlign: TextAlign.center,
-          onChanged: onChanged,
-          onSaved: onSaved,
-          keyboardType: keyboardType,
-          obscureText: obscureText,
-          style: textStyle,
-          readOnly: readOnly ?? false,
+          onChanged: widget.onChanged,
+          onSaved: widget.onSaved,
+          keyboardType: widget.keyboardType,
+          obscureText: widget.obscureText,
+          style: widget.textStyle,
+          readOnly: widget.readOnly ?? false,
           decoration: InputDecoration(
-            hintText: hintText,
+            hintText: widget.hintText,
             hintStyle: const TextStyle(color: Colors.black87),
-            filled: filled,
-            fillColor: fillColor,
+            filled: widget.filled,
+            fillColor: widget.fillColor,
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 0, horizontal: 12),
-            border: buildBorder(isBorder: isBorder),
-            enabledBorder: buildBorder(color: Colors.red, isBorder: isBorder),
-            focusedBorder: buildBorder(color: Colors.red, isBorder: isBorder),
-            prefixIcon: prefixIcon,
+            border: buildBorder(isBorder: widget.isBorder),
+            enabledBorder:
+                buildBorder(color: Colors.red, isBorder: widget.isBorder),
+            focusedBorder:
+                buildBorder(color: Colors.red, isBorder: widget.isBorder),
+            prefixIcon: lang == AppStrings.enLangKey ? widget.prefixIcon : null,
+            suffixIcon: lang == AppStrings.arLangKey ? widget.prefixIcon : null,
           ),
         ),
       ),

@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "field_is_required":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "invalid_email": MessageLookupByLibrary.simpleMessage(
+            "برجاء ادخال بريدإلكتروني صحيح"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "logout_massge": MessageLookupByLibrary.simpleMessage(
@@ -47,6 +49,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("متابعة"),
         "no": MessageLookupByLibrary.simpleMessage("لا"),
         "no_childern": MessageLookupByLibrary.simpleMessage("لا يوجد أبناء"),
+        "no_email":
+            MessageLookupByLibrary.simpleMessage("البريدالإلكتروني غير صحيح"),
+        "no_password":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة"),
         "no_reviews": MessageLookupByLibrary.simpleMessage("لا يوجد تحفيز"),
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "p_choose_school":

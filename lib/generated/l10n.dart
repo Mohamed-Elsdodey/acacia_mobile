@@ -489,6 +489,36 @@ class S {
       args: [],
     );
   }
+
+  /// `برجاء ادخال بريدإلكتروني صحيح`
+  String get invalid_email {
+    return Intl.message(
+      'برجاء ادخال بريدإلكتروني صحيح',
+      name: 'invalid_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `البريدالإلكتروني غير صحيح`
+  String get no_email {
+    return Intl.message(
+      'البريدالإلكتروني غير صحيح',
+      name: 'no_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `كلمة المرور غير صحيحة`
+  String get no_password {
+    return Intl.message(
+      'كلمة المرور غير صحيحة',
+      name: 'no_password',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
