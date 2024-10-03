@@ -52,9 +52,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_email":
             MessageLookupByLibrary.simpleMessage("البريدالإلكتروني غير صحيح"),
         "no_exams": MessageLookupByLibrary.simpleMessage("لا يوجد إختبارات"),
+        "no_notifications":
+            MessageLookupByLibrary.simpleMessage("لا يوجد الإشعارات"),
         "no_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة"),
         "no_reviews": MessageLookupByLibrary.simpleMessage("لا يوجد تحفيز"),
+        "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "p_choose_school":
             MessageLookupByLibrary.simpleMessage("من فضلك أدخل كود المدرسة!❤"),

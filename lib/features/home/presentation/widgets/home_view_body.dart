@@ -1,4 +1,5 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
+import 'package:evaluation_and_follow_up/features/home/presentation/views/home_view.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,6 +66,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                       if (childernId == -1) {
                         childernId = listChildern[0].id!;
                         childernData = listChildern[0];
+                        HomeView.studentId = listChildern[0].id!;
                         Pref.saveIntToPref(
                             key: AppStrings.childernIdKey, value: childernId);
                         BlocProvider.of<AcademicReportCubit>(context)
@@ -79,6 +81,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         childernData = listChildern.firstWhere(
                           (element) => element.id == childernId,
                         );
+                        HomeView.studentId = childernData.id!;
                         BlocProvider.of<AcademicReportCubit>(context)
                             .getAcademicReport(
                                 month: DateTime.now().month.toString(),
@@ -115,9 +118,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                 (index) => listChildern[index].name!,
                               ),
                               onChanged: (value) {
-                                childernData = listChildern.firstWhere(
-                                  (element) => element.name == value,
-                                );
+                                setState(() {
+                                  childernData = listChildern.firstWhere(
+                                    (element) => element.name == value,
+                                  );
+                                });
                                 BlocProvider.of<AcademicReportCubit>(context)
                                     .getAcademicReport(
                                         month: DateTime.now().month.toString(),

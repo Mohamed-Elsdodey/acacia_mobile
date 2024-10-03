@@ -31,4 +31,9 @@ class AppAssets {
 
   ///home
   static String exam = "assets/images/exam.png";
+
+  ///Notifications
+  static String check = "assets/images/check.png";
+  static String close = "assets/images/close.png";
+  static String warning = "assets/images/warning.png";
 }

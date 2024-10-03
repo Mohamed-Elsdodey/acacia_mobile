@@ -559,6 +559,26 @@ class S {
       args: [],
     );
   }
+
+  /// `الإشعارات`
+  String get notifications {
+    return Intl.message(
+      'الإشعارات',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لا يوجد الإشعارات`
+  String get no_notifications {
+    return Intl.message(
+      'لا يوجد الإشعارات',
+      name: 'no_notifications',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
