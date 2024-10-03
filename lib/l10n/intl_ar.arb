@@ -59,6 +59,13 @@
   "no_exams": "لا يوجد إختبارات",
 
   "notifications": "الإشعارات",
-  "no_notifications": "لا يوجد الإشعارات"
+  "no_notifications": "لا يوجد الإشعارات",
+
+  "name": "الاسم",
+  "new_password": "كلمة السر الجديدة",
+  "confirm_password":"تأكيد كلمة السر",
+  "save_changes": "حفظ التعديلات",
+  "invalid_password": "تأكيد كلمة السر غير مطابقة",
+  "updated_successfully": "تم تحديث البيانات بنجاح"
 
 }

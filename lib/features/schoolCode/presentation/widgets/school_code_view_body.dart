@@ -8,7 +8,7 @@ import '../../../../core/helper/AlertDialog/custom_alert_dialog.dart';
 import '../../../../core/helper/SharedPreferences/pref.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
-import '../../../../core/widgets/custom_buttom.dart';
+import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../generated/l10n.dart';
 import '../../../login/presentation/views/login_view.dart';

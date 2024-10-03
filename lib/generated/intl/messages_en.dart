@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("حدد مدرسة أخرى"),
         "choose_school": MessageLookupByLibrary.simpleMessage("تحديد المدرسة"),
         "classes": MessageLookupByLibrary.simpleMessage("الحصص"),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
         "data_acount": MessageLookupByLibrary.simpleMessage("بيانات الحساب"),
         "date": MessageLookupByLibrary.simpleMessage("التاريخ: "),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -39,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "invalid_email": MessageLookupByLibrary.simpleMessage(
             "برجاء ادخال بريدإلكتروني صحيح"),
+        "invalid_password":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر غير مطابقة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "logout_massge": MessageLookupByLibrary.simpleMessage(
@@ -46,6 +50,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "more": MessageLookupByLibrary.simpleMessage("المزيد"),
         "motivation": MessageLookupByLibrary.simpleMessage("التحفيز"),
         "nagative": MessageLookupByLibrary.simpleMessage("عقوبة"),
+        "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "new_password":
+            MessageLookupByLibrary.simpleMessage("كلمة السر الجديدة"),
         "next": MessageLookupByLibrary.simpleMessage("متابعة"),
         "no": MessageLookupByLibrary.simpleMessage("لا"),
         "no_childern": MessageLookupByLibrary.simpleMessage("لا يوجد أبناء"),
@@ -72,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reports": MessageLookupByLibrary.simpleMessage("التقارير"),
         "room": MessageLookupByLibrary.simpleMessage("رقم الفصل: "),
         "row": MessageLookupByLibrary.simpleMessage("رقم الصف: "),
+        "save_changes": MessageLookupByLibrary.simpleMessage("حفظ التعديلات"),
         "school_code": MessageLookupByLibrary.simpleMessage("كود المدرسة"),
         "st_degree": MessageLookupByLibrary.simpleMessage("درجة الطالب: "),
         "st_info": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
@@ -85,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الرصيد الإجمالي: "),
         "total_positive":
             MessageLookupByLibrary.simpleMessage("رصيد التميزات أصبح: "),
+        "updated_successfully":
+            MessageLookupByLibrary.simpleMessage("تم تحديث البيانات بنجاح"),
         "warning": MessageLookupByLibrary.simpleMessage("عفواً"),
         "warning_massge": MessageLookupByLibrary.simpleMessage(
             "لقد انتهت صلاحية الجلسة برجاء تسجيل الدخول مرة أخرى."),

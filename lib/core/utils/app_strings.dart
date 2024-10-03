@@ -9,7 +9,7 @@ class AppStrings {
   static const String schoolNameKey = "SchoolName";
   static const String schoolDomainKey = "SchoolDomain";
   static const String parantIdKey = "ParantId";
-  static const String paranNameKey = "ParantName";
+  static const String parantNameKey = "ParantName";
   static const String parantEmailKey = "ParantEmail";
   static const String parantPhoneKey = "ParantPhone";
   static const String parantTokenKey = "ParantToken";

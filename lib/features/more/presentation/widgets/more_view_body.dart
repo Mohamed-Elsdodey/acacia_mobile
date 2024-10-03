@@ -1,4 +1,5 @@
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
+import 'package:evaluation_and_follow_up/features/dataAccount/presentation/views/data_account_view.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -46,8 +47,8 @@ class _MoreViewBodyState extends State<MoreViewBody> {
           actions: [
             InkWell(
               onTap: () {
-                GoTo.push(context,
-                    NotificationsView(studentId: HomeView.studentId));
+                GoTo.push(
+                    context, NotificationsView(studentId: HomeView.studentId));
               },
               child: Padding(
                 padding: const EdgeInsetsDirectional.only(end: 24),
@@ -103,9 +104,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
 
                       break;
                     case 3:
-                      // push(UpdateProfile(
-                      //     parentId:
-                      //         saveData.getUserData()?.data?.id.toString() ?? ''));
+                      GoTo.push(context, const DataAccountView());
 
                       break;
                     case 4:

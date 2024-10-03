@@ -579,6 +579,66 @@ class S {
       args: [],
     );
   }
+
+  /// `الاسم`
+  String get name {
+    return Intl.message(
+      'الاسم',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `كلمة السر الجديدة`
+  String get new_password {
+    return Intl.message(
+      'كلمة السر الجديدة',
+      name: 'new_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تأكيد كلمة السر`
+  String get confirm_password {
+    return Intl.message(
+      'تأكيد كلمة السر',
+      name: 'confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `حفظ التعديلات`
+  String get save_changes {
+    return Intl.message(
+      'حفظ التعديلات',
+      name: 'save_changes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تأكيد كلمة السر غير مطابقة`
+  String get invalid_password {
+    return Intl.message(
+      'تأكيد كلمة السر غير مطابقة',
+      name: 'invalid_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تم تحديث البيانات بنجاح`
+  String get updated_successfully {
+    return Intl.message(
+      'تم تحديث البيانات بنجاح',
+      name: 'updated_successfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

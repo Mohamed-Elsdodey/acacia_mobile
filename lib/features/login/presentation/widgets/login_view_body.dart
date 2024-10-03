@@ -8,7 +8,7 @@ import '../../../../core/helper/AlertDialog/custom_alert_dialog.dart';
 import '../../../../core/helper/SharedPreferences/pref.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
-import '../../../../core/widgets/custom_buttom.dart';
+import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../generated/l10n.dart';
 import '../../../bottomNavigationBar/presentation/views/bottom_navigatiaon_bar_view.dart';
@@ -109,6 +109,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     child: CustomTextFormField(
                       hintText: S.of(context).email,
                       fillColor: Colors.white60,
+                      keyboardType: TextInputType.emailAddress,
                       filled: true,
                       isBorder: false,
                       onSaved: (value) {
@@ -121,6 +122,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     child: CustomTextFormField(
                       hintText: S.of(context).password,
                       fillColor: Colors.white60,
+                      keyboardType: TextInputType.text,
                       obscureText: obscureText,
                       prefixIcon: IconButton(
                         onPressed: () {
@@ -159,7 +161,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                               key: AppStrings.parantIdKey,
                               value: state.loginModel.data!.id!);
                           Pref.saveStringToPref(
-                              key: AppStrings.paranNameKey,
+                              key: AppStrings.parantNameKey,
                               value: state.loginModel.data!.name!);
                           Pref.saveStringToPref(
                               key: AppStrings.parantEmailKey,
