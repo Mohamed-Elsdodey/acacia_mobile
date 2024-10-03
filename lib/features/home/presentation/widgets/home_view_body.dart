@@ -151,7 +151,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                             ),
                           ),
                           ChildernInfo(
-                            childernInfo: childernData,
+                            listChildern: listChildern,
                           ),
                         ],
                       );

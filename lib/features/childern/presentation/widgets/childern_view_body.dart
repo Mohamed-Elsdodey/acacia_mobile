@@ -27,7 +27,7 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
             if (listChildern!.isNotEmpty) {
               return ListView.separated(
                 itemBuilder: (context, index) => ChildernInfo(
-                  childernInfo: listChildern[index],
+                  listChildern: listChildern,
                 ),
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 8,
