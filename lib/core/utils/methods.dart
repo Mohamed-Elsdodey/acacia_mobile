@@ -18,7 +18,7 @@ Expanded invalidToken(BuildContext context) {
           isCloseButton: false,
           isOverlayTapDismiss: false,
           onPressed: () {
-            GoTo.pushReplacement(context, const LoginView());
+            GoTo.pushAndRemoveUntil(context, const LoginView());
           });
     }
   });

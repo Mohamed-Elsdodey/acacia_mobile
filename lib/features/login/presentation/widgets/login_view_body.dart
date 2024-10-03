@@ -183,7 +183,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                 value: state.loginModel.data!.token!);
                             Pref.saveBoolToPref(
                                 key: AppStrings.isLoginKey, value: true);
-                            GoTo.pushReplacement(
+                            GoTo.pushAndRemoveUntil(
                                 context, const BottomNavigationBarView());
                           }
                         } else if (state is LoginFailure) {
@@ -228,7 +228,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     ),
                     TextButton(
                         onPressed: () async {
-                          GoTo.pushReplacement(context, const SchoolCodeView());
+                          GoTo.pushAndRemoveUntil(context, const SchoolCodeView());
                         },
                         child: Text(
                           S.of(context).choose_anther_school,

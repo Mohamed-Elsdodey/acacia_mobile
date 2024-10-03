@@ -132,7 +132,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                             Pref.removeKey(key: AppStrings.parantIdKey);
                             Pref.removeKey(key: AppStrings.childernIdKey);
 
-                            GoTo.pushReplacement(context, const LoginView());
+                            GoTo.pushAndRemoveUntil(context, const LoginView());
                           });
                       break;
                   }

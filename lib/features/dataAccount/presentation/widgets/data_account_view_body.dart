@@ -117,7 +117,7 @@ class _DataAccountViewBodyState extends State<DataAccountViewBody> {
                           isCloseButton: false,
                           isOverlayTapDismiss: false,
                           onPressed: () {
-                            GoTo.pushReplacement(context, const LoginView());
+                            GoTo.pushAndRemoveUntil(context, const LoginView());
                           });
                     } else {
                       Pref.saveIntToPref(

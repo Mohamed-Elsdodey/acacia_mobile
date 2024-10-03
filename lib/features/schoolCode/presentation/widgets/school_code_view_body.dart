@@ -111,7 +111,7 @@ class _SchoolCodeViewBodyState extends State<SchoolCodeViewBody> {
                           Pref.saveStringToPref(
                               key: AppStrings.schoolDomainKey,
                               value: state.schoolCodeModel.data!.domain!);
-                          GoTo.pushReplacement(context, const LoginView());
+                          GoTo.pushAndRemoveUntil(context, const LoginView());
                         } else if (state is SchoolCodeFailure) {
                           CustomAlertDialog.alertWithButton(
                               context: context,

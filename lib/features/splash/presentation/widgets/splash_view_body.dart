@@ -66,17 +66,17 @@ class _SplashViewBodyState extends State<SplashViewBody>
         if (isLogin == true && schoolDomain.isNotEmpty) {
           if (mounted) {
             //go to home
-            GoTo.pushReplacement(context, const BottomNavigationBarView());
+            GoTo.pushAndRemoveUntil(context, const BottomNavigationBarView());
           }
         } else if (isLogin == false && schoolDomain.isNotEmpty) {
           if (mounted) {
             //go to login
-            GoTo.pushReplacement(context, const LoginView());
+            GoTo.pushAndRemoveUntil(context, const LoginView());
           }
         } else if (isLogin == false && schoolDomain.isEmpty) {
           if (mounted) {
             //go to school code
-            GoTo.pushReplacement(context, const SchoolCodeView());
+            GoTo.pushAndRemoveUntil(context, const SchoolCodeView());
           }
         }
       },

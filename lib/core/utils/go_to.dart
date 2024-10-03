@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class GoTo {
-  static pushReplacement(BuildContext context, Widget screen) {
-    Navigator.pushReplacement(
+  static pushAndRemoveUntil(BuildContext context, Widget screen) {
+    Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
         builder: (context) => screen,
       ),
+      (route) => false,
     );
   }
 
