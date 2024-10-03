@@ -9,7 +9,7 @@ class ExamsModel {
     if (json['data'] != null) {
       data = <ExamItem>[];
       json['data'].forEach((v) {
-        data!.add(new ExamItem.fromJson(v));
+        data!.add(ExamItem.fromJson(v));
       });
     }
     message = json['message'].cast<String>();
@@ -17,12 +17,12 @@ class ExamsModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
-    data['status'] = this.status;
+    data['message'] = message;
+    data['status'] = status;
     return data;
   }
 }
@@ -45,23 +45,22 @@ class ExamItem {
     id = json['id'];
     degreeOfExam = json['degree_of_exam'];
     degreeOfStudent = json['degree_of_student'];
-    category = json['category'] != null
-        ? new Category.fromJson(json['category'])
-        : null;
+    category =
+        json['category'] != null ? Category.fromJson(json['category']) : null;
     teacher =
-        json['teacher'] != null ? new Teacher.fromJson(json['teacher']) : null;
+        json['teacher'] != null ? Teacher.fromJson(json['teacher']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['degree_of_exam'] = this.degreeOfExam;
-    data['degree_of_student'] = this.degreeOfStudent;
-    if (this.category != null) {
-      data['category'] = this.category!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['degree_of_exam'] = degreeOfExam;
+    data['degree_of_student'] = degreeOfStudent;
+    if (category != null) {
+      data['category'] = category!.toJson();
     }
-    if (this.teacher != null) {
-      data['teacher'] = this.teacher!.toJson();
+    if (teacher != null) {
+      data['teacher'] = teacher!.toJson();
     }
     return data;
   }
@@ -79,9 +78,9 @@ class Category {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
     return data;
   }
 }
@@ -98,9 +97,9 @@ class Teacher {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
     return data;
   }
 }

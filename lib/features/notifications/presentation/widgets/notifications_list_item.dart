@@ -27,10 +27,10 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
         side: BorderSide(
             width: 1,
             color: widget.notificationItem.type == "review"
-                ? Color(0xff00CC99)
+                ? const Color(0xff00CC99)
                 : widget.notificationItem.type == "exam"
-                    ? Color(0xffFFD200)
-                    : Color(0xffEB5757)),
+                    ? const Color(0xffFFD200)
+                    : const Color(0xffEB5757)),
         borderRadius: BorderRadius.circular(12),
       ),
       elevation: 2,
@@ -41,14 +41,14 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
             Container(
               height: 80,
               width: 10,
-              margin: EdgeInsetsDirectional.only(end: 5),
+              margin: const EdgeInsetsDirectional.only(end: 5),
               decoration: BoxDecoration(
                 color: widget.notificationItem.type == "review"
-                    ? Color(0xff00CC99)
+                    ? const Color(0xff00CC99)
                     : widget.notificationItem.type == "exam"
-                        ? Color(0xffFFD200)
-                        : Color(0xffEB5757),
-                borderRadius: BorderRadiusDirectional.only(
+                        ? const Color(0xffFFD200)
+                        : const Color(0xffEB5757),
+                borderRadius: const BorderRadiusDirectional.only(
                   topStart: Radius.circular(12),
                   bottomStart: Radius.circular(12),
                 ),
@@ -72,15 +72,15 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
                   children: [
                     Text(
                       widget.notificationItem.title.toString(),
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w700),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       widget.notificationItem.text.toString(),
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
+                      style: const TextStyle(
+                          fontSize: 13, fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),

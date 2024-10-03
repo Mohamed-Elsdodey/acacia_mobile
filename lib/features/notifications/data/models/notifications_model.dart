@@ -9,7 +9,7 @@ class NotificationsModel {
     if (json['data'] != null) {
       data = <NotificationItem>[];
       json['data'].forEach((v) {
-        data!.add(new NotificationItem.fromJson(v));
+        data!.add(NotificationItem.fromJson(v));
       });
     }
     message = json['message'].cast<String>();
@@ -17,12 +17,12 @@ class NotificationsModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
-    data['status'] = this.status;
+    data['message'] = message;
+    data['status'] = status;
     return data;
   }
 }
@@ -53,19 +53,19 @@ class NotificationItem {
     date = json['date'];
     foreignId = json['foreign_id'];
     student =
-        json['student'] != null ? new Student.fromJson(json['student']) : null;
+        json['student'] != null ? Student.fromJson(json['student']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['type'] = this.type;
-    data['text'] = this.text;
-    data['date'] = this.date;
-    data['foreign_id'] = this.foreignId;
-    if (this.student != null) {
-      data['student'] = this.student!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['type'] = type;
+    data['text'] = text;
+    data['date'] = date;
+    data['foreign_id'] = foreignId;
+    if (student != null) {
+      data['student'] = student!.toJson();
     }
     return data;
   }
@@ -115,19 +115,19 @@ class Student {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['image'] = this.image;
-    data['phone'] = this.phone;
-    data['positive_point'] = this.positivePoint;
-    data['negative_point'] = this.negativePoint;
-    data['total_point'] = this.totalPoint;
-    data['number_of_violations'] = this.numberOfViolations;
-    data['new_notification_count'] = this.newNotificationCount;
-    data['school_rank'] = this.schoolRank;
-    data['row_rank'] = this.rowRank;
-    data['room_rank'] = this.roomRank;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['image'] = image;
+    data['phone'] = phone;
+    data['positive_point'] = positivePoint;
+    data['negative_point'] = negativePoint;
+    data['total_point'] = totalPoint;
+    data['number_of_violations'] = numberOfViolations;
+    data['new_notification_count'] = newNotificationCount;
+    data['school_rank'] = schoolRank;
+    data['row_rank'] = rowRank;
+    data['room_rank'] = roomRank;
     return data;
   }
 }
