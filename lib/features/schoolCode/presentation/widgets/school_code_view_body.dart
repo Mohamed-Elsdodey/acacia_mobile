@@ -29,118 +29,126 @@ class _SchoolCodeViewBodyState extends State<SchoolCodeViewBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Stack(
-        children: [
-          PositionedDirectional(
-            end: 0,
-            top: 0,
-            child: Image.asset(
-              AppAssets.bubble5,
-              height: MediaQuery.of(context).size.height * .46,
-              color: Theme.of(context).primaryColor,
-            ),
-          ),
-          PositionedDirectional(
-            start: 0,
-            bottom: 0,
-            child: Image.asset(
-              AppAssets.bubble4,
-              height: MediaQuery.of(context).size.height * .46,
-              color: Theme.of(context).primaryColor.withOpacity(.15),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(24),
-            child: Form(
-              key: formState,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    AppAssets.loginLogo,
-                    height: MediaQuery.of(context).size.height * .4,
-                    width: MediaQuery.of(context).size.width * .6,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      child: Text(
-                        S.of(context).choose_school,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 32),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional.centerStart,
-                    child: Text(
-                      S.of(context).p_choose_school,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w700, fontSize: 16),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 48),
-                    child: CustomTextFormField(
-                      hintText: S.of(context).school_code,
-                      fillColor: Colors.white60,
-                      filled: true,
-                      isBorder: false,
-                      onSaved: (value) {
-                        code = value!;
-                      },
-                    ),
-                  ),
-                  BlocConsumer<SchoolCodeCubit, SchoolCodeState>(
-                    listener: (context, state) {
-                      if (state is SchoolCodeSuccess) {
-                        Pref.saveStringToPref(
-                            key: AppStrings.schoolIdKey,
-                            value: state.schoolCodeModel.data!.id!);
-                        Pref.saveStringToPref(
-                            key: AppStrings.schoolNameKey,
-                            value: state.schoolCodeModel.data!.nameEn!);
-                        Pref.saveStringToPref(
-                            key: AppStrings.schoolDomainKey,
-                            value: state.schoolCodeModel.data!.domain!);
-                        GoTo.pushReplacement(context, const LoginView());
-                      } else if (state is SchoolCodeFailure) {
-                        CustomAlertDialog.alertWithButton(
-                            context: context,
-                            type: AlertType.error,
-                            title: S.of(context).error,
-                            desc: state.errorMassage);
-                      }
-                    },
-                    builder: (context, state) {
-                      if (state is SchoolCodeLoading) {
-                        return const CustomLoadingWidget();
-                      } else {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 60, top: 10),
-                          child: CustomButton(
-                            onTap: () {
-                              if (formState.currentState!.validate()) {
-                                formState.currentState!.save();
-                                BlocProvider.of<SchoolCodeCubit>(context)
-                                    .getSchoolByCode(code: code);
-                              } else {
-                                autoValidateMode = AutovalidateMode.always;
-                                setState(() {});
-                              }
-                            },
-                            title: S.of(context).next,
-                          ),
-                        );
-                      }
-                    },
-                  ),
-                ],
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: MediaQuery.of(context).size.height,
+          minWidth: MediaQuery.of(context).size.width,
+        ),
+        child: Stack(
+          children: [
+            PositionedDirectional(
+              end: 0,
+              top: 0,
+              child: Image.asset(
+                AppAssets.bubble5,
+                height: MediaQuery.of(context).size.height * .46,
+                color: Theme.of(context).primaryColor,
+                fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
+            PositionedDirectional(
+              start: 0,
+              bottom: 0,
+              child: Image.asset(
+                AppAssets.bubble4,
+                height: MediaQuery.of(context).size.height * .46,
+                color: Theme.of(context).primaryColor.withOpacity(.15),
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(24),
+              child: Form(
+                key: formState,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      AppAssets.loginLogo,
+                      height: MediaQuery.of(context).size.height * .4,
+                      width: MediaQuery.of(context).size.width * .6,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: Text(
+                          S.of(context).choose_school,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 32),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Text(
+                        S.of(context).p_choose_school,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w700, fontSize: 16),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 48),
+                      child: CustomTextFormField(
+                        hintText: S.of(context).school_code,
+                        fillColor: Colors.white60,
+                        filled: true,
+                        isBorder: false,
+                        onSaved: (value) {
+                          code = value!;
+                        },
+                      ),
+                    ),
+                    BlocConsumer<SchoolCodeCubit, SchoolCodeState>(
+                      listener: (context, state) {
+                        if (state is SchoolCodeSuccess) {
+                          Pref.saveStringToPref(
+                              key: AppStrings.schoolIdKey,
+                              value: state.schoolCodeModel.data!.id!);
+                          Pref.saveStringToPref(
+                              key: AppStrings.schoolNameKey,
+                              value: state.schoolCodeModel.data!.nameEn!);
+                          Pref.saveStringToPref(
+                              key: AppStrings.schoolDomainKey,
+                              value: state.schoolCodeModel.data!.domain!);
+                          GoTo.pushReplacement(context, const LoginView());
+                        } else if (state is SchoolCodeFailure) {
+                          CustomAlertDialog.alertWithButton(
+                              context: context,
+                              type: AlertType.error,
+                              title: S.of(context).error,
+                              desc: state.errorMassage);
+                        }
+                      },
+                      builder: (context, state) {
+                        if (state is SchoolCodeLoading) {
+                          return const CustomLoadingWidget();
+                        } else {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 60, top: 10),
+                            child: CustomButton(
+                              onTap: () {
+                                if (formState.currentState!.validate()) {
+                                  formState.currentState!.save();
+                                  BlocProvider.of<SchoolCodeCubit>(context)
+                                      .getSchoolByCode(code: code);
+                                } else {
+                                  autoValidateMode = AutovalidateMode.always;
+                                  setState(() {});
+                                }
+                              },
+                              title: S.of(context).next,
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

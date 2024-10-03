@@ -36,201 +36,211 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Stack(
-        children: [
-          PositionedDirectional(
-            end: 0,
-            top: 0,
-            child: Image.asset(
-              AppAssets.bubble2,
-              height: MediaQuery.of(context).size.height * .46,
-              color: Theme.of(context).primaryColor.withOpacity(.15),
-            ),
-          ),
-          PositionedDirectional(
-            end: -20,
-            top: -20,
-            child: Image.asset(
-              AppAssets.bubble1,
-              height: MediaQuery.of(context).size.height * .46,
-              color: Theme.of(context).primaryColor,
-            ),
-          ),
-          PositionedDirectional(
-            start: 0,
-            bottom: 0,
-            child: Image.asset(
-              AppAssets.bubble4,
-              height: MediaQuery.of(context).size.height * .46,
-              color: Theme.of(context).primaryColor.withOpacity(.15),
-            ),
-          ),
-          PositionedDirectional(
-            start: -35,
-            top: MediaQuery.of(context).size.height * .2,
-            child: Image.asset(
-              AppAssets.bubble3,
-              height: MediaQuery.of(context).size.height * .46,
-              color: Theme.of(context).primaryColor.withOpacity(.15),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(24),
-            child: Form(
-              key: formState,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * .4,
-                    width: MediaQuery.of(context).size.width * .6,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      child: Text(
-                        S.of(context).login,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 32),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional.centerStart,
-                    child: Text(
-                      "${S.of(context).welcome}$schoolName ! ❤",
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w700, fontSize: 16),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50, bottom: 8),
-                    child: CustomTextFormField(
-                      hintText: S.of(context).email,
-                      fillColor: Colors.white60,
-                      keyboardType: TextInputType.emailAddress,
-                      filled: true,
-                      isBorder: false,
-                      onSaved: (value) {
-                        email = value!;
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, bottom: 50),
-                    child: CustomTextFormField(
-                      hintText: S.of(context).password,
-                      fillColor: Colors.white60,
-                      keyboardType: TextInputType.text,
-                      obscureText: obscureText,
-                      prefixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            obscureText = !obscureText;
-                          });
-                        },
-                        icon: Icon(obscureText
-                            ? Icons.visibility
-                            : Icons.visibility_off),
-                      ),
-                      filled: true,
-                      isBorder: false,
-                      onSaved: (value) {
-                        password = value!;
-                      },
-                    ),
-                  ),
-                  BlocConsumer<LoginCubit, LoginState>(
-                    listener: (context, state) {
-                      if (state is LoginSuccess) {
-                        if (state.loginModel.status == 403) {
-                          CustomAlertDialog.alertWithButton(
-                              context: context,
-                              type: AlertType.error,
-                              title: S.of(context).error,
-                              desc: S.of(context).no_email);
-                        } else if (state.loginModel.status == 422) {
-                          CustomAlertDialog.alertWithButton(
-                              context: context,
-                              type: AlertType.error,
-                              title: S.of(context).error,
-                              desc: S.of(context).no_password);
-                        } else {
-                          Pref.saveIntToPref(
-                              key: AppStrings.parantIdKey,
-                              value: state.loginModel.data!.id!);
-                          Pref.saveStringToPref(
-                              key: AppStrings.parantNameKey,
-                              value: state.loginModel.data!.name!);
-                          Pref.saveStringToPref(
-                              key: AppStrings.parantEmailKey,
-                              value: state.loginModel.data!.email!);
-                          Pref.saveStringToPref(
-                              key: AppStrings.parantPhoneKey,
-                              value: state.loginModel.data!.phone!);
-                          Pref.saveStringToPref(
-                              key: AppStrings.parantTokenKey,
-                              value: state.loginModel.data!.token!);
-                          Pref.saveBoolToPref(
-                              key: AppStrings.isLoginKey, value: true);
-                          GoTo.pushReplacement(
-                              context, const BottomNavigationBarView());
-                        }
-                      } else if (state is LoginFailure) {
-                        CustomAlertDialog.alertWithButton(
-                            context: context,
-                            type: AlertType.error,
-                            title: S.of(context).error,
-                            desc: state.errorMassage);
-                      }
-                    },
-                    builder: (context, state) {
-                      if (state is LoginLoading) {
-                        return const CustomLoadingWidget();
-                      } else {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 20, top: 10),
-                          child: CustomButton(
-                            onTap: () {
-                              if (formState.currentState!.validate()) {
-                                formState.currentState!.save();
-                                if (RegExp(AppStrings.emailException)
-                                    .hasMatch(email)) {
-                                  BlocProvider.of<LoginCubit>(context)
-                                      .login(email: email, password: password);
-                                } else {
-                                  CustomAlertDialog.alertWithButton(
-                                      context: context,
-                                      type: AlertType.error,
-                                      title: S.of(context).error,
-                                      desc: S.of(context).invalid_email);
-                                }
-                              } else {
-                                autoValidateMode = AutovalidateMode.always;
-                                setState(() {});
-                              }
-                            },
-                            title: S.of(context).next,
-                          ),
-                        );
-                      }
-                    },
-                  ),
-                  TextButton(
-                      onPressed: () async {
-                        GoTo.pushReplacement(context, const SchoolCodeView());
-                      },
-                      child: Text(
-                        S.of(context).choose_anther_school,
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 16),
-                      ))
-                ],
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: MediaQuery.of(context).size.height,
+          minWidth: MediaQuery.of(context).size.width,
+        ),
+        child: Stack(
+          children: [
+            PositionedDirectional(
+              end: 0,
+              top: 0,
+              child: Image.asset(
+                AppAssets.bubble2,
+                height: MediaQuery.of(context).size.height * .47,
+                color: Theme.of(context).primaryColor.withOpacity(.15),
+                fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
+            PositionedDirectional(
+              end: 0,
+              top: 0,
+              child: Image.asset(
+                AppAssets.bubble1,
+                height: MediaQuery.of(context).size.height * .38,
+                color: Theme.of(context).primaryColor,
+                fit: BoxFit.cover,
+              ),
+            ),
+            PositionedDirectional(
+              start: 0,
+              bottom: 0,
+              child: Image.asset(
+                AppAssets.bubble4,
+                height: MediaQuery.of(context).size.height * .46,
+                color: Theme.of(context).primaryColor.withOpacity(.15),
+                fit: BoxFit.cover,
+              ),
+            ),
+            PositionedDirectional(
+              start: 0,
+              top: MediaQuery.of(context).size.height * .35,
+              child: Image.asset(
+                AppAssets.bubble3,
+                height: MediaQuery.of(context).size.height * .23,
+                color: Theme.of(context).primaryColor.withOpacity(.15),
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(24),
+              child: Form(
+                key: formState,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .4,
+                      width: MediaQuery.of(context).size.width * .6,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: Text(
+                          S.of(context).login,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 32),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Text(
+                        "${S.of(context).welcome}$schoolName ! ❤",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w700, fontSize: 16),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 50, bottom: 8),
+                      child: CustomTextFormField(
+                        hintText: S.of(context).email,
+                        fillColor: Colors.white60,
+                        keyboardType: TextInputType.emailAddress,
+                        filled: true,
+                        isBorder: false,
+                        onSaved: (value) {
+                          email = value!;
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8, bottom: 50),
+                      child: CustomTextFormField(
+                        hintText: S.of(context).password,
+                        fillColor: Colors.white60,
+                        keyboardType: TextInputType.text,
+                        obscureText: obscureText,
+                        prefixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              obscureText = !obscureText;
+                            });
+                          },
+                          icon: Icon(obscureText
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                        ),
+                        filled: true,
+                        isBorder: false,
+                        onSaved: (value) {
+                          password = value!;
+                        },
+                      ),
+                    ),
+                    BlocConsumer<LoginCubit, LoginState>(
+                      listener: (context, state) {
+                        if (state is LoginSuccess) {
+                          if (state.loginModel.status == 403) {
+                            CustomAlertDialog.alertWithButton(
+                                context: context,
+                                type: AlertType.error,
+                                title: S.of(context).error,
+                                desc: S.of(context).no_email);
+                          } else if (state.loginModel.status == 422) {
+                            CustomAlertDialog.alertWithButton(
+                                context: context,
+                                type: AlertType.error,
+                                title: S.of(context).error,
+                                desc: S.of(context).no_password);
+                          } else {
+                            Pref.saveIntToPref(
+                                key: AppStrings.parantIdKey,
+                                value: state.loginModel.data!.id!);
+                            Pref.saveStringToPref(
+                                key: AppStrings.parantNameKey,
+                                value: state.loginModel.data!.name!);
+                            Pref.saveStringToPref(
+                                key: AppStrings.parantEmailKey,
+                                value: state.loginModel.data!.email!);
+                            Pref.saveStringToPref(
+                                key: AppStrings.parantPhoneKey,
+                                value: state.loginModel.data!.phone!);
+                            Pref.saveStringToPref(
+                                key: AppStrings.parantTokenKey,
+                                value: state.loginModel.data!.token!);
+                            Pref.saveBoolToPref(
+                                key: AppStrings.isLoginKey, value: true);
+                            GoTo.pushReplacement(
+                                context, const BottomNavigationBarView());
+                          }
+                        } else if (state is LoginFailure) {
+                          CustomAlertDialog.alertWithButton(
+                              context: context,
+                              type: AlertType.error,
+                              title: S.of(context).error,
+                              desc: state.errorMassage);
+                        }
+                      },
+                      builder: (context, state) {
+                        if (state is LoginLoading) {
+                          return const CustomLoadingWidget();
+                        } else {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 20, top: 10),
+                            child: CustomButton(
+                              onTap: () {
+                                if (formState.currentState!.validate()) {
+                                  formState.currentState!.save();
+                                  if (RegExp(AppStrings.emailException)
+                                      .hasMatch(email)) {
+                                    BlocProvider.of<LoginCubit>(context).login(
+                                        email: email, password: password);
+                                  } else {
+                                    CustomAlertDialog.alertWithButton(
+                                        context: context,
+                                        type: AlertType.error,
+                                        title: S.of(context).error,
+                                        desc: S.of(context).invalid_email);
+                                  }
+                                } else {
+                                  autoValidateMode = AutovalidateMode.always;
+                                  setState(() {});
+                                }
+                              },
+                              title: S.of(context).next,
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                    TextButton(
+                        onPressed: () async {
+                          GoTo.pushReplacement(context, const SchoolCodeView());
+                        },
+                        child: Text(
+                          S.of(context).choose_anther_school,
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 16),
+                        ))
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
