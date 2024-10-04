@@ -16,7 +16,6 @@ class LoginView extends StatelessWidget {
         getIt.get<LoginRepoImpl>(),
       ),
       child: const Scaffold(
-        backgroundColor: Colors.white,
         body: LoginViewBody(),
       ),
     );

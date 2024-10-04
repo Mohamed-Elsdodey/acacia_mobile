@@ -59,6 +59,7 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
           theme: ThemeData(
             fontFamily: 'Sukar',
             primaryColor: colorProvider.currentColor,
+            scaffoldBackgroundColor: const Color(0XFFFFFFFF),
             useMaterial3: true,
           ),
           debugShowCheckedModeBanner: false,

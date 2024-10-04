@@ -16,7 +16,6 @@ class SchoolCodeView extends StatelessWidget {
         getIt.get<SchoolCodeRepoImpl>(),
       ),
       child: const Scaffold(
-        backgroundColor: Colors.white,
         body: SchoolCodeViewBody(),
       ),
     );
