@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_app": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
+        "absence": MessageLookupByLibrary.simpleMessage("غياب"),
         "absences": MessageLookupByLibrary.simpleMessage("الغياب والتأخير"),
         "childern": MessageLookupByLibrary.simpleMessage("الأبناء"),
         "choose_anther_school":
@@ -33,6 +34,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
         "data_acount": MessageLookupByLibrary.simpleMessage("بيانات الحساب"),
         "date": MessageLookupByLibrary.simpleMessage("التاريخ: "),
+        "day_absence":
+            MessageLookupByLibrary.simpleMessage("عدد أيام الغياب: "),
+        "day_delay": MessageLookupByLibrary.simpleMessage("عدد أيام التأخير: "),
+        "delay": MessageLookupByLibrary.simpleMessage("تأخير"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "error": MessageLookupByLibrary.simpleMessage("خطأ"),
         "exams": MessageLookupByLibrary.simpleMessage("الاختبارات"),
@@ -85,10 +90,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "school_code": MessageLookupByLibrary.simpleMessage("كود المدرسة"),
         "st_degree": MessageLookupByLibrary.simpleMessage("درجة الطالب: "),
         "st_info": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
+        "student_type": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
         "sub_teacher": MessageLookupByLibrary.simpleMessage("اسم المدرس: "),
         "subject": MessageLookupByLibrary.simpleMessage("المادة الدراسية: "),
         "teacher": MessageLookupByLibrary.simpleMessage("اسم مدرس المادة: "),
+        "total_absence":
+            MessageLookupByLibrary.simpleMessage("إجمالي الغياب: "),
         "total_degree": MessageLookupByLibrary.simpleMessage("الدرجة الكلية: "),
+        "total_delay": MessageLookupByLibrary.simpleMessage("إجمالي التأخير: "),
         "total_nagative":
             MessageLookupByLibrary.simpleMessage("رصيد العقوبات أصبح: "),
         "total_point":

@@ -649,6 +649,76 @@ class S {
       args: [],
     );
   }
+
+  /// `حالة الطالب: `
+  String get student_type {
+    return Intl.message(
+      'حالة الطالب: ',
+      name: 'student_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تأخير`
+  String get delay {
+    return Intl.message(
+      'تأخير',
+      name: 'delay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `غياب`
+  String get absence {
+    return Intl.message(
+      'غياب',
+      name: 'absence',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `عدد أيام التأخير: `
+  String get day_delay {
+    return Intl.message(
+      'عدد أيام التأخير: ',
+      name: 'day_delay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `عدد أيام الغياب: `
+  String get day_absence {
+    return Intl.message(
+      'عدد أيام الغياب: ',
+      name: 'day_absence',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `إجمالي الغياب: `
+  String get total_absence {
+    return Intl.message(
+      'إجمالي الغياب: ',
+      name: 'total_absence',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `إجمالي التأخير: `
+  String get total_delay {
+    return Intl.message(
+      'إجمالي التأخير: ',
+      name: 'total_delay',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
