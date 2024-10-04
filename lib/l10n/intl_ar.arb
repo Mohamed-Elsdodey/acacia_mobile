@@ -66,6 +66,8 @@
   "confirm_password":"تأكيد كلمة السر",
   "save_changes": "حفظ التعديلات",
   "invalid_password": "تأكيد كلمة السر غير مطابقة",
-  "updated_successfully": "تم تحديث البيانات بنجاح"
+  "updated_successfully": "تم تحديث البيانات بنجاح",
+
+  "no_absence": "لا يوجد غيابات أو تأخير"
 
 }

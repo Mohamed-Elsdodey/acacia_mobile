@@ -55,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("كلمة السر الجديدة"),
         "next": MessageLookupByLibrary.simpleMessage("متابعة"),
         "no": MessageLookupByLibrary.simpleMessage("لا"),
+        "no_absence":
+            MessageLookupByLibrary.simpleMessage("لا يوجد غيابات أو تأخير"),
         "no_childern": MessageLookupByLibrary.simpleMessage("لا يوجد أبناء"),
         "no_email":
             MessageLookupByLibrary.simpleMessage("البريدالإلكتروني غير صحيح"),

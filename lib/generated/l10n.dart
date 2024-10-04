@@ -639,6 +639,16 @@ class S {
       args: [],
     );
   }
+
+  /// `لا يوجد غيابات أو تأخير`
+  String get no_absence {
+    return Intl.message(
+      'لا يوجد غيابات أو تأخير',
+      name: 'no_absence',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,8 +1,8 @@
+import 'package:evaluation_and_follow_up/features/childern/presentation/widgets/childern_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/models/childern_model.dart';
-import '../../../../core/widgets/childern_info.dart';
 import '../../../../core/widgets/custom_error_massage.dart';
 import '../../../../core/widgets/custom_loading_widget.dart';
 import '../../../../generated/l10n.dart';
@@ -26,8 +26,8 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
             List<DataChildern>? listChildern = state.childernModel.data;
             if (listChildern!.isNotEmpty) {
               return ListView.separated(
-                itemBuilder: (context, index) => ChildernInfo(
-                  listChildern: listChildern,
+                itemBuilder: (context, index) => ChildernListItem(
+                  childernInfo: listChildern[index],
                 ),
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 8,

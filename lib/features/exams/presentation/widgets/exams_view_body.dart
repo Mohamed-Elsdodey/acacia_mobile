@@ -43,7 +43,7 @@ class _ExamsViewBodyState extends State<ExamsViewBody> {
                   }),
                 );
               } else {
-                return Center(child: Text(S.of(context).no_reviews));
+                return Center(child: Text(S.of(context).no_exams));
               }
             }
           } else if (state is ExamsFailure) {

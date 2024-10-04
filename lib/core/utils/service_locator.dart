@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/absence/data/repositories/absence_repo_impl.dart';
 import '../../features/childern/data/repositories/childern_repo_impl.dart';
 import '../../features/dataAccount/data/repositories/data_account_repo_impl.dart';
 import '../../features/exams/data/repositories/exams_repo_impl.dart';
@@ -57,6 +58,12 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<DataAccountRepoImpl>(
     DataAccountRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+
+  getIt.registerSingleton<AbsenceRepoImpl>(
+    AbsenceRepoImpl(
       getIt.get<ApiService>(),
     ),
   );

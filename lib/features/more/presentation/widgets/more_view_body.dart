@@ -8,6 +8,7 @@ import '../../../../core/helper/SharedPreferences/pref.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../generated/l10n.dart';
+import '../../../absence/presentation/views/absence_view.dart';
 import '../../../exams/presentation/views/exams_view.dart';
 import '../../../home/presentation/views/home_view.dart';
 import '../../../login/presentation/views/login_view.dart';
@@ -97,10 +98,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
 
                       break;
                     case 2:
-                      // push(AbsencesTab(
-                      //     studentId: saveData.getChildId().isNotEmpty
-                      //         ? saveData.getChildId()
-                      //         : ''));
+                      GoTo.push(context, const AbsenceView());
 
                       break;
                     case 3:
