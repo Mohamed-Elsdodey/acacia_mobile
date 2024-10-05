@@ -212,7 +212,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        'الموجز',
+                                        S.of(context).summary,
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w700,
@@ -254,7 +254,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                               ),
                                               child: Center(
                                                 child: Text(
-                                                  'الكل',
+                                                  S.of(context).all,
                                                   style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w400,
@@ -416,9 +416,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                             const SizedBox(
                                               height: 20,
                                             ),
-                                            const Text(
-                                              'أكاديمي',
-                                              style: TextStyle(
+                                            Text(
+                                              S.of(context).academic,
+                                              style: const TextStyle(
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w700),
                                             )
@@ -473,9 +473,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                             const SizedBox(
                                               height: 20,
                                             ),
-                                            const Text(
-                                              'سلوكي',
-                                              style: TextStyle(
+                                            Text(
+                                              S.of(context).behavior,
+                                              style: const TextStyle(
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w700),
                                             )
@@ -580,7 +580,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'الموجز',
+                                      S.of(context).summary,
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w700,
@@ -617,7 +617,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                             ),
                                             child: Center(
                                               child: Text(
-                                                'الكل',
+                                                S.of(context).all,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 12,

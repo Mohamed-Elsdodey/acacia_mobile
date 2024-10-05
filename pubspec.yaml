@@ -52,6 +52,8 @@ dependencies:
   fl_chart: ^0.68.0
   table_calendar: ^3.1.2
   flutter_calendar_carousel: ^2.4.4
+  syncfusion_flutter_datagrid: ^26.2.14
+  syncfusion_flutter_core: ^26.2.14
   provider: ^6.1.2
 
 

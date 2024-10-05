@@ -9,6 +9,7 @@ import '../../features/home/data/repositories/home_repo_impl.dart';
 import '../../features/login/data/repositories/login_repo_impl.dart';
 import '../../features/notifications/data/repositories/notifications_repo_impl.dart';
 import '../../features/reviews/data/repositories/reviews_repo_impl.dart';
+import '../../features/schedules/data/repositories/schedules_repo_impl.dart';
 import '../../features/schoolCode/data/repositories/school_code_repo_impl.dart';
 import 'api_service.dart';
 
@@ -64,6 +65,12 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<AbsenceRepoImpl>(
     AbsenceRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+
+  getIt.registerSingleton<SchedulesRepoImpl>(
+    SchedulesRepoImpl(
       getIt.get<ApiService>(),
     ),
   );

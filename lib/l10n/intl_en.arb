@@ -79,5 +79,16 @@
   "day_delay": "عدد أيام التأخير: ",
   "day_absence": "عدد أيام الغياب: ",
   "total_absence": "إجمالي الغياب: ",
-  "total_delay": "إجمالي التأخير: "
+  "total_delay": "إجمالي التأخير: ",
+
+
+  "summary": "الموجز",
+  "all": "الكل",
+  "behavior": "سلوكي",
+  "academic": "أكاديمي",
+
+  "schedules": "الحصص اليومية",
+  "no_schedules": "لا يوجد جدول حصص",
+
+  "day": "اليوم"
 }

@@ -719,6 +719,76 @@ class S {
       args: [],
     );
   }
+
+  /// `الموجز`
+  String get summary {
+    return Intl.message(
+      'الموجز',
+      name: 'summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الكل`
+  String get all {
+    return Intl.message(
+      'الكل',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `سلوكي`
+  String get behavior {
+    return Intl.message(
+      'سلوكي',
+      name: 'behavior',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أكاديمي`
+  String get academic {
+    return Intl.message(
+      'أكاديمي',
+      name: 'academic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الحصص اليومية`
+  String get schedules {
+    return Intl.message(
+      'الحصص اليومية',
+      name: 'schedules',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لا يوجد جدول حصص`
+  String get no_schedules {
+    return Intl.message(
+      'لا يوجد جدول حصص',
+      name: 'no_schedules',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `اليوم`
+  String get day {
+    return Intl.message(
+      'اليوم',
+      name: 'day',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

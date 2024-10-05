@@ -25,6 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "about_app": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
         "absence": MessageLookupByLibrary.simpleMessage("غياب"),
         "absences": MessageLookupByLibrary.simpleMessage("الغياب والتأخير"),
+        "academic": MessageLookupByLibrary.simpleMessage("أكاديمي"),
+        "all": MessageLookupByLibrary.simpleMessage("الكل"),
+        "behavior": MessageLookupByLibrary.simpleMessage("سلوكي"),
         "childern": MessageLookupByLibrary.simpleMessage("الأبناء"),
         "choose_anther_school":
             MessageLookupByLibrary.simpleMessage("حدد مدرسة أخرى"),
@@ -34,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
         "data_acount": MessageLookupByLibrary.simpleMessage("بيانات الحساب"),
         "date": MessageLookupByLibrary.simpleMessage("التاريخ: "),
+        "day": MessageLookupByLibrary.simpleMessage("اليوم"),
         "day_absence":
             MessageLookupByLibrary.simpleMessage("عدد أيام الغياب: "),
         "day_delay": MessageLookupByLibrary.simpleMessage("عدد أيام التأخير: "),
@@ -71,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة"),
         "no_reviews": MessageLookupByLibrary.simpleMessage("لا يوجد تحفيز"),
+        "no_schedules":
+            MessageLookupByLibrary.simpleMessage("لا يوجد جدول حصص"),
         "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "p_choose_school":
@@ -87,12 +93,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "room": MessageLookupByLibrary.simpleMessage("رقم الفصل: "),
         "row": MessageLookupByLibrary.simpleMessage("رقم الصف: "),
         "save_changes": MessageLookupByLibrary.simpleMessage("حفظ التعديلات"),
+        "schedules": MessageLookupByLibrary.simpleMessage("الحصص اليومية"),
         "school_code": MessageLookupByLibrary.simpleMessage("كود المدرسة"),
         "st_degree": MessageLookupByLibrary.simpleMessage("درجة الطالب: "),
         "st_info": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
         "student_type": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
         "sub_teacher": MessageLookupByLibrary.simpleMessage("اسم المدرس: "),
         "subject": MessageLookupByLibrary.simpleMessage("المادة الدراسية: "),
+        "summary": MessageLookupByLibrary.simpleMessage("الموجز"),
         "teacher": MessageLookupByLibrary.simpleMessage("اسم مدرس المادة: "),
         "total_absence":
             MessageLookupByLibrary.simpleMessage("إجمالي الغياب: "),
