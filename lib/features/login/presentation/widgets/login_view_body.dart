@@ -8,6 +8,7 @@ import '../../../../core/helper/AlertDialog/custom_alert_dialog.dart';
 import '../../../../core/helper/SharedPreferences/pref.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/methods.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../generated/l10n.dart';
@@ -183,6 +184,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                 value: state.loginModel.data!.token!);
                             Pref.saveBoolToPref(
                                 key: AppStrings.isLoginKey, value: true);
+                            upDateTokenNotifications(
+                              tokenLogin: state.loginModel.data!.token!,
+                              tokenFirebase:
+                                  "11323wsdsdfdedesdsfs343434", //تغير الtoken
+                            );
                             GoTo.pushAndRemoveUntil(
                                 context, const BottomNavigationBarView());
                           }
@@ -228,7 +234,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     ),
                     TextButton(
                         onPressed: () async {
-                          GoTo.pushAndRemoveUntil(context, const SchoolCodeView());
+                          GoTo.pushAndRemoveUntil(
+                              context, const SchoolCodeView());
                         },
                         child: Text(
                           S.of(context).choose_anther_school,

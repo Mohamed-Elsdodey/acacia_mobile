@@ -7,6 +7,7 @@ import '../../../../core/helper/AlertDialog/custom_alert_dialog.dart';
 import '../../../../core/helper/SharedPreferences/pref.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/methods.dart';
 import '../../../../generated/l10n.dart';
 import '../../../absence/presentation/views/absence_view.dart';
 import '../../../exams/presentation/views/exams_view.dart';
@@ -134,7 +135,10 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                             Pref.removeKey(key: AppStrings.parantEmailKey);
                             Pref.removeKey(key: AppStrings.parantIdKey);
                             Pref.removeKey(key: AppStrings.childernIdKey);
-
+                            logoutNotifications(
+                              tokenFirebase:
+                                  "11323wsdsdfdedesdsfs343434", //تغير الtoken
+                            );
                             GoTo.pushAndRemoveUntil(context, const LoginView());
                           });
                       break;
