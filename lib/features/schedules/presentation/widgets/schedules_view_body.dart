@@ -64,8 +64,11 @@ class _SchedulesViewBodyState extends State<SchedulesViewBody> {
                                 onRefresh: () async {
                                   await BlocProvider.of<SessionsCubit>(context)
                                       .getSessions();
-                                  await BlocProvider.of<SchedulesCubit>(context)
-                                      .getSchedules();
+                                  if (context.mounted) {
+                                    await BlocProvider.of<SchedulesCubit>(
+                                            context)
+                                        .getSchedules();
+                                  }
                                 },
                                 child: CustomBuildTable(
                                   listSchedules: listSchedules,

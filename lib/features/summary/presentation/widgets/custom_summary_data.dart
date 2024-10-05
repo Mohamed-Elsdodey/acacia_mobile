@@ -5,8 +5,10 @@ import 'package:evaluation_and_follow_up/features/home/presentation/views/home_v
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:screenshot/screenshot.dart';
 
+import '../../../../core/helper/AlertDialog/custom_alert_dialog.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/widgets/custom_button_with_icon.dart';
 import '../../../../generated/l10n.dart';
@@ -132,9 +134,11 @@ class _CustomSummaryDataState extends State<CustomSummaryData> {
 
           await file.writeAsBytes(await pdf.save());
 
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('تم حفظ PDF بنجاح في: $path')),
-          );
+          CustomAlertDialog.alertWithButton(
+              context: context,
+              type: AlertType.success,
+              title: "تم حفظ PDF بنجاح في: ",
+              desc: path);
         }
       }
     } catch (e) {
