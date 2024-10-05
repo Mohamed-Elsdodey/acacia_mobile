@@ -13,6 +13,7 @@ import '../../../exams/presentation/views/exams_view.dart';
 import '../../../home/presentation/views/home_view.dart';
 import '../../../login/presentation/views/login_view.dart';
 import '../../../notifications/presentation/views/notifications_view.dart';
+import '../../../summary/presentation/views/summary_view.dart';
 import '../../data/models/more_item_model.dart';
 
 class MoreViewBody extends StatefulWidget {
@@ -33,6 +34,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
       MoreItemModel(title: S.of(context).absences, imagePath: AppAssets.frame3),
       MoreItemModel(
           title: S.of(context).data_acount, imagePath: AppAssets.frame4),
+      MoreItemModel(title: S.of(context).summary, imagePath: AppAssets.frame1),
       MoreItemModel(
           title: S.of(context).about_app, imagePath: AppAssets.frame5),
       MoreItemModel(title: S.of(context).logout, imagePath: AppAssets.frame6),
@@ -106,8 +108,11 @@ class _MoreViewBodyState extends State<MoreViewBody> {
 
                       break;
                     case 4:
+                      GoTo.push(context, const SummaryView());
                       break;
                     case 5:
+                      break;
+                    case 6:
                       // createAlertDialogLogout();
                       CustomAlertDialog.alertWithTwoButton(
                           context: context,
@@ -158,7 +163,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                         width: 36,
                         height: 36,
                         color:
-                            index == 4 ? Theme.of(context).primaryColor : null,
+                            index == 5 ? Theme.of(context).primaryColor : null,
                       ),
                       Text(
                         moreList[index].title,

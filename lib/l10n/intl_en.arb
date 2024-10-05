@@ -92,5 +92,14 @@
 
   "day": "اليوم",
 
-  "no_school_code": "لا يوجد مدرسة بهذا الكود"
+  "no_school_code": "لا يوجد مدرسة بهذا الكود",
+  "no_summary": "لا يوجد موجز",
+
+
+  "summary_title1": "ادائك ",
+  "summary_title2": " هذا الشهر .. استمر في التحسن",
+  "summary_subject_name": "اسم المادة",
+  "summary_degree": "الدرجة",
+  "summary_degree_title": "التقييم",
+  "download_file": "تحميل الملف"
 }

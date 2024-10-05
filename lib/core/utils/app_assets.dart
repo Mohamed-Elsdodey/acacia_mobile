@@ -36,4 +36,8 @@ class AppAssets {
   static String check = "assets/images/check.png";
   static String close = "assets/images/close.png";
   static String warning = "assets/images/warning.png";
+
+  ///summary
+  static String star = "assets/images/star.png";
+  static String download = "assets/images/download_file.png";
 }

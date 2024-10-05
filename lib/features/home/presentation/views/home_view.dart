@@ -15,6 +15,7 @@ import '../widgets/home_view_body.dart';
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
   static int studentId = -1;
+  static String studentname = "";
   @override
   State<HomeView> createState() => _HomeViewState();
 }

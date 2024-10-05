@@ -81,6 +81,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                           childernId = listChildern[0].id!;
                           childernData = listChildern[0];
                           HomeView.studentId = listChildern[0].id!;
+                          HomeView.studentname = listChildern[0].name!;
                           Pref.saveIntToPref(
                               key: AppStrings.childernIdKey, value: childernId);
                           BlocProvider.of<AcademicReportCubit>(context)
@@ -96,6 +97,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                             (element) => element.id == childernId,
                           );
                           HomeView.studentId = childernData.id!;
+                          HomeView.studentname = childernData.name!;
                           BlocProvider.of<AcademicReportCubit>(context)
                               .getAcademicReport(
                                   month: DateTime.now().month.toString(),

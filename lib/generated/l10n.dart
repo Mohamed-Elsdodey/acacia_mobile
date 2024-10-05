@@ -799,6 +799,76 @@ class S {
       args: [],
     );
   }
+
+  /// `لا يوجد موجز`
+  String get no_summary {
+    return Intl.message(
+      'لا يوجد موجز',
+      name: 'no_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ادائك `
+  String get summary_title1 {
+    return Intl.message(
+      'ادائك ',
+      name: 'summary_title1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` هذا الشهر .. استمر في التحسن`
+  String get summary_title2 {
+    return Intl.message(
+      ' هذا الشهر .. استمر في التحسن',
+      name: 'summary_title2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `اسم المادة`
+  String get summary_subject_name {
+    return Intl.message(
+      'اسم المادة',
+      name: 'summary_subject_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الدرجة`
+  String get summary_degree {
+    return Intl.message(
+      'الدرجة',
+      name: 'summary_degree',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `التقييم`
+  String get summary_degree_title {
+    return Intl.message(
+      'التقييم',
+      name: 'summary_degree_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تحميل الملف`
+  String get download_file {
+    return Intl.message(
+      'تحميل الملف',
+      name: 'download_file',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

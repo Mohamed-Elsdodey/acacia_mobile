@@ -11,6 +11,7 @@ import '../../features/notifications/data/repositories/notifications_repo_impl.d
 import '../../features/reviews/data/repositories/reviews_repo_impl.dart';
 import '../../features/schedules/data/repositories/schedules_repo_impl.dart';
 import '../../features/schoolCode/data/repositories/school_code_repo_impl.dart';
+import '../../features/summary/data/repositories/summary_repo_impl.dart';
 import 'api_service.dart';
 
 final getIt = GetIt.instance;
@@ -71,6 +72,12 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<SchedulesRepoImpl>(
     SchedulesRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+
+  getIt.registerSingleton<SummaryRepoImpl>(
+    SummaryRepoImpl(
       getIt.get<ApiService>(),
     ),
   );

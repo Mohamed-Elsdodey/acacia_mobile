@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("عدد أيام الغياب: "),
         "day_delay": MessageLookupByLibrary.simpleMessage("عدد أيام التأخير: "),
         "delay": MessageLookupByLibrary.simpleMessage("تأخير"),
+        "download_file": MessageLookupByLibrary.simpleMessage("تحميل الملف"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "error": MessageLookupByLibrary.simpleMessage("خطأ"),
         "exams": MessageLookupByLibrary.simpleMessage("الاختبارات"),
@@ -79,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا يوجد جدول حصص"),
         "no_school_code":
             MessageLookupByLibrary.simpleMessage("لا يوجد مدرسة بهذا الكود"),
+        "no_summary": MessageLookupByLibrary.simpleMessage("لا يوجد موجز"),
         "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "p_choose_school":
@@ -103,6 +105,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "sub_teacher": MessageLookupByLibrary.simpleMessage("اسم المدرس: "),
         "subject": MessageLookupByLibrary.simpleMessage("المادة الدراسية: "),
         "summary": MessageLookupByLibrary.simpleMessage("الموجز"),
+        "summary_degree": MessageLookupByLibrary.simpleMessage("الدرجة"),
+        "summary_degree_title": MessageLookupByLibrary.simpleMessage("التقييم"),
+        "summary_subject_name":
+            MessageLookupByLibrary.simpleMessage("اسم المادة"),
+        "summary_title1": MessageLookupByLibrary.simpleMessage("ادائك "),
+        "summary_title2": MessageLookupByLibrary.simpleMessage(
+            " هذا الشهر .. استمر في التحسن"),
         "teacher": MessageLookupByLibrary.simpleMessage("اسم مدرس المادة: "),
         "total_absence":
             MessageLookupByLibrary.simpleMessage("إجمالي الغياب: "),
