@@ -21,45 +21,58 @@ class NotificationsViewBody extends StatefulWidget {
 class _NotificationsViewBodyState extends State<NotificationsViewBody> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: BlocBuilder<NotificationsCubit, NotificationsState>(
-        builder: (context, state) {
-          if (state is NotificationsSuccess) {
-            if (state.notificationsModel.status == 401) {
-              return invalidToken(context);
-            } else if (state.notificationsModel.status == 403) {
-              return Center(child: Text(S.of(context).no_notifications));
-            } else {
-              List<NotificationItem>? listNotifications =
-                  state.notificationsModel.data;
+    return CustomRefreshPage(
+      onRefresh: () async {
+        await BlocProvider.of<NotificationsCubit>(context)
+            .getNotifications(studentId: HomeView.studentId);
+      },
+      child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: BlocBuilder<NotificationsCubit, NotificationsState>(
+            builder: (context, state) {
+              if (state is NotificationsSuccess) {
+                if (state.notificationsModel.status == 401) {
+                  return invalidToken(context);
+                } else if (state.notificationsModel.status == 403) {
+                  return Center(child: Text(S.of(context).no_notifications));
+                } else {
+                  List<NotificationItem>? listNotifications =
+                      state.notificationsModel.data;
 
-              if (listNotifications!.isNotEmpty) {
-                return CustomRefreshPage(
-                  onRefresh: () async {
-                    await BlocProvider.of<NotificationsCubit>(context)
-                        .getNotifications(studentId: HomeView.studentId);
-                  },
-                  child: ListView.separated(
-                    itemBuilder: (context, index) => NotificationsListItem(
-                      notificationItem: listNotifications[index],
-                    ),
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: 8,
-                    ),
-                    itemCount: listNotifications.length,
-                  ),
+                  if (listNotifications!.isNotEmpty) {
+                    return ListView.separated(
+                      itemBuilder: (context, index) => NotificationsListItem(
+                        notificationItem: listNotifications[index],
+                      ),
+                      separatorBuilder: (context, index) => const SizedBox(
+                        height: 8,
+                      ),
+                      itemCount: listNotifications.length,
+                    );
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 100),
+                      child:
+                          Center(child: Text(S.of(context).no_notifications)),
+                    );
+                  }
+                }
+              } else if (state is NotificationsFailure) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 100),
+                  child: CustomErrorMassage(errorMassage: state.errorMassage),
                 );
               } else {
-                return Center(child: Text(S.of(context).no_notifications));
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 100),
+                  child: CustomLoadingWidget(),
+                );
               }
-            }
-          } else if (state is NotificationsFailure) {
-            return CustomErrorMassage(errorMassage: state.errorMassage);
-          } else {
-            return const CustomLoadingWidget();
-          }
-        },
+            },
+          ),
+        ),
       ),
     );
   }

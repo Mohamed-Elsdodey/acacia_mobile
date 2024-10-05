@@ -61,6 +61,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         });
       },
       child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
@@ -173,11 +174,18 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                           ],
                         );
                       } else {
-                        return Center(child: Text(S.of(context).no_childern));
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 100),
+                          child: Center(child: Text(S.of(context).no_childern)),
+                        );
                       }
                     }
                   } else if (state is ChildernFailure) {
-                    return CustomErrorMassage(errorMassage: state.errorMassage);
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 100),
+                      child:
+                          CustomErrorMassage(errorMassage: state.errorMassage),
+                    );
                   } else {
                     return SizedBox(
                       height: 200,
@@ -197,21 +205,412 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   }
                 },
               ),
-              if(isRefresh==false)
-              StatefulBuilder(
-                builder: (context, aSetState) =>
-                    BlocBuilder<AcademicReportCubit, AcademicReportState>(
-                  builder: (context, state) {
-                    if (state is AcademicReportSuccess) {
-                      if (state.academicReportModel.status == 401) {
-                        return invalidToken(context);
+              if (isRefresh == false)
+                StatefulBuilder(
+                  builder: (context, aSetState) =>
+                      BlocBuilder<AcademicReportCubit, AcademicReportState>(
+                    builder: (context, state) {
+                      if (state is AcademicReportSuccess) {
+                        if (state.academicReportModel.status == 401) {
+                          return invalidToken(context);
+                        } else {
+                          AcademicReportModel academicReportMode =
+                              state.academicReportModel;
+                          if (academicReportMode.data != null) {
+                            return SizedBox(
+                              height: 250,
+                              child: Card(
+                                color: Colors.white,
+                                surfaceTintColor: Colors.white,
+                                shadowColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      width: 1, color: Colors.grey.shade300),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                elevation: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(14),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            S.of(context).summary,
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w700,
+                                                color: Theme.of(context)
+                                                    .primaryColor),
+                                          ),
+                                          Row(
+                                            children: [
+                                              InkWell(
+                                                onTap: () {
+                                                  // widget.onTap(selectedManthNum);
+                                                  aSetState(() {
+                                                    isSelected1 = 1;
+                                                  });
+                                                  BlocProvider.of<
+                                                              AcademicReportCubit>(
+                                                          context)
+                                                      .getAcademicReport(
+                                                          month:
+                                                              selectedManthNum1,
+                                                          studentId:
+                                                              childernData.id!
+                                                                  .toString());
+                                                },
+                                                child: Container(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      vertical: 5,
+                                                      horizontal: 12),
+                                                  margin: const EdgeInsets
+                                                      .symmetric(horizontal: 5),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: isSelected1 == 1
+                                                        ? Theme.of(context)
+                                                            .primaryColor
+                                                        : Colors.transparent,
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      S.of(context).all,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 12,
+                                                          color: isSelected1 ==
+                                                                  1
+                                                              ? Colors.white
+                                                              : Colors.black),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              InkWell(
+                                                onTap: () {
+                                                  isSelected1 = 2;
+                                                  showMonthPicker(
+                                                    // locale: const Locale('ar'),
+                                                    context: context,
+                                                    initialDate: DateTime.now(),
+                                                    firstDate: DateTime(
+                                                        DateTime.now().year, 1),
+                                                    lastDate: DateTime(
+                                                        DateTime.now().year,
+                                                        12),
+                                                    monthPickerDialogSettings:
+                                                        const MonthPickerDialogSettings(
+                                                      buttonsSettings:
+                                                          PickerButtonsSettings(
+                                                        monthTextStyle:
+                                                            TextStyle(
+                                                                fontSize: 12),
+                                                        selectedDateRadius: 2,
+                                                      ),
+                                                    ),
+                                                  ).then((date) {
+                                                    if (date != null) {
+                                                      aSetState(() {
+                                                        selectedManth1 =
+                                                            DateFormat.LLLL()
+                                                                .format(date
+                                                                    .toLocal());
+                                                        selectedManthNum1 = date
+                                                            .month
+                                                            .toString();
+                                                      });
+                                                      // widget.onTap(selectedManthNum);
+                                                      if (context.mounted) {
+                                                        BlocProvider.of<
+                                                                    AcademicReportCubit>(
+                                                                context)
+                                                            .getAcademicReport(
+                                                                month:
+                                                                    selectedManthNum1,
+                                                                studentId:
+                                                                    childernData
+                                                                        .id!
+                                                                        .toString());
+                                                      }
+                                                    }
+                                                  });
+                                                },
+                                                child: Container(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      vertical: 5,
+                                                      horizontal: 12),
+                                                  margin: const EdgeInsets
+                                                      .symmetric(horizontal: 5),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: isSelected1 == 2
+                                                        ? Theme.of(context)
+                                                            .primaryColor
+                                                        : Colors.white,
+                                                  ),
+                                                  child: Center(
+                                                    child: Row(
+                                                      children: [
+                                                        Text(
+                                                          selectedManth1,
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              fontSize: 12,
+                                                              color:
+                                                                  isSelected1 ==
+                                                                          2
+                                                                      ? Colors
+                                                                          .white
+                                                                      : Colors
+                                                                          .black),
+                                                        ),
+                                                        Icon(
+                                                          Icons
+                                                              .keyboard_arrow_down,
+                                                          size: 16,
+                                                          color: isSelected1 ==
+                                                                  2
+                                                              ? Colors.white
+                                                              : Colors.black,
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 45,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                CustomPaint(
+                                                  size: const Size(100,
+                                                      100), // no effect while adding child
+                                                  painter: CustomCircularPaint(
+                                                      progressValue: isSelected1 ==
+                                                              1
+                                                          ? (academicReportMode
+                                                                  .data!
+                                                                  .allAcademicPercentage! /
+                                                              100)
+                                                          : (academicReportMode
+                                                                  .data!
+                                                                  .monthAcademicPercentage! /
+                                                              100), //[0-1]
+                                                      gradientColor:
+                                                          Colors.green),
+                                                  child: Card(
+                                                    margin:
+                                                        const EdgeInsets.all(8),
+                                                    color: Colors.white,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 1,
+                                                          color: Colors
+                                                              .grey.shade300),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100),
+                                                    ),
+                                                    elevation: 4,
+                                                    child: SizedBox(
+                                                      height: 75,
+                                                      width: 75,
+                                                      child: Center(
+                                                          child: Text(
+                                                        isSelected1 == 1
+                                                            ? '%${(academicReportMode.data!.allAcademicPercentage!)}'
+                                                            : '%${(academicReportMode.data!.monthAcademicPercentage!)}',
+                                                      )),
+                                                    ),
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 20,
+                                                ),
+                                                Text(
+                                                  S.of(context).academic,
+                                                  style: const TextStyle(
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                CustomPaint(
+                                                  // size: const Size(100, 100), // no effect while adding child
+                                                  painter: CustomCircularPaint(
+                                                      progressValue: isSelected1 ==
+                                                              1
+                                                          ? (academicReportMode
+                                                                  .data!
+                                                                  .allBehavioralPercentage! /
+                                                              100)
+                                                          : (academicReportMode
+                                                                  .data!
+                                                                  .monthBehavioralPercentage! /
+                                                              100), //[0-1]
+                                                      gradientColor:
+                                                          Colors.orangeAccent),
+                                                  child: Card(
+                                                    margin:
+                                                        const EdgeInsets.all(8),
+                                                    color: Colors.white,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 1,
+                                                          color: Colors
+                                                              .grey.shade300),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100),
+                                                    ),
+                                                    elevation: 4,
+                                                    child: SizedBox(
+                                                      height: 75,
+                                                      width: 75,
+                                                      child: Center(
+                                                          child: Text(
+                                                        isSelected1 == 1
+                                                            ? '%${(academicReportMode.data!.allBehavioralPercentage!)}'
+                                                            : '%${(academicReportMode.data!.monthBehavioralPercentage!)}',
+                                                      )),
+                                                    ),
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 20,
+                                                ),
+                                                Text(
+                                                  S.of(context).behavior,
+                                                  style: const TextStyle(
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          } else {
+                            return const SizedBox();
+                          }
+                        }
+                      } else if (state is AcademicReportFailure) {
+                        return CustomErrorMassage(
+                            errorMassage: state.errorMassage);
+                      } else if (state is AcademicReportLoading) {
+                        return SizedBox(
+                          height: 250,
+                          child: Card(
+                            color: Colors.grey[100],
+                            surfaceTintColor: Colors.grey[100],
+                            shadowColor: Colors.grey[100],
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  width: 1, color: Colors.grey.shade300),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            elevation: 2,
+                            child: const CustomLoadingWidget(),
+                          ),
+                        );
                       } else {
-                        AcademicReportModel academicReportMode =
-                            state.academicReportModel;
-                        if (academicReportMode.data != null) {
-                          return SizedBox(
-                            height: 250,
-                            child: Card(
+                        return const SizedBox();
+                      }
+                    },
+                  ),
+                ),
+              if (isRefresh == false)
+                StatefulBuilder(
+                  builder: (context, bSetState) =>
+                      BlocBuilder<SubjectReportCubit, SubjectReportState>(
+                    builder: (context, state) {
+                      if (state is SubjectReportSuccess) {
+                        if (state.subjectReportModel.status == 401) {
+                          return invalidToken(context);
+                        } else {
+                          SubjectReportModel subjectReportModel =
+                              state.subjectReportModel;
+                          List<DataSubject>? listData =
+                              subjectReportModel.data!;
+                          if (listData.isNotEmpty) {
+                            List<LineChartBarData> lineBarsData = [
+                              LineChartBarData(
+                                spots: List.generate(
+                                  listData.length,
+                                  (index) {
+                                    return FlSpot(
+                                        index.toDouble(),
+                                        isSelected2 == 1
+                                            ? listData[index]
+                                                .allPerentage!
+                                                .toDouble()
+                                            : listData[index]
+                                                .monthPercentage!
+                                                .toDouble());
+                                  },
+                                ),
+                                isCurved: true,
+                                dotData: const FlDotData(show: true),
+                                belowBarData: BarAreaData(
+                                  cutOffY: -14,
+                                  applyCutOffY: true,
+                                  show: false,
+                                ),
+                                color: Colors.green,
+                                showingIndicators: List.generate(
+                                  listData.length,
+                                  (index) => index,
+                                ),
+                                barWidth: 2,
+                              ),
+                            ];
+                            return Card(
                               color: Colors.white,
                               surfaceTintColor: Colors.white,
                               shadowColor: Colors.white,
@@ -243,15 +642,15 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                             InkWell(
                                               onTap: () {
                                                 // widget.onTap(selectedManthNum);
-                                                aSetState(() {
-                                                  isSelected1 = 1;
+                                                bSetState(() {
+                                                  isSelected2 = 1;
                                                 });
                                                 BlocProvider.of<
-                                                            AcademicReportCubit>(
+                                                            SubjectReportCubit>(
                                                         context)
-                                                    .getAcademicReport(
+                                                    .getSubjectReport(
                                                         month:
-                                                            selectedManthNum1,
+                                                            selectedManthNum2,
                                                         studentId: childernData
                                                             .id!
                                                             .toString());
@@ -267,7 +666,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(20),
-                                                  color: isSelected1 == 1
+                                                  color: isSelected2 == 1
                                                       ? Theme.of(context)
                                                           .primaryColor
                                                       : Colors.transparent,
@@ -279,7 +678,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         fontSize: 12,
-                                                        color: isSelected1 == 1
+                                                        color: isSelected2 == 1
                                                             ? Colors.white
                                                             : Colors.black),
                                                   ),
@@ -288,7 +687,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                             ),
                                             InkWell(
                                               onTap: () {
-                                                isSelected1 = 2;
+                                                isSelected2 = 2;
                                                 showMonthPicker(
                                                   // locale: const Locale('ar'),
                                                   context: context,
@@ -308,22 +707,22 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                   ),
                                                 ).then((date) {
                                                   if (date != null) {
-                                                    aSetState(() {
-                                                      selectedManth1 =
+                                                    bSetState(() {
+                                                      selectedManth2 =
                                                           DateFormat.LLLL()
                                                               .format(date
                                                                   .toLocal());
-                                                      selectedManthNum1 =
+                                                      selectedManthNum2 =
                                                           date.month.toString();
                                                     });
                                                     // widget.onTap(selectedManthNum);
                                                     if (context.mounted) {
                                                       BlocProvider.of<
-                                                                  AcademicReportCubit>(
+                                                                  SubjectReportCubit>(
                                                               context)
-                                                          .getAcademicReport(
+                                                          .getSubjectReport(
                                                               month:
-                                                                  selectedManthNum1,
+                                                                  selectedManthNum2,
                                                               studentId:
                                                                   childernData
                                                                       .id!
@@ -343,7 +742,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(20),
-                                                  color: isSelected1 == 2
+                                                  color: isSelected2 == 2
                                                       ? Theme.of(context)
                                                           .primaryColor
                                                       : Colors.white,
@@ -352,13 +751,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                   child: Row(
                                                     children: [
                                                       Text(
-                                                        selectedManth1,
+                                                        selectedManth2,
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             fontSize: 12,
                                                             color:
-                                                                isSelected1 == 2
+                                                                isSelected2 == 2
                                                                     ? Colors
                                                                         .white
                                                                     : Colors
@@ -368,7 +767,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                         Icons
                                                             .keyboard_arrow_down,
                                                         size: 16,
-                                                        color: isSelected1 == 2
+                                                        color: isSelected2 == 2
                                                             ? Colors.white
                                                             : Colors.black,
                                                       )
@@ -384,493 +783,120 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                     const SizedBox(
                                       height: 45,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              CustomPaint(
-                                                size: const Size(100,
-                                                    100), // no effect while adding child
-                                                painter: CustomCircularPaint(
-                                                    progressValue: isSelected1 ==
-                                                            1
-                                                        ? (academicReportMode
-                                                                .data!
-                                                                .allAcademicPercentage! /
-                                                            100)
-                                                        : (academicReportMode
-                                                                .data!
-                                                                .monthAcademicPercentage! /
-                                                            100), //[0-1]
-                                                    gradientColor:
-                                                        Colors.green),
-                                                child: Card(
-                                                  margin:
-                                                      const EdgeInsets.all(8),
-                                                  color: Colors.white,
-                                                  shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                        width: 1,
-                                                        color: Colors
-                                                            .grey.shade300),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            100),
-                                                  ),
-                                                  elevation: 4,
-                                                  child: SizedBox(
-                                                    height: 75,
-                                                    width: 75,
-                                                    child: Center(
-                                                        child: Text(
-                                                      isSelected1 == 1
-                                                          ? '%${(academicReportMode.data!.allAcademicPercentage!)}'
-                                                          : '%${(academicReportMode.data!.monthAcademicPercentage!)}',
-                                                    )),
-                                                  ),
+                                    SizedBox(
+                                      height: 200,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12),
+                                        child: LineChart(
+                                          LineChartData(
+                                            borderData:
+                                                FlBorderData(show: false),
+                                            lineBarsData: lineBarsData,
+                                            titlesData: FlTitlesData(
+                                              bottomTitles: AxisTitles(
+                                                sideTitles: SideTitles(
+                                                  showTitles: true,
+                                                  // interval: 0.5,
+                                                  reservedSize: 100,
+
+                                                  getTitlesWidget:
+                                                      (value, meta) {
+                                                    return Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: RotatedBox(
+                                                          quarterTurns: 3,
+                                                          child: Text(listData[
+                                                                  value.toInt()]
+                                                              .title!)),
+                                                    );
+                                                  },
                                                 ),
                                               ),
-                                              const SizedBox(
-                                                height: 20,
-                                              ),
-                                              Text(
-                                                S.of(context).academic,
-                                                style: const TextStyle(
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              )
-                                            ],
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              CustomPaint(
-                                                // size: const Size(100, 100), // no effect while adding child
-                                                painter: CustomCircularPaint(
-                                                    progressValue: isSelected1 ==
-                                                            1
-                                                        ? (academicReportMode
-                                                                .data!
-                                                                .allBehavioralPercentage! /
-                                                            100)
-                                                        : (academicReportMode
-                                                                .data!
-                                                                .monthBehavioralPercentage! /
-                                                            100), //[0-1]
-                                                    gradientColor:
-                                                        Colors.orangeAccent),
-                                                child: Card(
-                                                  margin:
-                                                      const EdgeInsets.all(8),
-                                                  color: Colors.white,
-                                                  shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                        width: 1,
-                                                        color: Colors
-                                                            .grey.shade300),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            100),
-                                                  ),
-                                                  elevation: 4,
-                                                  child: SizedBox(
-                                                    height: 75,
-                                                    width: 75,
-                                                    child: Center(
-                                                        child: Text(
-                                                      isSelected1 == 1
-                                                          ? '%${(academicReportMode.data!.allBehavioralPercentage!)}'
-                                                          : '%${(academicReportMode.data!.monthBehavioralPercentage!)}',
-                                                    )),
-                                                  ),
+                                              leftTitles: const AxisTitles(
+                                                axisNameWidget: Text(''),
+                                                axisNameSize: 20,
+                                                sideTitles: SideTitles(
+                                                  showTitles: false,
+                                                  reservedSize: 0,
                                                 ),
                                               ),
-                                              const SizedBox(
-                                                height: 20,
+                                              rightTitles: const AxisTitles(
+                                                axisNameWidget: Text(''),
+                                                sideTitles: SideTitles(
+                                                  showTitles: false,
+                                                  reservedSize: 0,
+                                                ),
                                               ),
-                                              Text(
-                                                S.of(context).behavior,
-                                                style: const TextStyle(
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              )
-                                            ],
+                                              topTitles: const AxisTitles(
+                                                axisNameWidget: Text(''),
+                                                axisNameSize: 24,
+                                                sideTitles: SideTitles(
+                                                  showTitles: true,
+                                                  reservedSize: 0,
+                                                ),
+                                              ),
+                                            ),
+                                            gridData:
+                                                const FlGridData(show: true),
+                                            extraLinesData:
+                                                const ExtraLinesData(),
+                                            minY: 0,
+                                            lineTouchData:
+                                                custombuildLineTouchData(),
+                                            showingTooltipIndicators:
+                                                List.generate(
+                                              listData.length,
+                                              (index) => index,
+                                            ).map((index) {
+                                              return ShowingTooltipIndicators([
+                                                LineBarSpot(
+                                                  lineBarsData[0],
+                                                  lineBarsData
+                                                      .indexOf(lineBarsData[0]),
+                                                  lineBarsData[0].spots[index],
+                                                ),
+                                              ]);
+                                            }).toList(),
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     )
                                   ],
                                 ),
                               ),
-                            ),
-                          );
-                        } else {
-                          return const SizedBox();
+                            );
+                          } else {
+                            return const SizedBox();
+                          }
                         }
-                      }
-                    } else if (state is AcademicReportFailure) {
-                      return CustomErrorMassage(
-                          errorMassage: state.errorMassage);
-                    } else if (state is AcademicReportLoading) {
-                      return SizedBox(
-                        height: 250,
-                        child: Card(
-                          color: Colors.grey[100],
-                          surfaceTintColor: Colors.grey[100],
-                          shadowColor: Colors.grey[100],
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                                width: 1, color: Colors.grey.shade300),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          elevation: 2,
-                          child: const CustomLoadingWidget(),
-                        ),
-                      );
-                    } else {
-                      return const SizedBox();
-                    }
-                  },
-                ),
-              ),
-              if(isRefresh==false)
-              StatefulBuilder(
-                builder: (context, bSetState) =>
-                    BlocBuilder<SubjectReportCubit, SubjectReportState>(
-                  builder: (context, state) {
-                    if (state is SubjectReportSuccess) {
-                      if (state.subjectReportModel.status == 401) {
-                        return invalidToken(context);
-                      } else {
-                        SubjectReportModel subjectReportModel =
-                            state.subjectReportModel;
-                        List<DataSubject>? listData = subjectReportModel.data!;
-                        if (listData.isNotEmpty) {
-                          List<LineChartBarData> lineBarsData = [
-                            LineChartBarData(
-                              spots: List.generate(
-                                listData.length,
-                                (index) {
-                                  return FlSpot(
-                                      index.toDouble(),
-                                      isSelected2 == 1
-                                          ? listData[index]
-                                              .allPerentage!
-                                              .toDouble()
-                                          : listData[index]
-                                              .monthPercentage!
-                                              .toDouble());
-                                },
-                              ),
-                              isCurved: true,
-                              dotData: const FlDotData(show: true),
-                              belowBarData: BarAreaData(
-                                cutOffY: -14,
-                                applyCutOffY: true,
-                                show: false,
-                              ),
-                              color: Colors.green,
-                              showingIndicators: List.generate(
-                                listData.length,
-                                (index) => index,
-                              ),
-                              barWidth: 2,
-                            ),
-                          ];
-                          return Card(
-                            color: Colors.white,
-                            surfaceTintColor: Colors.white,
-                            shadowColor: Colors.white,
+                      } else if (state is SubjectReportFailure) {
+                        return CustomErrorMassage(
+                            errorMassage: state.errorMassage);
+                      } else if (state is SubjectReportLoading) {
+                        return SizedBox(
+                          height: 250,
+                          child: Card(
+                            color: Colors.grey[100],
+                            surfaceTintColor: Colors.grey[100],
+                            shadowColor: Colors.grey[100],
                             shape: RoundedRectangleBorder(
                               side: BorderSide(
                                   width: 1, color: Colors.grey.shade300),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             elevation: 2,
-                            child: Padding(
-                              padding: const EdgeInsets.all(14),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        S.of(context).summary,
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w700,
-                                            color:
-                                                Theme.of(context).primaryColor),
-                                      ),
-                                      Row(
-                                        children: [
-                                          InkWell(
-                                            onTap: () {
-                                              // widget.onTap(selectedManthNum);
-                                              bSetState(() {
-                                                isSelected2 = 1;
-                                              });
-                                              BlocProvider.of<
-                                                          SubjectReportCubit>(
-                                                      context)
-                                                  .getSubjectReport(
-                                                      month: selectedManthNum2,
-                                                      studentId: childernData
-                                                          .id!
-                                                          .toString());
-                                            },
-                                            child: Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 5,
-                                                      horizontal: 12),
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 5),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: isSelected2 == 1
-                                                    ? Theme.of(context)
-                                                        .primaryColor
-                                                    : Colors.transparent,
-                                              ),
-                                              child: Center(
-                                                child: Text(
-                                                  S.of(context).all,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      fontSize: 12,
-                                                      color: isSelected2 == 1
-                                                          ? Colors.white
-                                                          : Colors.black),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          InkWell(
-                                            onTap: () {
-                                              isSelected2 = 2;
-                                              showMonthPicker(
-                                                // locale: const Locale('ar'),
-                                                context: context,
-                                                initialDate: DateTime.now(),
-                                                firstDate: DateTime(
-                                                    DateTime.now().year, 1),
-                                                lastDate: DateTime(
-                                                    DateTime.now().year, 12),
-                                                monthPickerDialogSettings:
-                                                    const MonthPickerDialogSettings(
-                                                  buttonsSettings:
-                                                      PickerButtonsSettings(
-                                                    monthTextStyle:
-                                                        TextStyle(fontSize: 12),
-                                                    selectedDateRadius: 2,
-                                                  ),
-                                                ),
-                                              ).then((date) {
-                                                if (date != null) {
-                                                  bSetState(() {
-                                                    selectedManth2 =
-                                                        DateFormat.LLLL()
-                                                            .format(
-                                                                date.toLocal());
-                                                    selectedManthNum2 =
-                                                        date.month.toString();
-                                                  });
-                                                  // widget.onTap(selectedManthNum);
-                                                  if (context.mounted) {
-                                                    BlocProvider.of<
-                                                                SubjectReportCubit>(
-                                                            context)
-                                                        .getSubjectReport(
-                                                            month:
-                                                                selectedManthNum2,
-                                                            studentId:
-                                                                childernData.id!
-                                                                    .toString());
-                                                  }
-                                                }
-                                              });
-                                            },
-                                            child: Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 5,
-                                                      horizontal: 12),
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 5),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: isSelected2 == 2
-                                                    ? Theme.of(context)
-                                                        .primaryColor
-                                                    : Colors.white,
-                                              ),
-                                              child: Center(
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                      selectedManth2,
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          fontSize: 12,
-                                                          color: isSelected2 ==
-                                                                  2
-                                                              ? Colors.white
-                                                              : Colors.black),
-                                                    ),
-                                                    Icon(
-                                                      Icons.keyboard_arrow_down,
-                                                      size: 16,
-                                                      color: isSelected2 == 2
-                                                          ? Colors.white
-                                                          : Colors.black,
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 45,
-                                  ),
-                                  SizedBox(
-                                    height: 200,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 12),
-                                      child: LineChart(
-                                        LineChartData(
-                                          borderData: FlBorderData(show: false),
-                                          lineBarsData: lineBarsData,
-                                          titlesData: FlTitlesData(
-                                            bottomTitles: AxisTitles(
-                                              sideTitles: SideTitles(
-                                                showTitles: true,
-                                                // interval: 0.5,
-                                                reservedSize: 100,
-
-                                                getTitlesWidget: (value, meta) {
-                                                  return Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: RotatedBox(
-                                                        quarterTurns: 3,
-                                                        child: Text(listData[
-                                                                value.toInt()]
-                                                            .title!)),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                            leftTitles: const AxisTitles(
-                                              axisNameWidget: Text(''),
-                                              axisNameSize: 20,
-                                              sideTitles: SideTitles(
-                                                showTitles: false,
-                                                reservedSize: 0,
-                                              ),
-                                            ),
-                                            rightTitles: const AxisTitles(
-                                              axisNameWidget: Text(''),
-                                              sideTitles: SideTitles(
-                                                showTitles: false,
-                                                reservedSize: 0,
-                                              ),
-                                            ),
-                                            topTitles: const AxisTitles(
-                                              axisNameWidget: Text(''),
-                                              axisNameSize: 24,
-                                              sideTitles: SideTitles(
-                                                showTitles: true,
-                                                reservedSize: 0,
-                                              ),
-                                            ),
-                                          ),
-                                          gridData:
-                                              const FlGridData(show: true),
-                                          extraLinesData:
-                                              const ExtraLinesData(),
-                                          minY: 0,
-                                          lineTouchData:
-                                              custombuildLineTouchData(),
-                                          showingTooltipIndicators:
-                                              List.generate(
-                                            listData.length,
-                                            (index) => index,
-                                          ).map((index) {
-                                            return ShowingTooltipIndicators([
-                                              LineBarSpot(
-                                                lineBarsData[0],
-                                                lineBarsData
-                                                    .indexOf(lineBarsData[0]),
-                                                lineBarsData[0].spots[index],
-                                              ),
-                                            ]);
-                                          }).toList(),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          );
-                        } else {
-                          return const SizedBox();
-                        }
-                      }
-                    } else if (state is SubjectReportFailure) {
-                      return CustomErrorMassage(
-                          errorMassage: state.errorMassage);
-                    } else if (state is SubjectReportLoading) {
-                      return SizedBox(
-                        height: 250,
-                        child: Card(
-                          color: Colors.grey[100],
-                          surfaceTintColor: Colors.grey[100],
-                          shadowColor: Colors.grey[100],
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                                width: 1, color: Colors.grey.shade300),
-                            borderRadius: BorderRadius.circular(12),
+                            child: const CustomLoadingWidget(),
                           ),
-                          elevation: 2,
-                          child: const CustomLoadingWidget(),
-                        ),
-                      );
-                    } else {
-                      return const SizedBox();
-                    }
-                  },
+                        );
+                      } else {
+                        return const SizedBox();
+                      }
+                    },
+                  ),
                 ),
-              ),
             ],
           ),
         ),

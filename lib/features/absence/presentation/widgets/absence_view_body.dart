@@ -21,109 +21,51 @@ class AbsenceViewBody extends StatefulWidget {
 }
 
 class _AbsenceViewBodyState extends State<AbsenceViewBody> {
-  final DateTime _currentDate = DateTime.now();
+   DateTime _currentDate = DateTime.now();
   String _currentMonth = DateFormat.yMMM().format(DateTime.now());
   DateTime _targetDateTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
-    return CustomRefreshPage(
-      onRefresh: () async {
-        await BlocProvider.of<AbsenceCubit>(context).getAbsence(
-            month: DateFormat('yyyy-MM', 'en').format(DateTime.now()));
-      },
-      child: BlocBuilder<AbsenceCubit, AbsenceState>(
-        builder: (context, state) {
-          if (state is AbsenceSuccess) {
-            if (state.absenceModel.status == 401) {
-              return invalidToken(context);
-            } else if (state.absenceModel.status == 403) {
-              return Center(child: Text(S.of(context).no_absence));
-            } else {
-              List<AbsenceItem>? listAbsence = state.absenceModel.data;
+    return BlocBuilder<AbsenceCubit, AbsenceState>(
+      builder: (context, state) {
+        if (state is AbsenceSuccess) {
+          if (state.absenceModel.status == 401) {
+            return invalidToken(context);
+          } else if (state.absenceModel.status == 403) {
+            return Center(child: Text(S.of(context).no_absence));
+          } else {
+            List<AbsenceItem>? listAbsence = state.absenceModel.data;
 
-              Map<DateTime, List<Event>> events = {};
-              if (listAbsence!.isNotEmpty) {
-                for (var i in listAbsence) {
-                  events.addAll({
-                    DateTime(
-                        DateTime.parse(i.date!).year,
-                        DateTime.parse(i.date!).month,
-                        DateTime.parse(i.date!).day): [
-                      Event(
-                        date: DateTime(
-                            DateTime.parse(i.date!).year,
-                            DateTime.parse(i.date!).month,
-                            DateTime.parse(i.date!).day),
-                        title: i.type!,
-                      ),
-                    ],
-                  });
-                }
+            Map<DateTime, List<Event>> events = {};
+            if (listAbsence!.isNotEmpty) {
+              for (var i in listAbsence) {
+                events.addAll({
+                  DateTime(
+                      DateTime.parse(i.date!).year,
+                      DateTime.parse(i.date!).month,
+                      DateTime.parse(i.date!).day): [
+                    Event(
+                      date: DateTime(
+                          DateTime.parse(i.date!).year,
+                          DateTime.parse(i.date!).month,
+                          DateTime.parse(i.date!).day),
+                      title: i.type!,
+                    ),
+                  ],
+                });
               }
-              final calendarCarouselNoHeader = CalendarCarousel<Event>(
-                minSelectedDate:
-                    _currentDate.subtract(const Duration(days: 360)),
-                maxSelectedDate: _currentDate.add(const Duration(days: 360)),
-                onCalendarChanged: (DateTime date) {
-                  setState(() {
-                    _targetDateTime = date;
-                    _currentMonth = DateFormat.yMMM().format(_targetDateTime);
-                  });
-                },
-                targetDateTime: _targetDateTime,
-                prevDaysTextStyle: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-                inactiveDaysTextStyle: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                ),
-                isScrollable: false,
-                weekendTextStyle: const TextStyle(
-                  color: Colors.black,
-                ),
-                daysHaveCircularBorder: true,
-                thisMonthDayBorderColor: Colors.transparent,
-                showOnlyCurrentMonthDate: false,
-                weekdayTextStyle: const TextStyle(color: Colors.black),
-                weekFormat: false,
-                markedDatesMap: EventList<Event>(
-                  events: events,
-                ),
-                height: 250.0,
-                weekDayMargin: EdgeInsets.zero,
-                dayPadding: 0,
-                todayTextStyle: const TextStyle(
-                  color: Colors.black,
-                ),
-                todayButtonColor: Colors.transparent,
-                todayBorderColor: Colors.transparent,
-                showHeader: false,
-                customGridViewPhysics: const NeverScrollableScrollPhysics(),
-                markedDateIconBuilder: (event) {
-                  return Container(
-                    height: 60,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      color: event.title == "absence"
-                          ? const Color(0xffEB5757)
-                          : event.title == "delay"
-                              ? const Color(0xff00C191)
-                              : const Color(0xffFFD200),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      DateFormat('d').format(event.date),
-                      style: const TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-                  );
-                },
-                showIconBehindDayText: false,
-              );
-              return SingleChildScrollView(
+            }
+            return CustomRefreshPage(
+              onRefresh: () async {
+                _currentDate = DateTime.now();
+                _currentMonth = DateFormat.yMMM().format(DateTime.now());
+                _targetDateTime = DateTime.now();
+                await BlocProvider.of<AbsenceCubit>(context).getAbsence(
+                    month: DateFormat('yyyy-MM', 'en').format(DateTime.now()));
+              },
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -208,7 +150,73 @@ class _AbsenceViewBodyState extends State<AbsenceViewBody> {
                           Container(
                             margin:
                                 const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: calendarCarouselNoHeader,
+                            child: CalendarCarousel<Event>(
+                              minSelectedDate: _currentDate
+                                  .subtract(const Duration(days: 360)),
+                              maxSelectedDate:
+                                  _currentDate.add(const Duration(days: 360)),
+                              onCalendarChanged: (DateTime date) {
+                                setState(() {
+                                  _targetDateTime = date;
+                                  _currentMonth =
+                                      DateFormat.yMMM().format(_targetDateTime);
+                                });
+                              },
+                              targetDateTime: _targetDateTime,
+                              prevDaysTextStyle: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey,
+                              ),
+                              inactiveDaysTextStyle: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
+                              isScrollable: false,
+                              weekendTextStyle: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              daysHaveCircularBorder: true,
+                              thisMonthDayBorderColor: Colors.transparent,
+                              showOnlyCurrentMonthDate: false,
+                              weekdayTextStyle:
+                                  const TextStyle(color: Colors.black),
+                              weekFormat: false,
+                              markedDatesMap: EventList<Event>(
+                                events: events,
+                              ),
+                              height: 280.0,
+                              weekDayMargin: EdgeInsets.zero,
+                              dayPadding: 0,
+                              todayTextStyle: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              todayButtonColor: Colors.transparent,
+                              todayBorderColor: Colors.transparent,
+                              showHeader: false,
+                              customGridViewPhysics:
+                                  const NeverScrollableScrollPhysics(),
+                              markedDateIconBuilder: (event) {
+                                return Container(
+                                  height: 60,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    color: event.title == "absence"
+                                        ? const Color(0xffEB5757)
+                                        : event.title == "delay"
+                                            ? const Color(0xff00C191)
+                                            : const Color(0xffFFD200),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    DateFormat('d').format(event.date),
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 14),
+                                  ),
+                                );
+                              },
+                              showIconBehindDayText: false,
+                            ),
                           ),
                         ],
                       ),
@@ -233,15 +241,15 @@ class _AbsenceViewBodyState extends State<AbsenceViewBody> {
                           ),
                   ],
                 ),
-              );
-            }
-          } else if (state is AbsenceFailure) {
-            return CustomErrorMassage(errorMassage: state.errorMassage);
-          } else {
-            return const CustomLoadingWidget();
+              ),
+            );
           }
-        },
-      ),
+        } else if (state is AbsenceFailure) {
+          return CustomErrorMassage(errorMassage: state.errorMassage);
+        } else {
+          return const CustomLoadingWidget();
+        }
+      },
     );
   }
 }

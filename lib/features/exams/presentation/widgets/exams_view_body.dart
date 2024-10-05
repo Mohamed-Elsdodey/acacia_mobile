@@ -20,44 +20,60 @@ class ExamsViewBody extends StatefulWidget {
 class _ExamsViewBodyState extends State<ExamsViewBody> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: BlocBuilder<ExamsCubit, ExamsState>(
-        builder: (context, state) {
-          if (state is ExamsSuccess) {
-            if (state.examsModel.status == 401) {
-              return invalidToken(context);
-            } else if (state.examsModel.status == 403) {
-              return Center(child: Text(S.of(context).no_exams));
-            } else {
-              List<ExamItem>? listExams = state.examsModel.data;
+    return CustomRefreshPage(
+      onRefresh: () async {
+        await BlocProvider.of<ExamsCubit>(context).getExams();
+      },
+      child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: BlocBuilder<ExamsCubit, ExamsState>(
+            builder: (context, state) {
+              if (state is ExamsSuccess) {
+                if (state.examsModel.status == 401) {
+                  return invalidToken(context);
+                } else if (state.examsModel.status == 403) {
+                  return Column(
+                    children: [
+                      Center(child: Text(S.of(context).no_exams)),
+                    ],
+                  );
+                } else {
+                  List<ExamItem>? listExams = state.examsModel.data;
 
-              if (listExams!.isNotEmpty) {
-                return CustomRefreshPage(
-                  onRefresh: () async {
-                    await BlocProvider.of<ExamsCubit>(context).getExams();
-                  },
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 5,
-                    mainAxisSpacing: 5,
-                    childAspectRatio: 4.3 / 5,
-                    // padding: const EdgeInsets.all(10),
-                    children: List.generate(listExams.length, (index) {
-                      return ExamsListItem(examItem: listExams[index]);
-                    }),
-                  ),
+                  if (listExams!.isNotEmpty) {
+                    return GridView.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 5,
+                      childAspectRatio: 4.3 / 5,
+                      // padding: const EdgeInsets.all(10),
+                      children: List.generate(listExams.length, (index) {
+                        return ExamsListItem(examItem: listExams[index]);
+                      }),
+                    );
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 100),
+                      child: Center(child: Text(S.of(context).no_exams)),
+                    );
+                  }
+                }
+              } else if (state is ExamsFailure) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 100),
+                  child: CustomErrorMassage(errorMassage: state.errorMassage),
                 );
               } else {
-                return Center(child: Text(S.of(context).no_exams));
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 100),
+                  child: CustomLoadingWidget(),
+                );
               }
-            }
-          } else if (state is ExamsFailure) {
-            return CustomErrorMassage(errorMassage: state.errorMassage);
-          } else {
-            return const CustomLoadingWidget();
-          }
-        },
+            },
+          ),
+        ),
       ),
     );
   }

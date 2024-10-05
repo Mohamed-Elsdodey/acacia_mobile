@@ -19,37 +19,48 @@ class ChildernViewBody extends StatefulWidget {
 class _ChildernViewBodyState extends State<ChildernViewBody> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: BlocBuilder<ChildernCubit, ChildernState>(
-        builder: (context, state) {
-          if (state is ChildernSuccess) {
-            List<DataChildern>? listChildern = state.childernModel.data;
-            if (listChildern!.isNotEmpty) {
-              return CustomRefreshPage(
-                onRefresh: () async {
-                  await BlocProvider.of<ChildernCubit>(context).getChildern();
-                },
-                child: ListView.separated(
-                  itemBuilder: (context, index) => ChildernListItem(
-                    childernInfo: listChildern[index],
-                  ),
-                  separatorBuilder: (context, index) => const SizedBox(
-                    height: 8,
-                  ),
-                  itemCount: listChildern.length,
-                ),
-              );
-            } else {
-              return Expanded(
-                  child: Center(child: Text(S.of(context).no_childern)));
-            }
-          } else if (state is ChildernFailure) {
-            return CustomErrorMassage(errorMassage: state.errorMassage);
-          } else {
-            return const CustomLoadingWidget();
-          }
-        },
+    return CustomRefreshPage(
+      onRefresh: () async {
+        await BlocProvider.of<ChildernCubit>(context).getChildern();
+      },
+      child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: BlocBuilder<ChildernCubit, ChildernState>(
+            builder: (context, state) {
+              if (state is ChildernSuccess) {
+                List<DataChildern>? listChildern = state.childernModel.data;
+                if (listChildern!.isNotEmpty) {
+                  return ListView.separated(
+                    itemBuilder: (context, index) => ChildernListItem(
+                      childernInfo: listChildern[index],
+                    ),
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 8,
+                    ),
+                    itemCount: listChildern.length,
+                  );
+                } else {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 100),
+                    child: Center(child: Text(S.of(context).no_childern)),
+                  );
+                }
+              } else if (state is ChildernFailure) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 100),
+                  child: CustomErrorMassage(errorMassage: state.errorMassage),
+                );
+              } else {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 100),
+                  child: CustomLoadingWidget(),
+                );
+              }
+            },
+          ),
+        ),
       ),
     );
   }

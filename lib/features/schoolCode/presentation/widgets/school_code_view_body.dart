@@ -102,16 +102,24 @@ class _SchoolCodeViewBodyState extends State<SchoolCodeViewBody> {
                     BlocConsumer<SchoolCodeCubit, SchoolCodeState>(
                       listener: (context, state) {
                         if (state is SchoolCodeSuccess) {
-                          Pref.saveStringToPref(
-                              key: AppStrings.schoolIdKey,
-                              value: state.schoolCodeModel.data!.id!);
-                          Pref.saveStringToPref(
-                              key: AppStrings.schoolNameKey,
-                              value: state.schoolCodeModel.data!.nameEn!);
-                          Pref.saveStringToPref(
-                              key: AppStrings.schoolDomainKey,
-                              value: state.schoolCodeModel.data!.domain!);
-                          GoTo.pushAndRemoveUntil(context, const LoginView());
+                          if (state.schoolCodeModel.status == 400) {
+                            CustomAlertDialog.alertWithButton(
+                                context: context,
+                                type: AlertType.error,
+                                title: S.of(context).error,
+                                desc: S.of(context).no_school_code);
+                          } else {
+                            Pref.saveStringToPref(
+                                key: AppStrings.schoolIdKey,
+                                value: state.schoolCodeModel.data!.id!);
+                            Pref.saveStringToPref(
+                                key: AppStrings.schoolNameKey,
+                                value: state.schoolCodeModel.data!.nameEn!);
+                            Pref.saveStringToPref(
+                                key: AppStrings.schoolDomainKey,
+                                value: state.schoolCodeModel.data!.domain!);
+                            GoTo.pushAndRemoveUntil(context, const LoginView());
+                          }
                         } else if (state is SchoolCodeFailure) {
                           CustomAlertDialog.alertWithButton(
                               context: context,

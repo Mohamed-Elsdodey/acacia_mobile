@@ -789,6 +789,16 @@ class S {
       args: [],
     );
   }
+
+  /// `لا يوجد مدرسة بهذا الكود`
+  String get no_school_code {
+    return Intl.message(
+      'لا يوجد مدرسة بهذا الكود',
+      name: 'no_school_code',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -77,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_reviews": MessageLookupByLibrary.simpleMessage("لا يوجد تحفيز"),
         "no_schedules":
             MessageLookupByLibrary.simpleMessage("لا يوجد جدول حصص"),
+        "no_school_code":
+            MessageLookupByLibrary.simpleMessage("لا يوجد مدرسة بهذا الكود"),
         "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "p_choose_school":
