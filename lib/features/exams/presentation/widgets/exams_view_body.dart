@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/methods.dart';
 import '../../../../core/widgets/custom_error_massage.dart';
 import '../../../../core/widgets/custom_loading_widget.dart';
+import '../../../../core/widgets/custom_refresh_page.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/models/exams_model.dart';
 import '../manager/exams/exams_cubit.dart';
@@ -32,15 +33,20 @@ class _ExamsViewBodyState extends State<ExamsViewBody> {
               List<ExamItem>? listExams = state.examsModel.data;
 
               if (listExams!.isNotEmpty) {
-                return GridView.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
-                  childAspectRatio: 4.3 / 5,
-                  // padding: const EdgeInsets.all(10),
-                  children: List.generate(listExams.length, (index) {
-                    return ExamsListItem(examItem: listExams[index]);
-                  }),
+                return CustomRefreshPage(
+                  onRefresh: () async {
+                    await BlocProvider.of<ExamsCubit>(context).getExams();
+                  },
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
+                    childAspectRatio: 4.3 / 5,
+                    // padding: const EdgeInsets.all(10),
+                    children: List.generate(listExams.length, (index) {
+                      return ExamsListItem(examItem: listExams[index]);
+                    }),
+                  ),
                 );
               } else {
                 return Center(child: Text(S.of(context).no_exams));

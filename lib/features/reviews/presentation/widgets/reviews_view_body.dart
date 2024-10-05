@@ -1,3 +1,4 @@
+import 'package:evaluation_and_follow_up/core/widgets/custom_refresh_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,14 +33,19 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
               List<ReviewItem>? listReviews = state.reviewsModel.data;
 
               if (listReviews!.isNotEmpty) {
-                return ListView.separated(
-                  itemBuilder: (context, index) => ReviewsListItem(
-                    reviewItem: listReviews[index],
+                return CustomRefreshPage(
+                  onRefresh: () async {
+                    await BlocProvider.of<ReviewsCubit>(context).getReviews();
+                  },
+                  child: ListView.separated(
+                    itemBuilder: (context, index) => ReviewsListItem(
+                      reviewItem: listReviews[index],
+                    ),
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 8,
+                    ),
+                    itemCount: listReviews.length,
                   ),
-                  separatorBuilder: (context, index) => const SizedBox(
-                    height: 8,
-                  ),
-                  itemCount: listReviews.length,
                 );
               } else {
                 return Center(child: Text(S.of(context).no_reviews));

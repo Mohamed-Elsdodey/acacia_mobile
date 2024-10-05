@@ -1,3 +1,5 @@
+import 'package:evaluation_and_follow_up/core/widgets/custom_refresh_page.dart';
+import 'package:evaluation_and_follow_up/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,14 +35,20 @@ class _NotificationsViewBodyState extends State<NotificationsViewBody> {
                   state.notificationsModel.data;
 
               if (listNotifications!.isNotEmpty) {
-                return ListView.separated(
-                  itemBuilder: (context, index) => NotificationsListItem(
-                    notificationItem: listNotifications[index],
+                return CustomRefreshPage(
+                  onRefresh: () async {
+                    await BlocProvider.of<NotificationsCubit>(context)
+                        .getNotifications(studentId: HomeView.studentId);
+                  },
+                  child: ListView.separated(
+                    itemBuilder: (context, index) => NotificationsListItem(
+                      notificationItem: listNotifications[index],
+                    ),
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 8,
+                    ),
+                    itemCount: listNotifications.length,
                   ),
-                  separatorBuilder: (context, index) => const SizedBox(
-                    height: 8,
-                  ),
-                  itemCount: listNotifications.length,
                 );
               } else {
                 return Center(child: Text(S.of(context).no_notifications));

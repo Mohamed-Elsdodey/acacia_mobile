@@ -1,3 +1,4 @@
+import 'package:evaluation_and_follow_up/core/widgets/custom_refresh_page.dart';
 import 'package:evaluation_and_follow_up/features/childern/presentation/widgets/childern_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,14 +26,19 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
           if (state is ChildernSuccess) {
             List<DataChildern>? listChildern = state.childernModel.data;
             if (listChildern!.isNotEmpty) {
-              return ListView.separated(
-                itemBuilder: (context, index) => ChildernListItem(
-                  childernInfo: listChildern[index],
+              return CustomRefreshPage(
+                onRefresh: () async {
+                  await BlocProvider.of<ChildernCubit>(context).getChildern();
+                },
+                child: ListView.separated(
+                  itemBuilder: (context, index) => ChildernListItem(
+                    childernInfo: listChildern[index],
+                  ),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    height: 8,
+                  ),
+                  itemCount: listChildern.length,
                 ),
-                separatorBuilder: (context, index) => const SizedBox(
-                  height: 8,
-                ),
-                itemCount: listChildern.length,
               );
             } else {
               return Expanded(
