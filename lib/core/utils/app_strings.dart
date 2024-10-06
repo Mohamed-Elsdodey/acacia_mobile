@@ -14,6 +14,7 @@ class AppStrings {
   static const String parantPhoneKey = "ParantPhone";
   static const String parantTokenKey = "ParantToken";
   static const String childernIdKey = "ChildernId";
+  static const String childernNameKey = "ChildernName";
   static const String emailException =
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
 }

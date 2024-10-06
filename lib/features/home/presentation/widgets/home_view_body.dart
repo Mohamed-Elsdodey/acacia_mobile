@@ -84,6 +84,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                           HomeView.studentname = listChildern[0].name!;
                           Pref.saveIntToPref(
                               key: AppStrings.childernIdKey, value: childernId);
+                          Pref.saveStringToPref(
+                              key: AppStrings.childernNameKey,
+                              value: childernData.name!);
                           BlocProvider.of<AcademicReportCubit>(context)
                               .getAcademicReport(
                                   month: DateTime.now().month.toString(),
@@ -138,7 +141,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                     childernData = listChildern.firstWhere(
                                       (element) => element.name == value,
                                     );
+                                    HomeView.studentId = childernData.id!;
+                                    HomeView.studentname = childernData.name!;
                                   });
+
                                   BlocProvider.of<AcademicReportCubit>(context)
                                       .getAcademicReport(
                                           month:
@@ -155,6 +161,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                   Pref.saveIntToPref(
                                       key: AppStrings.childernIdKey,
                                       value: childernData.id!);
+                                  Pref.saveStringToPref(
+                                      key: AppStrings.childernNameKey,
+                                      value: childernData.name!);
                                   setState(() {
                                     selectedManth1 = DateFormat.LLLL()
                                         .format(DateTime.now().toLocal());

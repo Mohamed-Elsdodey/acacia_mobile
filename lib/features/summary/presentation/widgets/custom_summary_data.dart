@@ -9,7 +9,9 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../../core/helper/AlertDialog/custom_alert_dialog.dart';
+import '../../../../core/helper/SharedPreferences/pref.dart';
 import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/custom_button_with_icon.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/models/summary_model.dart';
@@ -25,6 +27,13 @@ class CustomSummaryData extends StatefulWidget {
 
 class _CustomSummaryDataState extends State<CustomSummaryData> {
   final ScreenshotController screenshotController = ScreenshotController();
+  String childernName = "";
+  @override
+  void initState() {
+    getChildernData();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +89,7 @@ class _CustomSummaryDataState extends State<CustomSummaryData> {
                     ),
                   ),
                   Text(
-                    "${HomeView.studentname} !!",
+                    "${childernName} !!",
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.w700),
@@ -144,5 +153,13 @@ class _CustomSummaryDataState extends State<CustomSummaryData> {
     } catch (e) {
       debugPrint('خطأ: $e');
     }
+  }
+
+  void getChildernData() async {
+    String? name =
+        await Pref.getStringFromPref(key: AppStrings.childernNameKey) ?? "";
+    setState(() {
+      childernName = name;
+    });
   }
 }

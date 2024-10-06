@@ -5,7 +5,7 @@
 
 
     <application
-        android:label="evaluation_and_follow_up"
+        android:label="تقييم و متابعة"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
