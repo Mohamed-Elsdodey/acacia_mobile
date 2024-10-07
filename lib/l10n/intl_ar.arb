@@ -97,7 +97,12 @@
   "summary_subject_name": "اسم المادة",
   "summary_degree": "الدرجة",
   "summary_degree_title": "التقييم",
-  "download_file": "تحميل الملف"
+  "download_file": "تحميل الملف",
+
+  "school": "مدرسة ",
+  "reports_title": "تقرير الطالب للجانب الاكاديمي والسلوكي",
+  "reports_1": "التقرير الاكاديمي",
+  "reports_2": "تقرير السلوك"
 
 
 }

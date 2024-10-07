@@ -14,6 +14,7 @@ import '../../../exams/presentation/views/exams_view.dart';
 import '../../../home/presentation/views/home_view.dart';
 import '../../../login/presentation/views/login_view.dart';
 import '../../../notifications/presentation/views/notifications_view.dart';
+import '../../../reports/presentation/views/reports_view.dart';
 import '../../../summary/presentation/views/summary_view.dart';
 import '../../data/models/more_item_model.dart';
 
@@ -94,10 +95,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                       GoTo.push(context, const ExamsView());
                       break;
                     case 1:
-                      // push(StudentDataScreen(
-                      //     studentId: saveData.getChildId().isNotEmpty
-                      //         ? saveData.getChildId()
-                      //         : ''));
+                      GoTo.push(context, const ReportsView());
 
                       break;
                     case 2:

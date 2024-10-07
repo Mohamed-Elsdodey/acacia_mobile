@@ -75,7 +75,6 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-
       print("===========================================\n\n\n\n\n");
       print('Message clicked! App opened');
     });

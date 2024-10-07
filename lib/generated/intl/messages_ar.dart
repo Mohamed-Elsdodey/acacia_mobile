@@ -94,10 +94,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "rank_school":
             MessageLookupByLibrary.simpleMessage("الترتيب على المدرسة: "),
         "reports": MessageLookupByLibrary.simpleMessage("التقارير"),
+        "reports_1": MessageLookupByLibrary.simpleMessage("التقرير الاكاديمي"),
+        "reports_2": MessageLookupByLibrary.simpleMessage("تقرير السلوك"),
+        "reports_title": MessageLookupByLibrary.simpleMessage(
+            "تقرير الطالب للجانب الاكاديمي والسلوكي"),
         "room": MessageLookupByLibrary.simpleMessage("الفصل: "),
         "row": MessageLookupByLibrary.simpleMessage("الصف: "),
         "save_changes": MessageLookupByLibrary.simpleMessage("حفظ التعديلات"),
         "schedules": MessageLookupByLibrary.simpleMessage("الحصص اليومية"),
+        "school": MessageLookupByLibrary.simpleMessage("مدرسة "),
         "school_code": MessageLookupByLibrary.simpleMessage("كود المدرسة"),
         "st_degree": MessageLookupByLibrary.simpleMessage("درجة الطالب: "),
         "st_info": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),

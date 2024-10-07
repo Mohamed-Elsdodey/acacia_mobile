@@ -869,6 +869,46 @@ class S {
       args: [],
     );
   }
+
+  /// `مدرسة `
+  String get school {
+    return Intl.message(
+      'مدرسة ',
+      name: 'school',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تقرير الطالب للجانب الاكاديمي والسلوكي`
+  String get reports_title {
+    return Intl.message(
+      'تقرير الطالب للجانب الاكاديمي والسلوكي',
+      name: 'reports_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `التقرير الاكاديمي`
+  String get reports_1 {
+    return Intl.message(
+      'التقرير الاكاديمي',
+      name: 'reports_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تقرير السلوك`
+  String get reports_2 {
+    return Intl.message(
+      'تقرير السلوك',
+      name: 'reports_2',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
