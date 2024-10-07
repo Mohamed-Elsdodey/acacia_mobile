@@ -6,18 +6,18 @@ class ReportsModel {
   ReportsModel({this.data, this.message, this.status});
 
   ReportsModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new ReportsData.fromJson(json['data']) : null;
+    data = json['data'] != null ? ReportsData.fromJson(json['data']) : null;
     message = json['message'].cast<String>();
     status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['message'] = this.message;
-    data['status'] = this.status;
+    data['message'] = message;
+    data['status'] = status;
     return data;
   }
 }
@@ -27,34 +27,35 @@ class ReportsData {
   BehavioralReport? behavioralReport;
   List<DescriptiveReports>? descriptiveReports;
 
-  ReportsData({this.academicReport, this.behavioralReport, this.descriptiveReports});
+  ReportsData(
+      {this.academicReport, this.behavioralReport, this.descriptiveReports});
 
   ReportsData.fromJson(Map<String, dynamic> json) {
     academicReport = json['academic_report'] != null
-        ? new AcademicReport.fromJson(json['academic_report'])
+        ? AcademicReport.fromJson(json['academic_report'])
         : null;
     behavioralReport = json['behavioral_report'] != null
-        ? new BehavioralReport.fromJson(json['behavioral_report'])
+        ? BehavioralReport.fromJson(json['behavioral_report'])
         : null;
     if (json['descriptive_reports'] != null) {
       descriptiveReports = <DescriptiveReports>[];
       json['descriptive_reports'].forEach((v) {
-        descriptiveReports!.add(new DescriptiveReports.fromJson(v));
+        descriptiveReports!.add(DescriptiveReports.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.academicReport != null) {
-      data['academic_report'] = this.academicReport!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (academicReport != null) {
+      data['academic_report'] = academicReport!.toJson();
     }
-    if (this.behavioralReport != null) {
-      data['behavioral_report'] = this.behavioralReport!.toJson();
+    if (behavioralReport != null) {
+      data['behavioral_report'] = behavioralReport!.toJson();
     }
-    if (this.descriptiveReports != null) {
+    if (descriptiveReports != null) {
       data['descriptive_reports'] =
-          this.descriptiveReports!.map((v) => v.toJson()).toList();
+          descriptiveReports!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -72,7 +73,7 @@ class AcademicReport {
     if (json['exams'] != null) {
       exams = <Exams>[];
       json['exams'].forEach((v) {
-        exams!.add(new Exams.fromJson(v));
+        exams!.add(Exams.fromJson(v));
       });
     }
     appreciationPercentage = json['appreciation_percentage'];
@@ -80,12 +81,12 @@ class AcademicReport {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.exams != null) {
-      data['exams'] = this.exams!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (exams != null) {
+      data['exams'] = exams!.map((v) => v.toJson()).toList();
     }
-    data['appreciation_percentage'] = this.appreciationPercentage;
-    data[r'$appreciation_title'] = this.appreciationTitle;
+    data['appreciation_percentage'] = appreciationPercentage;
+    data[r'$appreciation_title'] = appreciationTitle;
     return data;
   }
 }
@@ -108,23 +109,22 @@ class Exams {
     id = json['id'];
     degreeOfExam = json['degree_of_exam'];
     degreeOfStudent = json['degree_of_student'];
-    category = json['category'] != null
-        ? new Category.fromJson(json['category'])
-        : null;
+    category =
+        json['category'] != null ? Category.fromJson(json['category']) : null;
     teacher =
-        json['teacher'] != null ? new Teacher.fromJson(json['teacher']) : null;
+        json['teacher'] != null ? Teacher.fromJson(json['teacher']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['degree_of_exam'] = this.degreeOfExam;
-    data['degree_of_student'] = this.degreeOfStudent;
-    if (this.category != null) {
-      data['category'] = this.category!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['degree_of_exam'] = degreeOfExam;
+    data['degree_of_student'] = degreeOfStudent;
+    if (category != null) {
+      data['category'] = category!.toJson();
     }
-    if (this.teacher != null) {
-      data['teacher'] = this.teacher!.toJson();
+    if (teacher != null) {
+      data['teacher'] = teacher!.toJson();
     }
     return data;
   }
@@ -142,9 +142,9 @@ class Category {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
     return data;
   }
 }
@@ -161,9 +161,9 @@ class Teacher {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
     return data;
   }
 }
@@ -182,16 +182,16 @@ class BehavioralReport {
     appreciationPercentage = json['appreciation_percentage'];
     appreciationTitle = json['appreciation_title'];
     scrollBehavioralReport = json['scroll_behavioral_report'] != null
-        ? new ScrollBehavioralReport.fromJson(json['scroll_behavioral_report'])
+        ? ScrollBehavioralReport.fromJson(json['scroll_behavioral_report'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['appreciation_percentage'] = this.appreciationPercentage;
-    data['appreciation_title'] = this.appreciationTitle;
-    if (this.scrollBehavioralReport != null) {
-      data['scroll_behavioral_report'] = this.scrollBehavioralReport!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['appreciation_percentage'] = appreciationPercentage;
+    data['appreciation_title'] = appreciationTitle;
+    if (scrollBehavioralReport != null) {
+      data['scroll_behavioral_report'] = scrollBehavioralReport!.toJson();
     }
     return data;
   }
@@ -220,12 +220,12 @@ class ScrollBehavioralReport {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['number_of_absence_day'] = this.numberOfAbsenceDay;
-    data['number_of_delay_day'] = this.numberOfDelayDay;
-    data['positive_point'] = this.positivePoint;
-    data['negative_point'] = this.negativePoint;
-    data['total_point'] = this.totalPoint;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['number_of_absence_day'] = numberOfAbsenceDay;
+    data['number_of_delay_day'] = numberOfDelayDay;
+    data['positive_point'] = positivePoint;
+    data['negative_point'] = negativePoint;
+    data['total_point'] = totalPoint;
     return data;
   }
 }
@@ -244,10 +244,10 @@ class DescriptiveReports {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['descriptive_report'] = this.descriptiveReport;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['descriptive_report'] = descriptiveReport;
     return data;
   }
 }

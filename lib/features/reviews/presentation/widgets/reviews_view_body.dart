@@ -44,7 +44,7 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
                   if (listReviews!.isNotEmpty) {
                     return Column(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         ...List.generate(

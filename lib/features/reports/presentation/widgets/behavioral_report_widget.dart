@@ -15,12 +15,12 @@ class BehavioralReportWidget extends StatelessWidget {
         Container(
           height: 40,
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(8),
               topRight: Radius.circular(8),
             ),
-            color: Colors.deepPurple,
+            color: Color(0xff9747FF),
           ),
           alignment: Alignment.center,
           child: Text(
@@ -38,7 +38,7 @@ class BehavioralReportWidget extends StatelessWidget {
               5,
               (index) => Expanded(
                 child: CustomColumnBehavioralReport(
-                  title: getTitle(index: index),
+                  title: getTitle(index: index, context: context),
                   subTitle: getSubTitle(index: index, data: behavioralReport)
                       .toString(),
                 ),
@@ -50,18 +50,18 @@ class BehavioralReportWidget extends StatelessWidget {
     );
   }
 
-  getTitle({required int index}) {
+  getTitle({required int index, required BuildContext context}) {
     switch (index) {
       case 0:
-        return "ايام الغياب";
+        return S.of(context).number_of_absence_day;
       case 1:
-        return "ايام التأخير";
+        return S.of(context).number_of_delay_day;
       case 2:
-        return "نقاط إجابية";
+        return S.of(context).positive_point;
       case 3:
-        return "نقاط سلبية";
+        return S.of(context).negative_point;
       default:
-        return "التقدير السلوكي";
+        return S.of(context).appreciation_percentage;
     }
   }
 

@@ -26,7 +26,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "absence": MessageLookupByLibrary.simpleMessage("غياب"),
         "absences": MessageLookupByLibrary.simpleMessage("الغياب والتأخير"),
         "academic": MessageLookupByLibrary.simpleMessage("أكاديمي"),
+        "academic_degree":
+            MessageLookupByLibrary.simpleMessage("التقدير الاكاديمي"),
         "all": MessageLookupByLibrary.simpleMessage("الكل"),
+        "appreciation_percentage":
+            MessageLookupByLibrary.simpleMessage("التقدير السلوكي"),
         "behavior": MessageLookupByLibrary.simpleMessage("سلوكي"),
         "childern": MessageLookupByLibrary.simpleMessage("الأبناء"),
         "choose_anther_school":
@@ -41,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "day_absence":
             MessageLookupByLibrary.simpleMessage("عدد أيام الغياب: "),
         "day_delay": MessageLookupByLibrary.simpleMessage("عدد أيام التأخير: "),
+        "degree_stu": MessageLookupByLibrary.simpleMessage("درجة الطالب"),
         "delay": MessageLookupByLibrary.simpleMessage("تأخير"),
         "download_file": MessageLookupByLibrary.simpleMessage("تحميل الملف"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -61,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "motivation": MessageLookupByLibrary.simpleMessage("التحفيز"),
         "nagative": MessageLookupByLibrary.simpleMessage("عقوبة"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "negative_point": MessageLookupByLibrary.simpleMessage("نقاط سلبية"),
         "new_password":
             MessageLookupByLibrary.simpleMessage("كلمة السر الجديدة"),
         "next": MessageLookupByLibrary.simpleMessage("متابعة"),
@@ -68,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_absence":
             MessageLookupByLibrary.simpleMessage("لا يوجد غيابات أو تأخير"),
         "no_childern": MessageLookupByLibrary.simpleMessage("لا يوجد أبناء"),
+        "no_dec": MessageLookupByLibrary.simpleMessage("بدون تفاصيل"),
         "no_email":
             MessageLookupByLibrary.simpleMessage("البريدالإلكتروني غير صحيح"),
         "no_exams": MessageLookupByLibrary.simpleMessage("لا يوجد إختبارات"),
@@ -81,13 +88,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_school_code":
             MessageLookupByLibrary.simpleMessage("لا يوجد مدرسة بهذا الكود"),
         "no_summary": MessageLookupByLibrary.simpleMessage("لا يوجد موجز"),
+        "no_title": MessageLookupByLibrary.simpleMessage("بدون عنوان"),
         "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+        "number_of_absence_day":
+            MessageLookupByLibrary.simpleMessage("ايام الغياب"),
+        "number_of_delay_day":
+            MessageLookupByLibrary.simpleMessage("ايام التأخير"),
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "p_choose_school":
             MessageLookupByLibrary.simpleMessage("من فضلك أدخل كود المدرسة!❤"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "points": MessageLookupByLibrary.simpleMessage("النقاط: "),
         "positive": MessageLookupByLibrary.simpleMessage("تميز"),
+        "positive_point": MessageLookupByLibrary.simpleMessage("نقاط إجابية"),
         "rank_room":
             MessageLookupByLibrary.simpleMessage("الترتيب على الفصل: "),
         "rank_row": MessageLookupByLibrary.simpleMessage("الترتيب على الصف: "),
@@ -100,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "تقرير الطالب للجانب الاكاديمي والسلوكي"),
         "room": MessageLookupByLibrary.simpleMessage("الفصل: "),
         "row": MessageLookupByLibrary.simpleMessage("الصف: "),
+        "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "save_changes": MessageLookupByLibrary.simpleMessage("حفظ التعديلات"),
         "schedules": MessageLookupByLibrary.simpleMessage("الحصص اليومية"),
         "school": MessageLookupByLibrary.simpleMessage("مدرسة "),
@@ -107,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "st_degree": MessageLookupByLibrary.simpleMessage("درجة الطالب: "),
         "st_info": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
         "student_type": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
+        "sub": MessageLookupByLibrary.simpleMessage("المادة الدراسية"),
         "sub_teacher": MessageLookupByLibrary.simpleMessage("اسم المدرس: "),
         "subject": MessageLookupByLibrary.simpleMessage("المادة الدراسية: "),
         "summary": MessageLookupByLibrary.simpleMessage("الموجز"),
@@ -121,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_absence":
             MessageLookupByLibrary.simpleMessage("إجمالي الغياب: "),
         "total_degree": MessageLookupByLibrary.simpleMessage("الدرجة الكلية: "),
+        "total_degrees": MessageLookupByLibrary.simpleMessage("الدرجة الكلية"),
         "total_delay": MessageLookupByLibrary.simpleMessage("إجمالي التأخير: "),
         "total_nagative":
             MessageLookupByLibrary.simpleMessage("رصيد العقوبات أصبح: "),

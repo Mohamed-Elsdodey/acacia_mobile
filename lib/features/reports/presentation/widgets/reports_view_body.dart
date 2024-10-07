@@ -36,6 +36,7 @@ class _ReportsViewBodyState extends State<ReportsViewBody> {
   Widget build(BuildContext context) {
     return CustomRefreshPage(
       onRefresh: () async {
+        monthText = DateFormat.yMMM().format(DateTime.now());
         await BlocProvider.of<ReportsCubit>(context).getReports(
             month: DateFormat('yyyy-MM', 'en').format(DateTime.now()));
       },
@@ -93,8 +94,10 @@ class _ReportsViewBodyState extends State<ReportsViewBody> {
                                 },
                               ).then(
                                 (value) {
-                                  BlocProvider.of<ReportsCubit>(context)
-                                      .getReports(month: monthToApi);
+                                  if (context.mounted) {
+                                    BlocProvider.of<ReportsCubit>(context)
+                                        .getReports(month: monthToApi);
+                                  }
                                 },
                               );
                             },
@@ -104,7 +107,8 @@ class _ReportsViewBodyState extends State<ReportsViewBody> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   border: Border.all(
-                                      color: Color(0xffEDEDED), width: 2)),
+                                      color: const Color(0xffEDEDED),
+                                      width: 2)),
                               alignment: Alignment.center,
                               child: Padding(
                                 padding:
@@ -118,8 +122,9 @@ class _ReportsViewBodyState extends State<ReportsViewBody> {
                                           fontWeight: FontWeight.w400,
                                           color: Color(0xff2A2F3B)),
                                     ),
-                                    Spacer(),
-                                    Icon(Icons.keyboard_arrow_down_rounded,
+                                    const Spacer(),
+                                    const Icon(
+                                        Icons.keyboard_arrow_down_rounded,
                                         color: Color(0xff2A2F3B))
                                   ],
                                 ),
@@ -146,9 +151,9 @@ class _ReportsViewBodyState extends State<ReportsViewBody> {
                 child: CustomErrorMassage(errorMassage: state.errorMassage),
               );
             } else {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 100),
-                child: const CustomLoadingWidget(),
+              return const Padding(
+                padding: EdgeInsets.symmetric(vertical: 100),
+                child: CustomLoadingWidget(),
               );
             }
           },

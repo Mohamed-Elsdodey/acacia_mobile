@@ -34,7 +34,7 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
                 if (listChildern!.isNotEmpty) {
                   return Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       ...List.generate(

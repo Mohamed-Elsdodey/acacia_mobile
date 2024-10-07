@@ -89,7 +89,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
             padding: const EdgeInsets.all(10),
             children: List.generate(moreList.length, (index) {
               return InkWell(
-                onTap: () {
+                onTap: () async {
                   switch (index) {
                     case 0:
                       GoTo.push(context, const ExamsView());
@@ -112,33 +112,34 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                     case 5:
                       break;
                     case 6:
-                      // createAlertDialogLogout();
-                      CustomAlertDialog.alertWithTwoButton(
-                          context: context,
-                          type: AlertType.warning,
-                          title: S.of(context).logout,
-                          desc: S.of(context).logout_massge,
-                          isCloseButton: false,
-                          isOverlayTapDismiss: false,
-                          textButton1: S.of(context).no,
-                          textButton2: S.of(context).ok,
-                          onPressedToButton1: () {
-                            GoTo.pop(context);
-                          },
-                          onPressedToButton2: () {
-                            Pref.saveBoolToPref(
-                                key: AppStrings.isLoginKey, value: false);
-                            Pref.removeKey(key: AppStrings.parantTokenKey);
-                            Pref.removeKey(key: AppStrings.parantPhoneKey);
-                            Pref.removeKey(key: AppStrings.parantEmailKey);
-                            Pref.removeKey(key: AppStrings.parantIdKey);
-                            Pref.removeKey(key: AppStrings.childernIdKey);
-                            logoutNotifications(
-                              tokenFirebase:
-                                  "11323wsdsdfdedesdsfs343434", //تغير الtoken
-                            );
-                            GoTo.pushAndRemoveUntil(context, const LoginView());
-                          });
+                      String firebaseToken = await getTokenFirebase();
+                      if(context.mounted){
+                        CustomAlertDialog.alertWithTwoButton(
+                            context: context,
+                            type: AlertType.warning,
+                            title: S.of(context).logout,
+                            desc: S.of(context).logout_massge,
+                            isCloseButton: false,
+                            isOverlayTapDismiss: false,
+                            textButton1: S.of(context).no,
+                            textButton2: S.of(context).ok,
+                            onPressedToButton1: () {
+                              GoTo.pop(context);
+                            },
+                            onPressedToButton2: () {
+                              Pref.saveBoolToPref(
+                                  key: AppStrings.isLoginKey, value: false);
+                              Pref.removeKey(key: AppStrings.parantTokenKey);
+                              Pref.removeKey(key: AppStrings.parantPhoneKey);
+                              Pref.removeKey(key: AppStrings.parantEmailKey);
+                              Pref.removeKey(key: AppStrings.parantIdKey);
+                              Pref.removeKey(key: AppStrings.childernIdKey);
+                              logoutNotifications(
+                                tokenFirebase: firebaseToken,
+                              );
+                              GoTo.pushAndRemoveUntil(context, const LoginView());
+                            });
+                      }
                       break;
                   }
                 },
@@ -179,5 +180,11 @@ class _MoreViewBodyState extends State<MoreViewBody> {
             }),
           ),
         ));
+  }
+
+  Future<String> getTokenFirebase() async {
+    String token =
+        await Pref.getStringFromPref(key: AppStrings.firebaseTokenKey) ?? "";
+    return token;
   }
 }

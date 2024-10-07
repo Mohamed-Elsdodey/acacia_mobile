@@ -6,7 +6,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
+import 'core/helper/AlertDialog/custom_alert_dialog.dart';
 import 'core/helper/SharedPreferences/pref.dart';
 import 'core/manager/color_provider.dart';
 import 'core/utils/app_strings.dart';
@@ -27,25 +29,14 @@ void main() async {
     badge: true,
     sound: true,
   );
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-  // احصل على الـ Token لجهاز المستخدم
-  String? token = await messaging.getToken();
-  print("===========================================\n\n\n\n\n");
-  print("Firebase Messaging Token: $token");
-
-  // استقبال الإشعارات عندما يكون التطبيق في الخلفية
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(ChangeNotifierProvider(
       create: (context) => ColorProvider()..loadColor(),
       child: const EvaluationAndFollowUp()));
 }
 
-// التعامل مع الإشعارات في الخلفية
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print("===========================================\n\n\n\n\n");
-  print("Handling a background message: ${message.messageId}");
-}
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {}
 
 class EvaluationAndFollowUp extends StatefulWidget {
   const EvaluationAndFollowUp({super.key});
@@ -68,16 +59,24 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
   void initState() {
     super.initState();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print("===========================================\n\n\n\n\n");
-      print(
-          'Received message while app is in foreground: ${message.notification?.title}');
-      // يمكنك هنا إظهار Alert Dialog للإشعارات الفورية
+      WidgetsBinding.instance.addPostFrameCallback(
+        (timeStamp) {
+          CustomAlertDialog.alertWithButton(
+              context: context,
+              type: AlertType.info,
+              title: message.notification?.title ?? S.of(context).no_title,
+              desc: message.notification?.body ?? S.of(context).no_dec);
+        },
+      );
     });
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {});
+    checkForInitialMessage();
+  }
 
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print("===========================================\n\n\n\n\n");
-      print('Message clicked! App opened');
-    });
+  Future<void> checkForInitialMessage() async {
+    RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+    if (initialMessage != null) {}
   }
 
   @override
@@ -125,28 +124,5 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
     setState(() {
       _locale = locale;
     });
-  }
-
-  // تحويل لون إلى `MaterialColor`
-  MaterialColor createMaterialColor(Color color) {
-    List strengths = <double>[.05];
-    final Map<int, Color> swatch = {};
-    final int r = color.red, g = color.green, b = color.blue;
-
-    for (int i = 1; i < 10; i++) {
-      strengths.add(0.1 * i);
-    }
-
-    for (var strength in strengths) {
-      final double ds = 0.5 - strength;
-      swatch[(strength * 1000).round()] = Color.fromRGBO(
-        r + ((ds < 0 ? r : (255 - r)) * ds).round(),
-        g + ((ds < 0 ? g : (255 - g)) * ds).round(),
-        b + ((ds < 0 ? b : (255 - b)) * ds).round(),
-        1,
-      );
-    }
-
-    return MaterialColor(color.value, swatch);
   }
 }

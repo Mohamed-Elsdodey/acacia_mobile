@@ -17,12 +17,12 @@ class AcademicReportWidget extends StatelessWidget {
           Container(
             height: 40,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(8),
                 topRight: Radius.circular(8),
               ),
-              color: Colors.teal.shade400,
+              color: Color(0xff00C191),
             ),
             alignment: Alignment.center,
             child: Text(
@@ -40,9 +40,9 @@ class AcademicReportWidget extends StatelessWidget {
             child: Row(
               children: [
                 CustomColumnAcademicReport(
-                    title: "المادة الدراسية",
-                    subTitle1: "الدرجة الكلية",
-                    subTitle2: "درجة الطالب"),
+                    title: S.of(context).sub,
+                    subTitle1: S.of(context).total_degrees,
+                    subTitle2: S.of(context).degree_stu),
                 Expanded(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -62,7 +62,7 @@ class AcademicReportWidget extends StatelessWidget {
                   ),
                 ),
                 CustomColumnAcademicReport(
-                    title: "التقدير الاكاديمي",
+                    title: S.of(context).academic_degree,
                     subTitle1: "${academicReport.appreciationPercentage}%",
                     subTitle2: academicReport.appreciationTitle!)
               ],

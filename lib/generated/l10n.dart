@@ -909,6 +909,126 @@ class S {
       args: [],
     );
   }
+
+  /// `المادة الدراسية`
+  String get sub {
+    return Intl.message(
+      'المادة الدراسية',
+      name: 'sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الدرجة الكلية`
+  String get total_degrees {
+    return Intl.message(
+      'الدرجة الكلية',
+      name: 'total_degrees',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `درجة الطالب`
+  String get degree_stu {
+    return Intl.message(
+      'درجة الطالب',
+      name: 'degree_stu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `التقدير الاكاديمي`
+  String get academic_degree {
+    return Intl.message(
+      'التقدير الاكاديمي',
+      name: 'academic_degree',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ايام الغياب`
+  String get number_of_absence_day {
+    return Intl.message(
+      'ايام الغياب',
+      name: 'number_of_absence_day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ايام التأخير`
+  String get number_of_delay_day {
+    return Intl.message(
+      'ايام التأخير',
+      name: 'number_of_delay_day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `نقاط إجابية`
+  String get positive_point {
+    return Intl.message(
+      'نقاط إجابية',
+      name: 'positive_point',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `نقاط سلبية`
+  String get negative_point {
+    return Intl.message(
+      'نقاط سلبية',
+      name: 'negative_point',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `التقدير السلوكي`
+  String get appreciation_percentage {
+    return Intl.message(
+      'التقدير السلوكي',
+      name: 'appreciation_percentage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `حفظ`
+  String get save {
+    return Intl.message(
+      'حفظ',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `بدون عنوان`
+  String get no_title {
+    return Intl.message(
+      'بدون عنوان',
+      name: 'no_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `بدون تفاصيل`
+  String get no_dec {
+    return Intl.message(
+      'بدون تفاصيل',
+      name: 'no_dec',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:evaluation_and_follow_up/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -89,7 +88,7 @@ class _CustomSummaryDataState extends State<CustomSummaryData> {
                     ),
                   ),
                   Text(
-                    "${childernName} !!",
+                    "$childernName !!",
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.w700),
@@ -102,7 +101,9 @@ class _CustomSummaryDataState extends State<CustomSummaryData> {
             CustomButtonWithIcon(
               height: 50,
               title: S.of(context).download_file,
-              onTap: _captureAndSave,
+              onTap: () async {
+                await captureAndSave(context);
+              },
               titleStyle: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w900,
@@ -121,7 +122,7 @@ class _CustomSummaryDataState extends State<CustomSummaryData> {
     );
   }
 
-  Future<void> _captureAndSave() async {
+  Future<void> captureAndSave(BuildContext context) async {
     try {
       final Uint8List? imageBytes = await screenshotController.capture();
       if (imageBytes != null) {
@@ -138,16 +139,18 @@ class _CustomSummaryDataState extends State<CustomSummaryData> {
 
         final directory = await getExternalStorageDirectory();
         if (directory != null) {
-          final path = '${directory.path}/${HomeView.studentname}.pdf';
+          final path = '${directory.path}/$childernName.pdf';
           final file = File(path);
 
           await file.writeAsBytes(await pdf.save());
 
-          CustomAlertDialog.alertWithButton(
-              context: context,
-              type: AlertType.success,
-              title: "تم حفظ PDF بنجاح في: ",
-              desc: path);
+          if (context.mounted) {
+            CustomAlertDialog.alertWithButton(
+                context: context,
+                type: AlertType.success,
+                title: "تم حفظ PDF بنجاح في: ",
+                desc: path);
+          }
         }
       }
     } catch (e) {

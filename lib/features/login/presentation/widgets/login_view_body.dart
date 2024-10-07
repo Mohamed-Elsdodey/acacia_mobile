@@ -1,5 +1,6 @@
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
 import 'package:evaluation_and_follow_up/core/widgets/custom_loading_widget.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -28,9 +29,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   String email = '', password = '', schoolName = '';
   bool obscureText = true;
+  String? tokenFirebase;
   @override
   void initState() {
     getData();
+    getTokenFirebase();
     super.initState();
   }
 
@@ -186,8 +189,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                 key: AppStrings.isLoginKey, value: true);
                             upDateTokenNotifications(
                               tokenLogin: state.loginModel.data!.token!,
-                              tokenFirebase:
-                                  "11323wsdsdfdedesdsfs343434", //تغير الtoken
+                              tokenFirebase: tokenFirebase ?? "",
                             );
                             GoTo.pushAndRemoveUntil(
                                 context, const BottomNavigationBarView());
@@ -257,6 +259,16 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         await Pref.getStringFromPref(key: AppStrings.schoolNameKey) ?? "";
     setState(() {
       schoolName = name;
+    });
+  }
+
+  void getTokenFirebase() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    String? token = await messaging.getToken();
+    Pref.saveStringToPref(key: AppStrings.firebaseTokenKey, value: token ?? "");
+    setState(() {
+      tokenFirebase = token;
     });
   }
 }

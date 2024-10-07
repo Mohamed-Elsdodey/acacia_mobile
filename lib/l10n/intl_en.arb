@@ -108,5 +108,20 @@
 
   "reports_title": "تقرير الطالب للجانب الاكاديمي والسلوكي",
   "reports_1": "التقرير الاكاديمي",
-  "reports_2": "تقرير السلوك"
+  "reports_2": "تقرير السلوك",
+
+  "sub": "المادة الدراسية",
+  "total_degrees": "الدرجة الكلية",
+  "degree_stu": "درجة الطالب",
+  "academic_degree": "التقدير الاكاديمي",
+  "number_of_absence_day":"ايام الغياب",
+  "number_of_delay_day":"ايام التأخير",
+  "positive_point":"نقاط إجابية",
+  "negative_point":"نقاط سلبية",
+  "appreciation_percentage":"التقدير السلوكي",
+  "save": "حفظ",
+
+
+  "no_title": "بدون عنوان",
+  "no_dec": "بدون تفاصيل"
 }

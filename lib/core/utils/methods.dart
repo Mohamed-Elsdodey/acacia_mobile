@@ -44,7 +44,7 @@ void logoutNotifications({required String tokenFirebase}) async {
     } else if (Platform.isIOS) {
       type = "ios";
     }
-    Map<String, dynamic> data = await ApiService(Dio()).post(
+    await ApiService(Dio()).post(
       host: schoolDomain,
       endPoint: "parent/auth/logout",
       data: FormData.fromMap({
@@ -71,7 +71,7 @@ void upDateTokenNotifications(
     } else if (Platform.isIOS) {
       type = "ios";
     }
-    Map<String, dynamic> data = await ApiService(Dio()).post(
+    await ApiService(Dio()).post(
       host: schoolDomain,
       endPoint: "parent/auth/update_token?type=$type&token=$tokenFirebase",
       data: null,

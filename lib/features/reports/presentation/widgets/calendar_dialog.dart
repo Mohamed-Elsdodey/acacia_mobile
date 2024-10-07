@@ -2,12 +2,14 @@ import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../generated/l10n.dart';
+
 class CalendarDialog extends StatefulWidget {
-  const CalendarDialog({Key? key, required this.onSelect}) : super(key: key);
+  const CalendarDialog({super.key, required this.onSelect});
   final void Function(String month, String monthFormat) onSelect;
 
   @override
-  _CalendarDialogState createState() => _CalendarDialogState();
+  State<CalendarDialog> createState() => _CalendarDialogState();
 }
 
 class _CalendarDialogState extends State<CalendarDialog> {
@@ -105,7 +107,7 @@ class _CalendarDialogState extends State<CalendarDialog> {
             width: 250,
             child: GridView.count(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               crossAxisCount: 3,
               crossAxisSpacing: 0,
               mainAxisSpacing: 0,
@@ -121,8 +123,10 @@ class _CalendarDialogState extends State<CalendarDialog> {
                     },
                     child: Container(
                       height: 35,
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                      padding: EdgeInsets.symmetric(vertical: 3, horizontal: 0),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 5),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 3, horizontal: 0),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
@@ -163,16 +167,16 @@ class _CalendarDialogState extends State<CalendarDialog> {
               child: Container(
                 height: 35,
                 width: 80,
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                padding: EdgeInsets.symmetric(vertical: 3, horizontal: 0),
+                margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: Theme.of(context).primaryColor,
                 ),
                 child: Text(
-                  'حفظ',
-                  style: TextStyle(fontSize: 14, color: Colors.white),
+                  S.of(context).save,
+                  style: const TextStyle(fontSize: 14, color: Colors.white),
                 ),
               ),
             ),
