@@ -31,7 +31,7 @@ class _SchedulesViewBodyState extends State<SchedulesViewBody> {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: const Color(0xffB48200),
+              color: Theme.of(context).primaryColor,
             ),
             alignment: Alignment.center,
             child: Text(

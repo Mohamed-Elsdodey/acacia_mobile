@@ -32,14 +32,18 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
               if (state is ChildernSuccess) {
                 List<DataChildern>? listChildern = state.childernModel.data;
                 if (listChildern!.isNotEmpty) {
-                  return ListView.separated(
-                    itemBuilder: (context, index) => ChildernListItem(
-                      childernInfo: listChildern[index],
-                    ),
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: 8,
-                    ),
-                    itemCount: listChildern.length,
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: 8,
+                      ),
+                      ...List.generate(
+                        listChildern.length,
+                        (index) => ChildernListItem(
+                          childernInfo: listChildern[index],
+                        ),
+                      ),
+                    ],
                   );
                 } else {
                   return Padding(

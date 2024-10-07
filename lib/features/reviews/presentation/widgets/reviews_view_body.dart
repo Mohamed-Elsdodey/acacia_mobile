@@ -42,14 +42,18 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
                   List<ReviewItem>? listReviews = state.reviewsModel.data;
 
                   if (listReviews!.isNotEmpty) {
-                    return ListView.separated(
-                      itemBuilder: (context, index) => ReviewsListItem(
-                        reviewItem: listReviews[index],
-                      ),
-                      separatorBuilder: (context, index) => const SizedBox(
-                        height: 8,
-                      ),
-                      itemCount: listReviews.length,
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: 8,
+                        ),
+                        ...List.generate(
+                          listReviews.length,
+                          (index) => ReviewsListItem(
+                            reviewItem: listReviews[index],
+                          ),
+                        ),
+                      ],
                     );
                   } else {
                     return Padding(

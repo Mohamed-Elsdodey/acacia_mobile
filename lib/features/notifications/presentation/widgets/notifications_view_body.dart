@@ -42,14 +42,17 @@ class _NotificationsViewBodyState extends State<NotificationsViewBody> {
                       state.notificationsModel.data;
 
                   if (listNotifications!.isNotEmpty) {
-                    return ListView.separated(
-                      itemBuilder: (context, index) => NotificationsListItem(
-                        notificationItem: listNotifications[index],
-                      ),
-                      separatorBuilder: (context, index) => const SizedBox(
-                        height: 8,
-                      ),
-                      itemCount: listNotifications.length,
+                    return Column(
+                      children: [
+                        ...List.generate(
+                          listNotifications.length,
+                          (index) {
+                            return NotificationsListItem(
+                              notificationItem: listNotifications[index],
+                            );
+                          },
+                        )
+                      ],
                     );
                   } else {
                     return Padding(
