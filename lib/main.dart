@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:evaluation_and_follow_up/core/utils/my_http_overrides.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -10,16 +12,39 @@ import 'core/manager/color_provider.dart';
 import 'core/utils/app_strings.dart';
 import 'core/utils/service_locator.dart';
 import 'features/splash/presentation/views/splash_view.dart';
+import 'firebase_options.dart';
 import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
   setupServiceLocator();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseMessaging.instance.requestPermission(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
 
+  // احصل على الـ Token لجهاز المستخدم
+  String? token = await messaging.getToken();
+  print("===========================================\n\n\n\n\n");
+  print("Firebase Messaging Token: $token");
+
+  // استقبال الإشعارات عندما يكون التطبيق في الخلفية
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(ChangeNotifierProvider(
       create: (context) => ColorProvider()..loadColor(),
       child: const EvaluationAndFollowUp()));
+}
+
+// التعامل مع الإشعارات في الخلفية
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print("===========================================\n\n\n\n\n");
+  print("Handling a background message: ${message.messageId}");
 }
 
 class EvaluationAndFollowUp extends StatefulWidget {
@@ -42,6 +67,18 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
   @override
   void initState() {
     super.initState();
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print("===========================================\n\n\n\n\n");
+      print(
+          'Received message while app is in foreground: ${message.notification?.title}');
+      // يمكنك هنا إظهار Alert Dialog للإشعارات الفورية
+    });
+
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+
+      print("===========================================\n\n\n\n\n");
+      print('Message clicked! App opened');
+    });
   }
 
   @override

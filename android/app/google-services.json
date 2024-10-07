@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "799123089802",
+    "project_id": "evaluate-track",
+    "storage_bucket": "evaluate-track.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799123089802:android:ceef2dd99afe7e73ec4073",
+        "android_client_info": {
+          "package_name": "com.evaluate.track.alandalos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799123089802-92sparhatfafqj2p740u37gnvrqdh96l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS5_7jqLMEsyBZqOJNz_KEOVVRnTnIM-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799123089802-92sparhatfafqj2p740u37gnvrqdh96l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "799123089802-mropis8rbq5dq7o5b6dj82s6gvhepu5d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.evaluate.track.alandalos"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

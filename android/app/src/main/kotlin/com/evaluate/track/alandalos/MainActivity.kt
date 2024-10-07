@@ -1,4 +1,4 @@
-package com.example.evaluation_and_follow_up
+package com.evaluate.track.alandalos
 
 import io.flutter.embedding.android.FlutterActivity
 
