@@ -8,6 +8,7 @@ import '../../features/exams/data/repositories/exams_repo_impl.dart';
 import '../../features/home/data/repositories/home_repo_impl.dart';
 import '../../features/login/data/repositories/login_repo_impl.dart';
 import '../../features/notifications/data/repositories/notifications_repo_impl.dart';
+import '../../features/opinions/data/repositories/opinions_repo_impl.dart';
 import '../../features/reports/data/repositories/reports_repo_impl.dart';
 import '../../features/reviews/data/repositories/reviews_repo_impl.dart';
 import '../../features/schedules/data/repositories/schedules_repo_impl.dart';
@@ -85,6 +86,12 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<ReportsRepoImpl>(
     ReportsRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+
+  getIt.registerSingleton<OpinionsRepoImpl>(
+    OpinionsRepoImpl(
       getIt.get<ApiService>(),
     ),
   );

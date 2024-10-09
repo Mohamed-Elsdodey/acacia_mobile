@@ -1029,6 +1029,26 @@ class S {
       args: [],
     );
   }
+
+  /// `الأراء`
+  String get opinions {
+    return Intl.message(
+      'الأراء',
+      name: 'opinions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `المادة`
+  String get sub_opinion {
+    return Intl.message(
+      'المادة',
+      name: 'sub_opinion',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

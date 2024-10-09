@@ -1,5 +1,6 @@
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
 import 'package:evaluation_and_follow_up/features/dataAccount/presentation/views/data_account_view.dart';
+import 'package:evaluation_and_follow_up/features/opinions/presentation/views/opinions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -37,6 +38,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
       MoreItemModel(
           title: S.of(context).data_acount, imagePath: AppAssets.frame4),
       MoreItemModel(title: S.of(context).summary, imagePath: AppAssets.frame1),
+      MoreItemModel(title: S.of(context).opinions, imagePath: AppAssets.frame2),
       MoreItemModel(
           title: S.of(context).about_app, imagePath: AppAssets.frame5),
       MoreItemModel(title: S.of(context).logout, imagePath: AppAssets.frame6),
@@ -110,10 +112,13 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                       GoTo.push(context, const SummaryView());
                       break;
                     case 5:
+                      GoTo.push(context, const OpinionsView());
                       break;
                     case 6:
+                      break;
+                    case 7:
                       String firebaseToken = await getTokenFirebase();
-                      if(context.mounted){
+                      if (context.mounted) {
                         CustomAlertDialog.alertWithTwoButton(
                             context: context,
                             type: AlertType.warning,
@@ -137,7 +142,8 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                               logoutNotifications(
                                 tokenFirebase: firebaseToken,
                               );
-                              GoTo.pushAndRemoveUntil(context, const LoginView());
+                              GoTo.pushAndRemoveUntil(
+                                  context, const LoginView());
                             });
                       }
                       break;
@@ -166,7 +172,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                         width: 36,
                         height: 36,
                         color:
-                            index == 5 ? Theme.of(context).primaryColor : null,
+                            index == 6 ? Theme.of(context).primaryColor : null,
                       ),
                       Text(
                         moreList[index].title,

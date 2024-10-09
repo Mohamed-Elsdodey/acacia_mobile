@@ -95,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "number_of_delay_day":
             MessageLookupByLibrary.simpleMessage("ايام التأخير"),
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
+        "opinions": MessageLookupByLibrary.simpleMessage("الأراء"),
         "p_choose_school":
             MessageLookupByLibrary.simpleMessage("من فضلك أدخل كود المدرسة!❤"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -122,6 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "st_info": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
         "student_type": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
         "sub": MessageLookupByLibrary.simpleMessage("المادة الدراسية"),
+        "sub_opinion": MessageLookupByLibrary.simpleMessage("المادة"),
         "sub_teacher": MessageLookupByLibrary.simpleMessage("اسم المدرس: "),
         "subject": MessageLookupByLibrary.simpleMessage("المادة الدراسية: "),
         "summary": MessageLookupByLibrary.simpleMessage("الموجز"),
