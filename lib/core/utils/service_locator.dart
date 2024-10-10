@@ -14,6 +14,7 @@ import '../../features/reviews/data/repositories/reviews_repo_impl.dart';
 import '../../features/schedules/data/repositories/schedules_repo_impl.dart';
 import '../../features/schoolCode/data/repositories/school_code_repo_impl.dart';
 import '../../features/summary/data/repositories/summary_repo_impl.dart';
+import '../../features/weeklyMessage/data/repositories/weekly_message_repo_impl.dart';
 import 'api_service.dart';
 
 final getIt = GetIt.instance;
@@ -92,6 +93,12 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<OpinionsRepoImpl>(
     OpinionsRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+
+  getIt.registerSingleton<WeeklyMessageRepoImpl>(
+    WeeklyMessageRepoImpl(
       getIt.get<ApiService>(),
     ),
   );

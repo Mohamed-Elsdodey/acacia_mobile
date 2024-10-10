@@ -35,7 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "childern": MessageLookupByLibrary.simpleMessage("الأبناء"),
         "choose_anther_school":
             MessageLookupByLibrary.simpleMessage("حدد مدرسة أخرى"),
+        "choose_maoth": MessageLookupByLibrary.simpleMessage("حدد الشهر"),
         "choose_school": MessageLookupByLibrary.simpleMessage("تحديد المدرسة"),
+        "choose_week": MessageLookupByLibrary.simpleMessage("حدد الإسبوع"),
         "classes": MessageLookupByLibrary.simpleMessage("الحصص"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
@@ -151,6 +153,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "warning": MessageLookupByLibrary.simpleMessage("عفواً"),
         "warning_massge": MessageLookupByLibrary.simpleMessage(
             "لقد انتهت صلاحية الجلسة برجاء تسجيل الدخول مرة أخرى."),
+        "weekly_message":
+            MessageLookupByLibrary.simpleMessage("الرسالة الإسبوعية"),
         "welcome": MessageLookupByLibrary.simpleMessage("أهلا بكم فى مدرسة ")
       };
 }

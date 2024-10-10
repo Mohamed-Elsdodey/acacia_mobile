@@ -1049,6 +1049,36 @@ class S {
       args: [],
     );
   }
+
+  /// `الرسالة الإسبوعية`
+  String get weekly_message {
+    return Intl.message(
+      'الرسالة الإسبوعية',
+      name: 'weekly_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `حدد الشهر`
+  String get choose_maoth {
+    return Intl.message(
+      'حدد الشهر',
+      name: 'choose_maoth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `حدد الإسبوع`
+  String get choose_week {
+    return Intl.message(
+      'حدد الإسبوع',
+      name: 'choose_week',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -37,11 +37,11 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
         ),
         elevation: 2,
         child: SizedBox(
-          height: 80,
+          height: 85,
           child: Row(
             children: [
               Container(
-                height: 80,
+                height: 85,
                 width: 10,
                 margin: const EdgeInsetsDirectional.only(end: 5),
                 decoration: BoxDecoration(
@@ -77,10 +77,11 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
                         style: const TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w700),
                       ),
-                      const SizedBox(height: 5),
+                      const SizedBox(height: 2),
                       Text(
                         widget.notificationItem.text.toString(),
                         overflow: TextOverflow.ellipsis,
+                        maxLines: 3,
                         style: const TextStyle(
                             fontSize: 13, fontWeight: FontWeight.w400),
                       ),

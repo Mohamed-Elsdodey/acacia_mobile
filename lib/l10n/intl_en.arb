@@ -127,5 +127,10 @@
 
 
   "opinions": "الأراء",
-  "sub_opinion": "المادة"
+  "sub_opinion": "المادة",
+
+
+  "weekly_message": "الرسالة الإسبوعية",
+  "choose_maoth": "حدد الشهر",
+  "choose_week": "حدد الإسبوع"
 }

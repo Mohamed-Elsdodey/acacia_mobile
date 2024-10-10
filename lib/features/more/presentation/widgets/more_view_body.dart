@@ -1,6 +1,5 @@
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
 import 'package:evaluation_and_follow_up/features/dataAccount/presentation/views/data_account_view.dart';
-import 'package:evaluation_and_follow_up/features/opinions/presentation/views/opinions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -15,8 +14,10 @@ import '../../../exams/presentation/views/exams_view.dart';
 import '../../../home/presentation/views/home_view.dart';
 import '../../../login/presentation/views/login_view.dart';
 import '../../../notifications/presentation/views/notifications_view.dart';
+import '../../../opinions/presentation/views/opinions_view.dart';
 import '../../../reports/presentation/views/reports_view.dart';
 import '../../../summary/presentation/views/summary_view.dart';
+import '../../../weeklyMessage/presentation/views/weekly_message_view.dart';
 import '../../data/models/more_item_model.dart';
 
 class MoreViewBody extends StatefulWidget {
@@ -39,6 +40,8 @@ class _MoreViewBodyState extends State<MoreViewBody> {
           title: S.of(context).data_acount, imagePath: AppAssets.frame4),
       MoreItemModel(title: S.of(context).summary, imagePath: AppAssets.frame1),
       MoreItemModel(title: S.of(context).opinions, imagePath: AppAssets.frame2),
+      MoreItemModel(
+          title: S.of(context).weekly_message, imagePath: AppAssets.frame4),
       MoreItemModel(
           title: S.of(context).about_app, imagePath: AppAssets.frame5),
       MoreItemModel(title: S.of(context).logout, imagePath: AppAssets.frame6),
@@ -115,8 +118,11 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                       GoTo.push(context, const OpinionsView());
                       break;
                     case 6:
+                      GoTo.push(context, const WeeklyMessageView());
                       break;
                     case 7:
+                      break;
+                    case 8:
                       String firebaseToken = await getTokenFirebase();
                       if (context.mounted) {
                         CustomAlertDialog.alertWithTwoButton(
@@ -172,7 +178,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                         width: 36,
                         height: 36,
                         color:
-                            index == 6 ? Theme.of(context).primaryColor : null,
+                            index == 7 ? Theme.of(context).primaryColor : null,
                       ),
                       Text(
                         moreList[index].title,

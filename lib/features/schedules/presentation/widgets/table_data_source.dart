@@ -55,6 +55,8 @@ class TableDataSource extends DataGridSource {
             child: Text(
               e.value,
               textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                   color: Colors.black,
                   fontSize: 10,
