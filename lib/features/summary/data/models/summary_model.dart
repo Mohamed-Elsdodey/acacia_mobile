@@ -23,7 +23,7 @@ class SummaryModel {
 }
 
 class SummaryData {
-  num? percentage;
+  String? percentage;
   String? percentageTitle;
   List<Exams>? exams;
 
@@ -56,7 +56,7 @@ class Exams {
   int? degreeOfExam;
   int? degreeOfStudent;
   String? categoryName;
-  double? percentage;
+  String? percentage;
   String? percentageTitle;
 
   Exams(

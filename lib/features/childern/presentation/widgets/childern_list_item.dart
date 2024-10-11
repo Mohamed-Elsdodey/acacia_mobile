@@ -2,6 +2,7 @@ import 'package:evaluation_and_follow_up/core/utils/app_assets.dart';
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
 import 'package:evaluation_and_follow_up/features/notifications/presentation/views/notifications_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/models/childern_model.dart';
 import '../../../../generated/l10n.dart';
@@ -14,130 +15,147 @@ class ChildernListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: EdgeInsets.only(bottom: 8.r),
       child: Card(
         color: Colors.white,
         surfaceTintColor: Colors.white,
         shadowColor: Colors.white,
         shape: RoundedRectangleBorder(
           side: BorderSide(width: 1, color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
         ),
         elevation: 2,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0.r),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 104,
-                width: 80,
+                height: 104.h,
+                width: 80.w,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(childernInfo.image!)),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     border: Border.all(
                         color: Theme.of(context).primaryColor, width: 2)),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 16.r),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         childernInfo.name!,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.w700,
-                          fontSize: 14,
+                          fontSize: 14.sp,
                         ),
                       ),
-                      const SizedBox(height: 5),
+                      SizedBox(
+                        height: 5.h,
+                      ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             S.of(context).row,
                             style: const TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 10),
                           ),
-                          Text(
-                            childernInfo.row!.title!,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 12),
+                          Expanded(
+                            child: Text(
+                              childernInfo.row!.title!,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 12),
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 5,
+                      SizedBox(
+                        height: 5.h,
                       ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             S.of(context).room,
                             style: const TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 10),
                           ),
-                          Text(
-                            childernInfo.room!.title!,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 12),
+                          Expanded(
+                            child: Text(
+                              childernInfo.room!.title!,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 12),
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 5,
+                      SizedBox(
+                        height: 5.h,
                       ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             S.of(context).rank_school,
                             style: const TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 10),
                           ),
-                          Text(
-                            childernInfo.schoolRank.toString(),
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 12),
+                          Expanded(
+                            child: Text(
+                              childernInfo.schoolRank.toString(),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 12),
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 5,
+                      SizedBox(
+                        height: 5.h,
                       ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             S.of(context).rank_row,
                             style: const TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 10),
                           ),
-                          Text(
-                            childernInfo.rowRank.toString(),
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 12),
+                          Expanded(
+                            child: Text(
+                              childernInfo.rowRank.toString(),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 12),
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 5,
+                      SizedBox(
+                        height: 5.h,
                       ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             S.of(context).rank_room,
                             style: const TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 10),
                           ),
-                          Text(
-                            childernInfo.roomRank.toString(),
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 12),
+                          Expanded(
+                            child: Text(
+                              childernInfo.roomRank.toString(),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 12),
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 5,
+                      SizedBox(
+                        height: 5.h,
                       ),
                     ],
                   ),
@@ -154,21 +172,21 @@ class ChildernListItem extends StatelessWidget {
                     child: Image.asset(
                       AppAssets.notification,
                       color: Colors.black,
-                      height: 30,
-                      width: 30,
+                      height: 30.h,
+                      width: 30.w,
                     ),
                   ),
                   PositionedDirectional(
                       top: 0,
                       start: 0,
                       child: CircleAvatar(
-                        maxRadius: 7,
+                        maxRadius: 8.r,
                         backgroundColor: Colors.red,
                         child: Center(
                           child: Text(
                             childernInfo.newNotificationCount.toString(),
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 10),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 10.sp),
                           ),
                         ),
                       )),

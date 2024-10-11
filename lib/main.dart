@@ -7,10 +7,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
-import 'core/helper/AlertDialog/custom_alert_dialog.dart';
 import 'core/helper/SharedPreferences/pref.dart';
 import 'core/manager/color_provider.dart';
 import 'core/utils/app_strings.dart';
@@ -70,49 +69,52 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
     );
     flutterLocalNotificationsPlugin.initialize(initializationSettings);
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      WidgetsBinding.instance.addPostFrameCallback(
-        (timeStamp) {
-          CustomAlertDialog.alertWithButton(
-              context: context,
-              type: AlertType.info,
-              title: message.notification?.title ?? S.of(context).no_title,
-              desc: message.notification?.body ?? S.of(context).no_dec,
-              onPressed: () {
-                GoTo.push(context, const NotificationsView(studentId: 1));
-              });
-        },
-      );
-      // _showNotification(message);
+      print("\n\n\n\n\n\n===========================================\n\n\n\n");
+      // WidgetsBinding.instance.addPostFrameCallback(
+      //   (timeStamp) {
+      //     CustomAlertDialog.alertWithButton(
+      //         context: context,
+      //         type: AlertType.info,
+      //         title: message.notification?.title ?? S.of(context).no_title,
+      //         desc: message.notification?.body ?? S.of(context).no_dec,
+      //         onPressed: () {
+      //           GoTo.push(context, const NotificationsView(studentId: 1));
+      //         });
+      //   },
+      // );
+      _showNotification(message);
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print("\n\n\n\n\n\n*************************************\n\n\n\n");
       GoTo.push(context, const NotificationsView(studentId: 1));
     });
     checkForInitialMessage();
   }
 
-  // Future<void> _showNotification(RemoteMessage message) async {
-  //   var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
-  //     'channel_id',
-  //     'channel_name',
-  //     channelDescription: 'channel_description',
-  //     importance: Importance.max,
-  //     priority: Priority.high,
-  //     showWhen: false,
-  //   );
-  //   var platformChannelSpecifics =
-  //       NotificationDetails(android: androidPlatformChannelSpecifics);
-  //   await flutterLocalNotificationsPlugin.show(
-  //     0, // notification id
-  //     message.notification?.title,
-  //     message.notification?.body,
-  //     platformChannelSpecifics,
-  //   );
-  // }
+  Future<void> _showNotification(RemoteMessage message) async {
+    var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
+      'channel_id',
+      'channel_name',
+      channelDescription: 'channel_description',
+      importance: Importance.max,
+      priority: Priority.high,
+      showWhen: false,
+    );
+    var platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(
+      0, // notification id
+      message.notification?.title,
+      message.notification?.body,
+      platformChannelSpecifics,
+    );
+  }
 
   Future<void> checkForInitialMessage() async {
     RemoteMessage? initialMessage =
         await FirebaseMessaging.instance.getInitialMessage();
     if (initialMessage != null) {
+      print("\n\n\n\n\n\n////////////////////////////////////\n\n\n\n");
       GoTo.push(context, const NotificationsView(studentId: 1));
     }
   }
@@ -125,31 +127,36 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ColorProvider>(
-      builder: (context, colorProvider, child) {
-        return MaterialApp(
-          title: AppStrings.appTitleKey,
-          theme: ThemeData(
-            fontFamily: 'Sukar',
-            primaryColor: colorProvider.currentColor,
-            scaffoldBackgroundColor: const Color(0XFFFFFFFF),
-            useMaterial3: true,
-            textSelectionTheme: TextSelectionThemeData(
-              cursorColor: colorProvider.currentColor,
-              selectionColor: colorProvider.currentColor.withOpacity(0.5),
-              selectionHandleColor: colorProvider.currentColor,
-            ),
-          ),
-          debugShowCheckedModeBanner: false,
-          locale: _locale,
-          supportedLocales: S.delegate.supportedLocales,
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-          ],
-          home: const SplashView(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 800),
+      builder: (context, child) {
+        return Consumer<ColorProvider>(
+          builder: (context, colorProvider, child) {
+            return MaterialApp(
+              title: AppStrings.appTitleKey,
+              theme: ThemeData(
+                fontFamily: 'Sukar',
+                primaryColor: colorProvider.currentColor,
+                scaffoldBackgroundColor: const Color(0XFFFFFFFF),
+                useMaterial3: true,
+                textSelectionTheme: TextSelectionThemeData(
+                  cursorColor: colorProvider.currentColor,
+                  selectionColor: colorProvider.currentColor.withOpacity(0.5),
+                  selectionHandleColor: colorProvider.currentColor,
+                ),
+              ),
+              debugShowCheckedModeBanner: false,
+              locale: _locale,
+              supportedLocales: S.delegate.supportedLocales,
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+              ],
+              home: const SplashView(),
+            );
+          },
         );
       },
     );

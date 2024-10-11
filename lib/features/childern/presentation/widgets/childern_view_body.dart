@@ -2,6 +2,7 @@ import 'package:evaluation_and_follow_up/core/widgets/custom_refresh_page.dart';
 import 'package:evaluation_and_follow_up/features/childern/presentation/widgets/childern_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/models/childern_model.dart';
 import '../../../../core/widgets/custom_error_massage.dart';
@@ -26,7 +27,7 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16.r),
           child: BlocBuilder<ChildernCubit, ChildernState>(
             builder: (context, state) {
               if (state is ChildernSuccess) {
@@ -34,8 +35,8 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
                 if (listChildern!.isNotEmpty) {
                   return Column(
                     children: [
-                      const SizedBox(
-                        height: 8,
+                      SizedBox(
+                        height: 8.h,
                       ),
                       ...List.generate(
                         listChildern.length,
@@ -47,18 +48,18 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
                   );
                 } else {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 100),
+                    padding: EdgeInsets.symmetric(vertical: 100.r),
                     child: Center(child: Text(S.of(context).no_childern)),
                   );
                 }
               } else if (state is ChildernFailure) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 100),
+                  padding: EdgeInsets.symmetric(vertical: 100.r),
                   child: CustomErrorMassage(errorMassage: state.errorMassage),
                 );
               } else {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 100),
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 100.r),
                   child: CustomLoadingWidget(),
                 );
               }

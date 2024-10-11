@@ -1,5 +1,6 @@
 import 'package:evaluation_and_follow_up/features/reviews/data/models/reviews_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../generated/l10n.dart';
 
@@ -16,7 +17,7 @@ class _ReviewsListItemState extends State<ReviewsListItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: EdgeInsets.only(bottom: 8.r),
       child: Card(
         color: widget.reviewItem.type == "negative"
             ? Colors.red.shade50
@@ -29,139 +30,160 @@ class _ReviewsListItemState extends State<ReviewsListItem> {
         ),
         elevation: 2,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0.r),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 5.h,
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     S.of(context).st_info,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w900, fontSize: 14),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w900, fontSize: 14.sp),
                   ),
-                  Text(
-                    widget.reviewItem.type == "negative"
-                        ? S.of(context).nagative
-                        : S.of(context).positive,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16,
-                        color: widget.reviewItem.type == "negative"
-                            ? Colors.red
-                            : Colors.blue),
+                  Expanded(
+                    child: Text(
+                      widget.reviewItem.type == "negative"
+                          ? S.of(context).nagative
+                          : S.of(context).positive,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16.sp,
+                          color: widget.reviewItem.type == "negative"
+                              ? Colors.red
+                              : Colors.blue),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 5.h,
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     S.of(context).points,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 10),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 10.sp),
                   ),
-                  Text(
-                    widget.reviewItem.points.toString(),
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w400, fontSize: 12),
+                  Expanded(
+                    child: Text(
+                      widget.reviewItem.points.toString(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 12.sp),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 5.h,
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     widget.reviewItem.type == "negative"
                         ? S.of(context).total_nagative
                         : S.of(context).total_positive,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 10),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 10.sp),
                   ),
-                  Text(
-                    widget.reviewItem.balance.toString(),
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w400, fontSize: 12),
+                  Expanded(
+                    child: Text(
+                      widget.reviewItem.balance.toString(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 12.sp),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 5.h,
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     S.of(context).total_point,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 10),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 10.sp),
                   ),
-                  Text(
-                    widget.reviewItem.totalPoints.toString(),
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w400, fontSize: 12),
+                  Expanded(
+                    child: Text(
+                      widget.reviewItem.totalPoints.toString(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 12.sp),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 5.h,
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     S.of(context).subject,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 10),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 10.sp),
                   ),
-                  Text(
-                    widget.reviewItem.category!.title!,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w400, fontSize: 12),
+                  Expanded(
+                    child: Text(
+                      widget.reviewItem.category!.title!,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 12.sp),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 5.h,
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     S.of(context).teacher,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 10),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 10.sp),
                   ),
-                  Text(
-                    widget.reviewItem.teacher!.name!,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w400, fontSize: 12),
+                  Expanded(
+                    child: Text(
+                      widget.reviewItem.teacher!.name!,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 12.sp),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 5.h,
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     S.of(context).date,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 10),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 10.sp),
                   ),
-                  Text(
-                    widget.reviewItem.date!,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w400, fontSize: 12),
+                  Expanded(
+                    child: Text(
+                      widget.reviewItem.date!,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 12.sp),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 5.h,
               ),
             ],
           ),

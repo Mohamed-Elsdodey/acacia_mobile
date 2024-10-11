@@ -1,6 +1,7 @@
 import 'package:evaluation_and_follow_up/core/widgets/custom_refresh_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/methods.dart';
 import '../../../../core/widgets/custom_error_massage.dart';
@@ -27,7 +28,7 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16.r),
           child: BlocBuilder<ReviewsCubit, ReviewsState>(
             builder: (context, state) {
               if (state is ReviewsSuccess) {
@@ -35,7 +36,7 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
                   return invalidToken(context);
                 } else if (state.reviewsModel.status == 403) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 100),
+                    padding: EdgeInsets.symmetric(vertical: 100.r),
                     child: Center(child: Text(S.of(context).no_reviews)),
                   );
                 } else {
@@ -44,8 +45,8 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
                   if (listReviews!.isNotEmpty) {
                     return Column(
                       children: [
-                        const SizedBox(
-                          height: 8,
+                        SizedBox(
+                          height: 8.h,
                         ),
                         ...List.generate(
                           listReviews.length,
@@ -57,19 +58,19 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
                     );
                   } else {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 100),
+                      padding: EdgeInsets.symmetric(vertical: 100.r),
                       child: Center(child: Text(S.of(context).no_reviews)),
                     );
                   }
                 }
               } else if (state is ReviewsFailure) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 100),
+                  padding: EdgeInsets.symmetric(vertical: 100.r),
                   child: CustomErrorMassage(errorMassage: state.errorMassage),
                 );
               } else {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 100),
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 100.r),
                   child: CustomLoadingWidget(),
                 );
               }

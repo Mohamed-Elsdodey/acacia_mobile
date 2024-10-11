@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/go_to.dart';
@@ -38,7 +39,10 @@ class _ChildernViewState extends State<ChildernView> {
           backgroundColor: Theme.of(context).primaryColor,
           title: Text(
             S.of(context).childern,
-            style: const TextStyle(color: Colors.white),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w700),
           ),
           centerTitle: true,
           actions: [
@@ -48,7 +52,7 @@ class _ChildernViewState extends State<ChildernView> {
                     context, NotificationsView(studentId: HomeView.studentId));
               },
               child: Padding(
-                padding: const EdgeInsetsDirectional.only(end: 24),
+                padding: EdgeInsetsDirectional.only(end: 24.r),
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
@@ -56,12 +60,12 @@ class _ChildernViewState extends State<ChildernView> {
                       AppAssets.notification,
                       color: Colors.white,
                     ),
-                    const PositionedDirectional(
-                      top: -2,
-                      start: 0,
+                    PositionedDirectional(
+                      top: -2.h,
+                      start: 0.w,
                       child: CircleAvatar(
                         backgroundColor: Colors.red,
-                        radius: 4,
+                        radius: 4.r,
                       ),
                     )
                   ],

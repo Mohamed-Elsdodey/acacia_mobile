@@ -2,6 +2,7 @@ import 'package:evaluation_and_follow_up/core/utils/app_assets.dart';
 import 'package:evaluation_and_follow_up/features/home/presentation/manager/childern/childern_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/utils/go_to.dart';
@@ -52,8 +53,11 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text(DateFormat('EEEE dd-MM-yyyy', lang)
-              .format(DateTime.now().toLocal())),
+          title: Text(
+            DateFormat('EEEE dd-MM-yyyy', lang)
+                .format(DateTime.now().toLocal()),
+            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),
+          ),
           actions: [
             InkWell(
               onTap: () {
@@ -67,12 +71,12 @@ class _HomeViewState extends State<HomeView> {
                     AppAssets.notification,
                     color: Colors.black,
                   ),
-                  const PositionedDirectional(
-                    top: -2,
-                    start: 0,
+                  PositionedDirectional(
+                    top: -2.h,
+                    start: 0.w,
                     child: CircleAvatar(
                       backgroundColor: Colors.red,
-                      radius: 4,
+                      radius: 4.r,
                     ),
                   )
                 ],
@@ -89,12 +93,12 @@ class _HomeViewState extends State<HomeView> {
                       AppAssets.massge,
                       color: Colors.black,
                     ),
-                    const PositionedDirectional(
-                      top: -2,
-                      start: 0,
+                    PositionedDirectional(
+                      top: -2.h,
+                      start: 0.w,
                       child: CircleAvatar(
                         backgroundColor: Colors.red,
-                        radius: 4,
+                        radius: 4.r,
                       ),
                     )
                   ],

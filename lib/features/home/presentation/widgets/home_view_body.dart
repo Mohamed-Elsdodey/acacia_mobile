@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 
@@ -127,11 +128,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                               elevation: 2,
                               child: CustomDropdown<String>(
                                 initialItem: childernData.name,
-                                closedHeaderPadding: const EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 8),
-                                decoration: const CustomDropdownDecoration(
+                                closedHeaderPadding: EdgeInsets.symmetric(
+                                    horizontal: 15.r, vertical: 8.r),
+                                decoration: CustomDropdownDecoration(
                                   headerStyle: TextStyle(
-                                      fontSize: 16, color: Colors.black),
+                                      fontSize: 16.sp, color: Colors.black),
                                   closedFillColor: Colors.transparent,
                                 ),
                                 items: List.generate(
@@ -188,20 +189,20 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         );
                       } else {
                         return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 100),
+                          padding: EdgeInsets.symmetric(vertical: 100.r),
                           child: Center(child: Text(S.of(context).no_childern)),
                         );
                       }
                     }
                   } else if (state is ChildernFailure) {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 100),
+                      padding: EdgeInsets.symmetric(vertical: 100.r),
                       child:
                           CustomErrorMassage(errorMassage: state.errorMassage),
                     );
                   } else {
                     return SizedBox(
-                      height: 200,
+                      height: 200.h,
                       child: Card(
                         color: Colors.grey[100],
                         surfaceTintColor: Colors.grey[100],
@@ -209,7 +210,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         shape: RoundedRectangleBorder(
                           side:
                               BorderSide(width: 1, color: Colors.grey.shade300),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.r),
                         ),
                         elevation: 2,
                         child: const CustomLoadingWidget(),
@@ -239,11 +240,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                 shape: RoundedRectangleBorder(
                                   side: BorderSide(
                                       width: 1, color: Colors.grey.shade300),
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: BorderRadius.circular(12.r),
                                 ),
                                 elevation: 2,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(14),
+                                  padding: EdgeInsets.all(14.r),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -255,7 +256,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                           Text(
                                             S.of(context).summary,
                                             style: TextStyle(
-                                                fontSize: 18,
+                                                fontSize: 18.sp,
                                                 fontWeight: FontWeight.w700,
                                                 color: Theme.of(context)
                                                     .primaryColor),
@@ -279,16 +280,15 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                                   .toString());
                                                 },
                                                 child: Container(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      vertical: 5,
-                                                      horizontal: 12),
-                                                  margin: const EdgeInsets
-                                                      .symmetric(horizontal: 5),
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical: 5.r,
+                                                      horizontal: 12.r),
+                                                  margin: EdgeInsets.symmetric(
+                                                      horizontal: 5.r),
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            20),
+                                                            20.r),
                                                     color: isSelected1 == 1
                                                         ? Theme.of(context)
                                                             .primaryColor
@@ -300,7 +300,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.w400,
-                                                          fontSize: 12,
+                                                          fontSize: 12.sp,
                                                           color: isSelected1 ==
                                                                   1
                                                               ? Colors.white
@@ -322,13 +322,14 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                         DateTime.now().year,
                                                         12),
                                                     monthPickerDialogSettings:
-                                                        const MonthPickerDialogSettings(
+                                                        MonthPickerDialogSettings(
                                                       buttonsSettings:
                                                           PickerButtonsSettings(
                                                         monthTextStyle:
                                                             TextStyle(
-                                                                fontSize: 12),
-                                                        selectedDateRadius: 2,
+                                                                fontSize:
+                                                                    12.sp),
+                                                        selectedDateRadius: 2.r,
                                                       ),
                                                     ),
                                                   ).then((date) {
@@ -359,16 +360,15 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                   });
                                                 },
                                                 child: Container(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      vertical: 5,
-                                                      horizontal: 12),
-                                                  margin: const EdgeInsets
-                                                      .symmetric(horizontal: 5),
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical: 5.r,
+                                                      horizontal: 12.r),
+                                                  margin: EdgeInsets.symmetric(
+                                                      horizontal: 5.r),
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            20),
+                                                            20.r),
                                                     color: isSelected1 == 2
                                                         ? Theme.of(context)
                                                             .primaryColor
@@ -383,7 +383,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
-                                                              fontSize: 12,
+                                                              fontSize: 12.sp,
                                                               color:
                                                                   isSelected1 ==
                                                                           2
@@ -395,7 +395,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                         Icon(
                                                           Icons
                                                               .keyboard_arrow_down,
-                                                          size: 16,
+                                                          size: 16.r,
                                                           color: isSelected1 ==
                                                                   2
                                                               ? Colors.white
@@ -410,12 +410,12 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(
-                                        height: 45,
+                                      SizedBox(
+                                        height: 45.h,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 8.0),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 8.0.r),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -427,7 +427,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 CustomPaint(
-                                                  size: const Size(100,
+                                                  size: Size(100,
                                                       100), // no effect while adding child
                                                   painter: CustomCircularPaint(
                                                       progressValue: isSelected1 ==
@@ -443,8 +443,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                       gradientColor:
                                                           Colors.green),
                                                   child: Card(
-                                                    margin:
-                                                        const EdgeInsets.all(8),
+                                                    margin: EdgeInsets.all(8),
                                                     color: Colors.white,
                                                     shape:
                                                         RoundedRectangleBorder(
@@ -469,13 +468,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                     ),
                                                   ),
                                                 ),
-                                                const SizedBox(
-                                                  height: 20,
+                                                SizedBox(
+                                                  height: 20.h,
                                                 ),
                                                 Text(
                                                   S.of(context).academic,
-                                                  style: const TextStyle(
-                                                      fontSize: 15,
+                                                  style: TextStyle(
+                                                      fontSize: 15.sp,
                                                       fontWeight:
                                                           FontWeight.w700),
                                                 )
@@ -503,8 +502,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                       gradientColor:
                                                           Colors.orangeAccent),
                                                   child: Card(
-                                                    margin:
-                                                        const EdgeInsets.all(8),
+                                                    margin: EdgeInsets.all(8.r),
                                                     color: Colors.white,
                                                     shape:
                                                         RoundedRectangleBorder(
@@ -514,7 +512,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                               .grey.shade300),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              100),
+                                                              100.r),
                                                     ),
                                                     elevation: 4,
                                                     child: SizedBox(
@@ -529,13 +527,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                     ),
                                                   ),
                                                 ),
-                                                const SizedBox(
-                                                  height: 20,
+                                                SizedBox(
+                                                  height: 20.h,
                                                 ),
                                                 Text(
                                                   S.of(context).behavior,
-                                                  style: const TextStyle(
-                                                      fontSize: 15,
+                                                  style: TextStyle(
+                                                      fontSize: 15.sp,
                                                       fontWeight:
                                                           FontWeight.w700),
                                                 )
@@ -558,7 +556,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                             errorMassage: state.errorMassage);
                       } else if (state is AcademicReportLoading) {
                         return SizedBox(
-                          height: 250,
+                          height: 250.h,
                           child: Card(
                             color: Colors.grey[100],
                             surfaceTintColor: Colors.grey[100],
@@ -566,7 +564,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                             shape: RoundedRectangleBorder(
                               side: BorderSide(
                                   width: 1, color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(12.r),
                             ),
                             elevation: 2,
                             child: const CustomLoadingWidget(),
@@ -611,7 +609,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                 isCurved: true,
                                 dotData: const FlDotData(show: true),
                                 belowBarData: BarAreaData(
-                                  cutOffY: -14,
+                                  cutOffY: -14.r,
                                   applyCutOffY: true,
                                   show: false,
                                 ),
@@ -630,11 +628,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                               shape: RoundedRectangleBorder(
                                 side: BorderSide(
                                     width: 1, color: Colors.grey.shade300),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(12.r),
                               ),
                               elevation: 2,
                               child: Padding(
-                                padding: const EdgeInsets.all(14),
+                                padding: EdgeInsets.all(14.r),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -645,7 +643,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                         Text(
                                           S.of(context).summary,
                                           style: TextStyle(
-                                              fontSize: 18,
+                                              fontSize: 18.sp,
                                               fontWeight: FontWeight.w700,
                                               color: Theme.of(context)
                                                   .primaryColor),
@@ -669,16 +667,15 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                             .toString());
                                               },
                                               child: Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 5,
-                                                        horizontal: 12),
-                                                margin:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 5),
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: 5.r,
+                                                    horizontal: 12.r),
+                                                margin: EdgeInsets.symmetric(
+                                                    horizontal: 5.r),
                                                 decoration: BoxDecoration(
                                                   borderRadius:
-                                                      BorderRadius.circular(20),
+                                                      BorderRadius.circular(
+                                                          20.r),
                                                   color: isSelected2 == 1
                                                       ? Theme.of(context)
                                                           .primaryColor
@@ -690,7 +687,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        fontSize: 12,
+                                                        fontSize: 12.sp,
                                                         color: isSelected2 == 1
                                                             ? Colors.white
                                                             : Colors.black),
@@ -710,12 +707,12 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                   lastDate: DateTime(
                                                       DateTime.now().year, 12),
                                                   monthPickerDialogSettings:
-                                                      const MonthPickerDialogSettings(
+                                                      MonthPickerDialogSettings(
                                                     buttonsSettings:
                                                         PickerButtonsSettings(
                                                       monthTextStyle: TextStyle(
-                                                          fontSize: 12),
-                                                      selectedDateRadius: 2,
+                                                          fontSize: 12.sp),
+                                                      selectedDateRadius: 2.r,
                                                     ),
                                                   ),
                                                 ).then((date) {
@@ -745,16 +742,15 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                 });
                                               },
                                               child: Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 5,
-                                                        horizontal: 12),
-                                                margin:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 5),
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: 5.r,
+                                                    horizontal: 12.r),
+                                                margin: EdgeInsets.symmetric(
+                                                    horizontal: 5.r),
                                                 decoration: BoxDecoration(
                                                   borderRadius:
-                                                      BorderRadius.circular(20),
+                                                      BorderRadius.circular(
+                                                          20.r),
                                                   color: isSelected2 == 2
                                                       ? Theme.of(context)
                                                           .primaryColor
@@ -768,7 +764,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight.w400,
-                                                            fontSize: 12,
+                                                            fontSize: 12.sp,
                                                             color:
                                                                 isSelected2 == 2
                                                                     ? Colors
@@ -779,7 +775,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                       Icon(
                                                         Icons
                                                             .keyboard_arrow_down,
-                                                        size: 16,
+                                                        size: 16.r,
                                                         color: isSelected2 == 2
                                                             ? Colors.white
                                                             : Colors.black,
@@ -793,14 +789,14 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(
-                                      height: 45,
+                                    SizedBox(
+                                      height: 45.h,
                                     ),
                                     SizedBox(
-                                      height: 200,
+                                      height: 300.h,
                                       child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12, vertical: 20),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12.r, vertical: 20.r),
                                         child: LineChart(
                                           LineChartData(
                                             borderData:
@@ -816,38 +812,42 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                       (value, meta) {
                                                     return Padding(
                                                       padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
+                                                          EdgeInsets.all(8.0.r),
                                                       child: RotatedBox(
                                                           quarterTurns: 3,
-                                                          child: Text(listData[
-                                                                  value.toInt()]
-                                                              .title!)),
+                                                          child: Text(
+                                                            listData[value
+                                                                    .toInt()]
+                                                                .title!,
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                    10.sp),
+                                                          )),
                                                     );
                                                   },
                                                 ),
                                               ),
-                                              leftTitles: const AxisTitles(
+                                              leftTitles: AxisTitles(
                                                 axisNameWidget: Text(''),
-                                                axisNameSize: 20,
+                                                axisNameSize: 20.r,
                                                 sideTitles: SideTitles(
                                                   showTitles: false,
-                                                  reservedSize: 0,
+                                                  reservedSize: 0.r,
                                                 ),
                                               ),
-                                              rightTitles: const AxisTitles(
+                                              rightTitles: AxisTitles(
                                                 axisNameWidget: Text(''),
                                                 sideTitles: SideTitles(
                                                   showTitles: false,
-                                                  reservedSize: 0,
+                                                  reservedSize: 0.r,
                                                 ),
                                               ),
-                                              topTitles: const AxisTitles(
+                                              topTitles: AxisTitles(
                                                 axisNameWidget: Text(''),
-                                                axisNameSize: 24,
+                                                axisNameSize: 24.r,
                                                 sideTitles: SideTitles(
                                                   showTitles: true,
-                                                  reservedSize: 0,
+                                                  reservedSize: 0.r,
                                                 ),
                                               ),
                                             ),
@@ -889,7 +889,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                             errorMassage: state.errorMassage);
                       } else if (state is SubjectReportLoading) {
                         return SizedBox(
-                          height: 250,
+                          height: 250.h,
                           child: Card(
                             color: Colors.grey[100],
                             surfaceTintColor: Colors.grey[100],
@@ -897,7 +897,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                             shape: RoundedRectangleBorder(
                               side: BorderSide(
                                   width: 1, color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(12.r),
                             ),
                             elevation: 2,
                             child: const CustomLoadingWidget(),
@@ -935,17 +935,17 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           (LineChartBarData barData, List<int> spotIndexes) {
         return spotIndexes.map((index) {
           return TouchedSpotIndicatorData(
-            const FlLine(
-              strokeWidth: 1.5,
+            FlLine(
+              strokeWidth: 1.5.w,
               color: Color(0xFFB48200),
             ),
             FlDotData(
               show: true,
               getDotPainter: (spot, percent, barData, index) =>
                   FlDotCirclePainter(
-                radius: 4,
+                radius: 4.r,
                 color: Colors.white,
-                strokeWidth: 1.5,
+                strokeWidth: 1.5.w,
                 strokeColor: const Color(0xFFB48200),
               ),
             ),
@@ -959,7 +959,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           return lineBarsSpot.map((lineBarSpot) {
             int numberAsInt = lineBarSpot.y.truncate();
             return LineTooltipItem("$numberAsInt%",
-                const TextStyle(fontSize: 12, color: Colors.black));
+                TextStyle(fontSize: 12.sp, color: Colors.black));
           }).toList();
         },
       ),

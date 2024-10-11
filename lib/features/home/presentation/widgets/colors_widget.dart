@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/helper/SharedPreferences/pref.dart';
@@ -32,14 +33,14 @@ class _ColorsWidgetState extends State<ColorsWidget> {
   Widget build(BuildContext context) {
     final colorProvider = Provider.of<ColorProvider>(context);
     return SizedBox(
-      height: 56,
+      height: 56.h,
       child: Card(
         color: Colors.white,
         surfaceTintColor: Colors.white,
         shadowColor: Colors.white,
         shape: RoundedRectangleBorder(
           side: BorderSide(width: 1, color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
         ),
         elevation: 2,
         child: Row(
@@ -53,9 +54,9 @@ class _ColorsWidgetState extends State<ColorsWidget> {
                 });
               },
               child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 5),
-                height: 30,
-                width: 30,
+                margin: EdgeInsets.symmetric(horizontal: 5.r),
+                height: 30.h,
+                width: 30.w,
                 decoration: BoxDecoration(
                     color: Color(listColors[index]), shape: BoxShape.circle),
                 child: Center(
@@ -64,7 +65,7 @@ class _ColorsWidgetState extends State<ColorsWidget> {
                   color: initcolor == Color(listColors[index])
                       ? Colors.white
                       : Colors.transparent,
-                  size: 20,
+                  size: 20.r,
                 )),
               ),
             ),
