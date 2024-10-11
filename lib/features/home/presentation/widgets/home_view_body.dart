@@ -1,6 +1,7 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:evaluation_and_follow_up/core/widgets/custom_refresh_page.dart';
 import 'package:evaluation_and_follow_up/features/home/presentation/views/home_view.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,11 +41,12 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   String selectedManthNum2 = DateTime.now().month.toString();
   int isSelected2 = 1;
   bool isRefresh = false;
+  String? tokenFirebase;
 
   @override
   void initState() {
     getChildernData();
-
+    getTokenFirebase();
     super.initState();
   }
 
@@ -794,83 +796,87 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                     const SizedBox(
                                       height: 45,
                                     ),
-                                    SizedBox(
-                                      height: 200,
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12),
-                                        child: LineChart(
-                                          LineChartData(
-                                            borderData:
-                                                FlBorderData(show: false),
-                                            lineBarsData: lineBarsData,
-                                            titlesData: FlTitlesData(
-                                              bottomTitles: AxisTitles(
-                                                sideTitles: SideTitles(
-                                                  showTitles: true,
-                                                  // interval: 0.5,
-                                                  reservedSize: 100,
-
-                                                  getTitlesWidget:
-                                                      (value, meta) {
-                                                    return Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: RotatedBox(
-                                                          quarterTurns: 3,
-                                                          child: Text(listData[
-                                                                  value.toInt()]
-                                                              .title!)),
-                                                    );
-                                                  },
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: SizedBox(
+                                        height: 200,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 12, vertical: 20),
+                                          child: LineChart(
+                                            LineChartData(
+                                              borderData:
+                                                  FlBorderData(show: false),
+                                              lineBarsData: lineBarsData,
+                                              titlesData: FlTitlesData(
+                                                bottomTitles: AxisTitles(
+                                                  sideTitles: SideTitles(
+                                                    showTitles: true,
+                                                    // interval: 0.5,
+                                                    reservedSize: 100,
+                                                    getTitlesWidget:
+                                                        (value, meta) {
+                                                      return Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: RotatedBox(
+                                                            quarterTurns: 3,
+                                                            child: Text(
+                                                                listData[value
+                                                                        .toInt()]
+                                                                    .title!)),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                leftTitles: const AxisTitles(
+                                                  axisNameWidget: Text(''),
+                                                  axisNameSize: 20,
+                                                  sideTitles: SideTitles(
+                                                    showTitles: false,
+                                                    reservedSize: 0,
+                                                  ),
+                                                ),
+                                                rightTitles: const AxisTitles(
+                                                  axisNameWidget: Text(''),
+                                                  sideTitles: SideTitles(
+                                                    showTitles: false,
+                                                    reservedSize: 0,
+                                                  ),
+                                                ),
+                                                topTitles: const AxisTitles(
+                                                  axisNameWidget: Text(''),
+                                                  axisNameSize: 24,
+                                                  sideTitles: SideTitles(
+                                                    showTitles: true,
+                                                    reservedSize: 0,
+                                                  ),
                                                 ),
                                               ),
-                                              leftTitles: const AxisTitles(
-                                                axisNameWidget: Text(''),
-                                                axisNameSize: 20,
-                                                sideTitles: SideTitles(
-                                                  showTitles: false,
-                                                  reservedSize: 0,
-                                                ),
-                                              ),
-                                              rightTitles: const AxisTitles(
-                                                axisNameWidget: Text(''),
-                                                sideTitles: SideTitles(
-                                                  showTitles: false,
-                                                  reservedSize: 0,
-                                                ),
-                                              ),
-                                              topTitles: const AxisTitles(
-                                                axisNameWidget: Text(''),
-                                                axisNameSize: 24,
-                                                sideTitles: SideTitles(
-                                                  showTitles: true,
-                                                  reservedSize: 0,
-                                                ),
-                                              ),
+                                              gridData:
+                                                  const FlGridData(show: true),
+                                              extraLinesData:
+                                                  const ExtraLinesData(),
+                                              minY: 0,
+                                              lineTouchData:
+                                                  custombuildLineTouchData(),
+                                              showingTooltipIndicators:
+                                                  List.generate(
+                                                listData.length,
+                                                (index) => index,
+                                              ).map((index) {
+                                                return ShowingTooltipIndicators([
+                                                  LineBarSpot(
+                                                    lineBarsData[0],
+                                                    lineBarsData.indexOf(
+                                                        lineBarsData[0]),
+                                                    lineBarsData[0]
+                                                        .spots[index],
+                                                  ),
+                                                ]);
+                                              }).toList(),
                                             ),
-                                            gridData:
-                                                const FlGridData(show: true),
-                                            extraLinesData:
-                                                const ExtraLinesData(),
-                                            minY: 0,
-                                            lineTouchData:
-                                                custombuildLineTouchData(),
-                                            showingTooltipIndicators:
-                                                List.generate(
-                                              listData.length,
-                                              (index) => index,
-                                            ).map((index) {
-                                              return ShowingTooltipIndicators([
-                                                LineBarSpot(
-                                                  lineBarsData[0],
-                                                  lineBarsData
-                                                      .indexOf(lineBarsData[0]),
-                                                  lineBarsData[0].spots[index],
-                                                ),
-                                              ]);
-                                            }).toList(),
                                           ),
                                         ),
                                       ),
@@ -969,6 +975,22 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     int? id = await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
     setState(() {
       childernId = id;
+    });
+  }
+
+  void getTokenFirebase() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    String? token = await messaging.getToken();
+    Pref.saveStringToPref(key: AppStrings.firebaseTokenKey, value: token ?? "");
+    String tokenLogin =
+        await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+    upDateTokenNotifications(
+      tokenLogin: tokenLogin,
+      tokenFirebase: token ?? "",
+    );
+    setState(() {
+      tokenFirebase = token;
     });
   }
 }

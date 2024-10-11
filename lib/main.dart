@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:evaluation_and_follow_up/core/utils/my_http_overrides.dart';
+import 'package:evaluation_and_follow_up/features/notifications/presentation/views/notifications_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -12,6 +14,7 @@ import 'core/helper/AlertDialog/custom_alert_dialog.dart';
 import 'core/helper/SharedPreferences/pref.dart';
 import 'core/manager/color_provider.dart';
 import 'core/utils/app_strings.dart';
+import 'core/utils/go_to.dart';
 import 'core/utils/service_locator.dart';
 import 'features/splash/presentation/views/splash_view.dart';
 import 'firebase_options.dart';
@@ -54,10 +57,18 @@ class EvaluationAndFollowUp extends StatefulWidget {
 class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
   Locale _locale = const Locale(AppStrings.arLangKey);
   Color primaryColor = const Color(0xff4EA74F);
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
   @override
   void initState() {
     super.initState();
+    var initializationSettingsAndroid =
+        const AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettings = InitializationSettings(
+      android: initializationSettingsAndroid,
+    );
+    flutterLocalNotificationsPlugin.initialize(initializationSettings);
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       WidgetsBinding.instance.addPostFrameCallback(
         (timeStamp) {
@@ -65,18 +76,45 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
               context: context,
               type: AlertType.info,
               title: message.notification?.title ?? S.of(context).no_title,
-              desc: message.notification?.body ?? S.of(context).no_dec);
+              desc: message.notification?.body ?? S.of(context).no_dec,
+              onPressed: () {
+                GoTo.push(context, const NotificationsView(studentId: 1));
+              });
         },
       );
+      // _showNotification(message);
     });
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {});
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      GoTo.push(context, const NotificationsView(studentId: 1));
+    });
     checkForInitialMessage();
   }
+
+  // Future<void> _showNotification(RemoteMessage message) async {
+  //   var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
+  //     'channel_id',
+  //     'channel_name',
+  //     channelDescription: 'channel_description',
+  //     importance: Importance.max,
+  //     priority: Priority.high,
+  //     showWhen: false,
+  //   );
+  //   var platformChannelSpecifics =
+  //       NotificationDetails(android: androidPlatformChannelSpecifics);
+  //   await flutterLocalNotificationsPlugin.show(
+  //     0, // notification id
+  //     message.notification?.title,
+  //     message.notification?.body,
+  //     platformChannelSpecifics,
+  //   );
+  // }
 
   Future<void> checkForInitialMessage() async {
     RemoteMessage? initialMessage =
         await FirebaseMessaging.instance.getInitialMessage();
-    if (initialMessage != null) {}
+    if (initialMessage != null) {
+      GoTo.push(context, const NotificationsView(studentId: 1));
+    }
   }
 
   @override
@@ -96,6 +134,11 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
             primaryColor: colorProvider.currentColor,
             scaffoldBackgroundColor: const Color(0XFFFFFFFF),
             useMaterial3: true,
+            textSelectionTheme: TextSelectionThemeData(
+              cursorColor: colorProvider.currentColor,
+              selectionColor: colorProvider.currentColor.withOpacity(0.5),
+              selectionHandleColor: colorProvider.currentColor,
+            ),
           ),
           debugShowCheckedModeBanner: false,
           locale: _locale,

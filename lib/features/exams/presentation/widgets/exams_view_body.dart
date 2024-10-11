@@ -40,29 +40,32 @@ class _ExamsViewBodyState extends State<ExamsViewBody> {
                 onRefresh: () async {
                   await BlocProvider.of<ExamsCubit>(context).getExams();
                 },
-                child: Column(
-                  children: [
-                    if (listExams!.isNotEmpty)
-                      GridView.count(
-                        shrinkWrap: true,
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 5,
-                        mainAxisSpacing: 5,
-                        childAspectRatio: 4.3 / 5,
-                        // padding: const EdgeInsets.all(10),
-                        children: List.generate(listExams.length, (index) {
-                          return ExamsListItem(examItem: listExams[index]);
-                        }),
-                      ),
-                    if (listExams.isEmpty)
-                      SingleChildScrollView(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 100),
-                          child: Center(child: Text(S.of(context).no_exams)),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      if (listExams!.isNotEmpty)
+                        GridView.count(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 5,
+                          mainAxisSpacing: 5,
+                          childAspectRatio: 4.3 / 5,
+                          // padding: const EdgeInsets.all(10),
+                          children: List.generate(listExams.length, (index) {
+                            return ExamsListItem(examItem: listExams[index]);
+                          }),
                         ),
-                      )
-                  ],
+                      if (listExams.isEmpty)
+                        SingleChildScrollView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 100),
+                            child: Center(child: Text(S.of(context).no_exams)),
+                          ),
+                        )
+                    ],
+                  ),
                 ),
               );
             }
