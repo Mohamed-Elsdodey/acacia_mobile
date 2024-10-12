@@ -24,36 +24,54 @@ class _AbsenceListItemState extends State<AbsenceListItem> {
       surfaceTintColor: Colors.white,
       shadowColor: Colors.white,
       shape: RoundedRectangleBorder(
-        side: BorderSide(
-            width: 1,
-            color: widget.absenceItem.type == "delay"
-                ? const Color(0xff00CC99)
-                : widget.absenceItem.type == "absence"
-                    ? const Color(0xffEB5757)
-                    : const Color(0xffFFD200)),
+        side: BorderSide.none,
+        // side: BorderSide(
+        //     width: 1,
+        //     color: widget.absenceItem.type == "delay"
+        //         ? const Color(0xff00CC99)
+        //         : widget.absenceItem.type == "absence"
+        //             ? const Color(0xffEB5757)
+        //             : const Color(0xffFFD200)),
         borderRadius: BorderRadius.circular(12),
       ),
       elevation: 2,
-      child: SizedBox(
-        height: 80,
-        child: Row(
-          children: [
-            Container(
-              height: 80,
-              width: 10,
-              margin: const EdgeInsetsDirectional.only(end: 5),
-              decoration: BoxDecoration(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          border: BorderDirectional(
+            top: BorderSide(
+                width: 1,
                 color: widget.absenceItem.type == "delay"
                     ? const Color(0xff00CC99)
                     : widget.absenceItem.type == "absence"
                         ? const Color(0xffEB5757)
-                        : const Color(0xffFFD200),
-                borderRadius: const BorderRadiusDirectional.only(
-                  topStart: Radius.circular(12),
-                  bottomStart: Radius.circular(12),
-                ),
-              ),
-            ),
+                        : const Color(0xffFFD200)),
+            bottom: BorderSide(
+                width: 1,
+                color: widget.absenceItem.type == "delay"
+                    ? const Color(0xff00CC99)
+                    : widget.absenceItem.type == "absence"
+                        ? const Color(0xffEB5757)
+                        : const Color(0xffFFD200)),
+            end: BorderSide(
+                width: 1,
+                color: widget.absenceItem.type == "delay"
+                    ? const Color(0xff00CC99)
+                    : widget.absenceItem.type == "absence"
+                        ? const Color(0xffEB5757)
+                        : const Color(0xffFFD200)),
+            start: BorderSide(
+                width: 10,
+                color: widget.absenceItem.type == "delay"
+                    ? const Color(0xff00CC99)
+                    : widget.absenceItem.type == "absence"
+                        ? const Color(0xffEB5757)
+                        : const Color(0xffFFD200)),
+          ),
+        ),
+        child: Row(
+          children: [
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),

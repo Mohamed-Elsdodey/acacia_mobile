@@ -1,6 +1,7 @@
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/service_locator.dart';
 import '../../../../generated/l10n.dart';
@@ -33,7 +34,7 @@ class _ExamsViewState extends State<ExamsView> {
           ),
           title: Text(
             S.of(context).exams,
-            style: const TextStyle(color: Colors.white),
+            style:  TextStyle(color: Colors.white,fontSize: 16.sp,fontWeight: FontWeight.w700),
           ),
           centerTitle: true,
         ),

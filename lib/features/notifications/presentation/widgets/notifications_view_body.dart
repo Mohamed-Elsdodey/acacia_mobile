@@ -2,6 +2,7 @@ import 'package:evaluation_and_follow_up/core/widgets/custom_refresh_page.dart';
 import 'package:evaluation_and_follow_up/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/methods.dart';
 import '../../../../core/widgets/custom_error_massage.dart';
@@ -29,7 +30,7 @@ class _NotificationsViewBodyState extends State<NotificationsViewBody> {
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(8.r),
           child: BlocBuilder<NotificationsCubit, NotificationsState>(
             builder: (context, state) {
               if (state is NotificationsSuccess) {
@@ -56,7 +57,7 @@ class _NotificationsViewBodyState extends State<NotificationsViewBody> {
                     );
                   } else {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 100),
+                      padding: EdgeInsets.symmetric(vertical: 100.r),
                       child:
                           Center(child: Text(S.of(context).no_notifications)),
                     );
@@ -64,13 +65,13 @@ class _NotificationsViewBodyState extends State<NotificationsViewBody> {
                 }
               } else if (state is NotificationsFailure) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 100),
+                  padding: EdgeInsets.symmetric(vertical: 100.r),
                   child: CustomErrorMassage(errorMassage: state.errorMassage),
                 );
               } else {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 100),
-                  child: CustomLoadingWidget(),
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 100.r),
+                  child: const CustomLoadingWidget(),
                 );
               }
             },

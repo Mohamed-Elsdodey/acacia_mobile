@@ -1,6 +1,7 @@
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
 import 'package:evaluation_and_follow_up/features/dataAccount/presentation/views/data_account_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../../../../core/helper/AlertDialog/custom_alert_dialog.dart';
@@ -52,7 +53,10 @@ class _MoreViewBodyState extends State<MoreViewBody> {
           backgroundColor: Theme.of(context).primaryColor,
           title: Text(
             S.of(context).more,
-            style: const TextStyle(color: Colors.white),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w700),
           ),
           actions: [
             InkWell(
@@ -87,7 +91,8 @@ class _MoreViewBodyState extends State<MoreViewBody> {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GridView.count(
-            crossAxisCount: 2, // عدد الأعمدة
+            crossAxisCount:
+                MediaQuery.of(context).size.width ~/ 150, // عدد الأعمدة
             crossAxisSpacing: 10, // المسافة الأفقية بين العناصر
             mainAxisSpacing: 10, // المسافة الرأسية بين العناصر
             childAspectRatio: 5 / 3,

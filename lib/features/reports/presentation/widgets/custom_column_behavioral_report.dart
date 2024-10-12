@@ -15,7 +15,7 @@ class CustomColumnBehavioralReport extends StatelessWidget {
       children: [
         Container(
           height: 50,
-          width: 80,
+          width: double.infinity,
           padding: const EdgeInsets.all(5),
           alignment: Alignment.center,
           decoration: BoxDecoration(
@@ -24,14 +24,18 @@ class CustomColumnBehavioralReport extends StatelessWidget {
               end: BorderSide(color: Colors.grey.shade400, width: 0.5),
             ),
           ),
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
+          child: Flexible(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              softWrap: true,
+              style: const TextStyle(fontSize: 12),
+            ),
           ),
         ),
         Container(
           height: 50,
-          width: 80,
+          width: double.infinity,
           padding: const EdgeInsets.all(5),
           alignment: Alignment.center,
           decoration: BoxDecoration(
@@ -42,9 +46,13 @@ class CustomColumnBehavioralReport extends StatelessWidget {
               end: BorderSide(color: Colors.grey.shade400, width: 0.5),
             ),
           ),
-          child: Text(
-            subTitle,
-            textAlign: TextAlign.center,
+          child: Flexible(
+            child: Text(
+              subTitle,
+              textAlign: TextAlign.center,
+              softWrap: true,
+              style: const TextStyle(fontSize: 12),
+            ),
           ),
         ),
       ],

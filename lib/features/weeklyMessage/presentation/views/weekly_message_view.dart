@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/utils/go_to.dart';
@@ -30,7 +31,8 @@ class _WeeklyMessageViewState extends State<WeeklyMessageView> {
         BlocProvider(
           create: (context) => WeeksCubit(
             getIt.get<WeeklyMessageRepoImpl>(),
-          )..getWeeks(month: DateFormat('yyyy-MM', 'en').format(DateTime.now())),
+          )..getWeeks(
+              month: DateFormat('yyyy-MM', 'en').format(DateTime.now())),
         ),
       ],
       child: Scaffold(
@@ -44,7 +46,10 @@ class _WeeklyMessageViewState extends State<WeeklyMessageView> {
           ),
           title: Text(
             S.of(context).weekly_message,
-            style: const TextStyle(color: Colors.white),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w700),
           ),
           centerTitle: true,
         ),

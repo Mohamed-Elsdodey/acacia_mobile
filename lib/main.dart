@@ -13,7 +13,6 @@ import 'package:provider/provider.dart';
 import 'core/helper/SharedPreferences/pref.dart';
 import 'core/manager/color_provider.dart';
 import 'core/utils/app_strings.dart';
-import 'core/utils/go_to.dart';
 import 'core/utils/service_locator.dart';
 import 'features/splash/presentation/views/splash_view.dart';
 import 'firebase_options.dart';
@@ -67,26 +66,21 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
     var initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
     );
-    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+    );
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       print("\n\n\n\n\n\n===========================================\n\n\n\n");
-      // WidgetsBinding.instance.addPostFrameCallback(
-      //   (timeStamp) {
-      //     CustomAlertDialog.alertWithButton(
-      //         context: context,
-      //         type: AlertType.info,
-      //         title: message.notification?.title ?? S.of(context).no_title,
-      //         desc: message.notification?.body ?? S.of(context).no_dec,
-      //         onPressed: () {
-      //           GoTo.push(context, const NotificationsView(studentId: 1));
-      //         });
-      //   },
-      // );
       _showNotification(message);
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print("\n\n\n\n\n\n*************************************\n\n\n\n");
-      GoTo.push(context, const NotificationsView(studentId: 1));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const NotificationsView(studentId: 1),
+        ),
+      );
     });
     checkForInitialMessage();
   }
@@ -115,7 +109,12 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
         await FirebaseMessaging.instance.getInitialMessage();
     if (initialMessage != null) {
       print("\n\n\n\n\n\n////////////////////////////////////\n\n\n\n");
-      GoTo.push(context, const NotificationsView(studentId: 1));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const NotificationsView(studentId: 1),
+        ),
+      );
     }
   }
 
@@ -129,6 +128,7 @@ class _EvaluationAndFollowUpState extends State<EvaluationAndFollowUp> {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(360, 800),
+      minTextAdapt: true,
       builder: (context, child) {
         return Consumer<ColorProvider>(
           builder: (context, colorProvider, child) {

@@ -1,5 +1,6 @@
 import 'package:evaluation_and_follow_up/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../data/models/notifications_model.dart';
 
@@ -16,7 +17,7 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: EdgeInsets.only(bottom: 8.r),
       child: Card(
         color: widget.notificationItem.type == "review"
             ? Colors.green.shade50
@@ -26,36 +27,47 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
         surfaceTintColor: Colors.white,
         shadowColor: Colors.white,
         shape: RoundedRectangleBorder(
-          side: BorderSide(
-              width: 1,
-              color: widget.notificationItem.type == "review"
-                  ? const Color(0xff00CC99)
-                  : widget.notificationItem.type == "exam"
-                      ? const Color(0xffFFD200)
-                      : const Color(0xffEB5757)),
+          side: BorderSide.none,
           borderRadius: BorderRadius.circular(12),
         ),
         elevation: 2,
-        child: SizedBox(
-          height: 85,
-          child: Row(
-            children: [
-              Container(
-                height: 85,
-                width: 10,
-                margin: const EdgeInsetsDirectional.only(end: 5),
-                decoration: BoxDecoration(
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: BorderDirectional(
+              top: BorderSide(
+                  width: 1,
                   color: widget.notificationItem.type == "review"
                       ? const Color(0xff00CC99)
                       : widget.notificationItem.type == "exam"
                           ? const Color(0xffFFD200)
-                          : const Color(0xffEB5757),
-                  borderRadius: const BorderRadiusDirectional.only(
-                    topStart: Radius.circular(12),
-                    bottomStart: Radius.circular(12),
-                  ),
-                ),
-              ),
+                          : const Color(0xffEB5757)),
+              bottom: BorderSide(
+                  width: 1,
+                  color: widget.notificationItem.type == "review"
+                      ? const Color(0xff00CC99)
+                      : widget.notificationItem.type == "exam"
+                          ? const Color(0xffFFD200)
+                          : const Color(0xffEB5757)),
+              end: BorderSide(
+                  width: 1,
+                  color: widget.notificationItem.type == "review"
+                      ? const Color(0xff00CC99)
+                      : widget.notificationItem.type == "exam"
+                          ? const Color(0xffFFD200)
+                          : const Color(0xffEB5757)),
+              start: BorderSide(
+                  width: 10,
+                  color: widget.notificationItem.type == "review"
+                      ? const Color(0xff00CC99)
+                      : widget.notificationItem.type == "exam"
+                          ? const Color(0xffFFD200)
+                          : const Color(0xffEB5757)),
+            ),
+          ),
+          child: Row(
+            children: [
               Image.asset(
                 widget.notificationItem.type == "review"
                     ? AppAssets.check
@@ -80,8 +92,7 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
                       const SizedBox(height: 2),
                       Text(
                         widget.notificationItem.text.toString(),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 3,
+                        softWrap: true,
                         style: const TextStyle(
                             fontSize: 13, fontWeight: FontWeight.w400),
                       ),

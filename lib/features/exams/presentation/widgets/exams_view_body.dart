@@ -44,17 +44,20 @@ class _ExamsViewBodyState extends State<ExamsViewBody> {
                   child: Column(
                     children: [
                       if (listExams!.isNotEmpty)
-                        GridView.count(
+                        GridView.builder(
+                          itemBuilder: (context, index) {
+                            return ExamsListItem(examItem: listExams[index]);
+                          },
+                          itemCount: listExams.length,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 5,
-                          mainAxisSpacing: 5,
-                          childAspectRatio: 4.3 / 5,
-                          // padding: const EdgeInsets.all(10),
-                          children: List.generate(listExams.length, (index) {
-                            return ExamsListItem(examItem: listExams[index]);
-                          }),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount:
+                                      MediaQuery.of(context).size.width ~/ 150,
+                                  crossAxisSpacing: 5,
+                                  mainAxisSpacing: 5,
+                                  childAspectRatio: 0.75),
                         ),
                       if (listExams.isEmpty)
                         SingleChildScrollView(

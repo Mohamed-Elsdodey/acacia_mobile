@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/go_to.dart';
 import '../../../../core/utils/service_locator.dart';
@@ -33,7 +34,10 @@ class _OpinionsViewState extends State<OpinionsView> {
           ),
           title: Text(
             S.of(context).opinions,
-            style: const TextStyle(color: Colors.white),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w700),
           ),
           centerTitle: true,
         ),

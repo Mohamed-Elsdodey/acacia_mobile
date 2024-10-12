@@ -84,11 +84,13 @@ class _WeeklyMessageViewBodyState extends State<WeeklyMessageViewBody> {
                   setState(() {
                     listWeeks = state.weeksModel.data!;
                     currentWeek = listWeeks!.firstWhere(
-                      (element) => element.isCurrent == 1,
-                      orElse: () {
-                        return listWeeks![0];
-                      },
-                    );
+                        (element) => element.isCurrent == 1,
+                        orElse: () => WeekItem(
+                            title: "",
+                            endWeekDate: "",
+                            isCurrent: -1,
+                            startWeekDate: "",
+                            weekNumber: -1));
 
                     int month = months.indexOf(selectedMonth) + 1;
                     if (month >= 1 && month <= 9) {
@@ -98,11 +100,18 @@ class _WeeklyMessageViewBodyState extends State<WeeklyMessageViewBody> {
                     }
                   });
 
-                  BlocProvider.of<WeeklyMessageCubit>(context).getWeeklyMessage(
-                      month: monthFinal!,
-                      weekNumber: currentWeek!.weekNumber!.toString(),
-                      startWeek: currentWeek!.startWeekDate!.toString(),
-                      endWeek: currentWeek!.endWeekDate!.toString());
+                  if (currentWeek!.title != "" &&
+                      currentWeek!.endWeekDate != "" &&
+                      currentWeek!.startWeekDate != "" &&
+                      currentWeek!.isCurrent != -1 &&
+                      currentWeek!.weekNumber != -1) {
+                    BlocProvider.of<WeeklyMessageCubit>(context)
+                        .getWeeklyMessage(
+                            month: monthFinal!,
+                            weekNumber: currentWeek!.weekNumber!.toString(),
+                            startWeek: currentWeek!.startWeekDate!.toString(),
+                            endWeek: currentWeek!.endWeekDate!.toString());
+                  }
                 }
               } else if (state is WeeksFailure) {
                 CustomAlertDialog.alertWithButton(
@@ -216,7 +225,14 @@ class _WeeklyMessageViewBodyState extends State<WeeklyMessageViewBody> {
                                   ),
                                   elevation: 2,
                                   child: CustomDropdown<String>(
-                                    initialItem: currentWeek!.title!,
+                                    hintText: S.of(context).choose_week,
+                                    initialItem: currentWeek!.title != "" &&
+                                            currentWeek!.endWeekDate != "" &&
+                                            currentWeek!.startWeekDate != "" &&
+                                            currentWeek!.isCurrent != -1 &&
+                                            currentWeek!.weekNumber != -1
+                                        ? currentWeek!.title
+                                        : null,
                                     closedHeaderPadding:
                                         const EdgeInsets.symmetric(
                                             horizontal: 15, vertical: 8),
@@ -273,110 +289,129 @@ class _WeeklyMessageViewBodyState extends State<WeeklyMessageViewBody> {
                               List<WeekData> listData =
                                   state.weeklyMessageModel.data!;
 
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      height: 48,
-                                      decoration: BoxDecoration(
-                                        color: Theme.of(context).primaryColor,
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(8),
-                                          topRight: Radius.circular(8),
-                                        ),
-                                      ),
-                                      child: Row(
+                              return currentWeek!.title != "" &&
+                                      currentWeek!.endWeekDate != "" &&
+                                      currentWeek!.startWeekDate != "" &&
+                                      currentWeek!.isCurrent != -1 &&
+                                      currentWeek!.weekNumber != -1
+                                  ? Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
                                         children: [
                                           Container(
-                                            width: 80,
                                             height: 48,
-                                            alignment: Alignment.center,
                                             decoration: BoxDecoration(
-                                                border: BorderDirectional(
-                                                    end: BorderSide(
-                                              color: Colors.grey.shade400,
-                                            ))),
-                                            child: Text(
-                                              S.of(context).sub_opinion,
-                                              style: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              height: 48,
-                                              child: Text(
-                                                S.of(context).opinions,
-                                                style: const TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Colors.white),
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(8),
+                                                topRight: Radius.circular(8),
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    ...List.generate(
-                                      listData.length,
-                                      (index) {
-                                        WeekData data = listData[index];
-                                        return Container(
-                                          height: 48,
-                                          decoration: BoxDecoration(
-                                            color: index.isOdd
-                                                ? Colors.white
-                                                : Theme.of(context)
-                                                    .primaryColor
-                                                    .withOpacity(.1),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 80,
-                                                height: 48,
-                                                alignment: Alignment.center,
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 2,
-                                                        horizontal: 5),
-                                                decoration: BoxDecoration(
-                                                    border: BorderDirectional(
-                                                        end: BorderSide(
-                                                  color: Colors.grey.shade400,
-                                                ))),
-                                                child: Text(
-                                                  data.titleAr!,
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                    fontSize: 10,
-                                                    fontWeight: FontWeight.w700,
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  width: 80,
+                                                  height: 48,
+                                                  alignment: Alignment.center,
+                                                  decoration: BoxDecoration(
+                                                      border: BorderDirectional(
+                                                          end: BorderSide(
+                                                    color: Colors.grey.shade400,
+                                                  ))),
+                                                  child: Text(
+                                                    S.of(context).sub_opinion,
+                                                    style: const TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: Colors.white),
                                                   ),
                                                 ),
-                                              ),
-                                              Expanded(
-                                                  child: Text(
-                                                data.weeklyMessage!,
-                                                maxLines: 3,
-                                                overflow: TextOverflow.ellipsis,
-                                                textAlign: TextAlign.center,
-                                                style: const TextStyle(
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.w700,
+                                                Expanded(
+                                                  child: Container(
+                                                    alignment: Alignment.center,
+                                                    height: 48,
+                                                    child: Text(
+                                                      S.of(context).opinions,
+                                                      style: const TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
                                                 ),
-                                              )),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        );
-                                      },
+                                          ...List.generate(
+                                            listData.length,
+                                            (index) {
+                                              WeekData data = listData[index];
+                                              return Container(
+                                                height: 48,
+                                                decoration: BoxDecoration(
+                                                  color: index.isOdd
+                                                      ? Colors.white
+                                                      : Theme.of(context)
+                                                          .primaryColor
+                                                          .withOpacity(.1),
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                      width: 80,
+                                                      height: 48,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          vertical: 2,
+                                                          horizontal: 5),
+                                                      decoration: BoxDecoration(
+                                                          border:
+                                                              BorderDirectional(
+                                                                  end:
+                                                                      BorderSide(
+                                                        color: Colors
+                                                            .grey.shade400,
+                                                      ))),
+                                                      child: Text(
+                                                        data.titleAr!,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: const TextStyle(
+                                                          fontSize: 10,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                        child: Text(
+                                                      data.weeklyMessage!,
+                                                      maxLines: 3,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: const TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                      ),
+                                                    )),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          )
+                                        ],
+                                      ),
                                     )
-                                  ],
-                                ),
-                              );
+                                  : const SizedBox();
                             }
                           } else if (state is WeeklyMessageFailure) {
                             return Padding(

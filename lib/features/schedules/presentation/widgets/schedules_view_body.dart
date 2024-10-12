@@ -24,82 +24,79 @@ class _SchedulesViewBodyState extends State<SchedulesViewBody> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          Container(
-            height: 40,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Theme.of(context).primaryColor,
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              S.of(context).schedules,
-              style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
-            ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          BlocBuilder<SessionsCubit, SessionsState>(
-            builder: (context, state) {
-              if (state is SessionsSuccess) {
-                if (state.sessionsModel.status == 401) {
-                  return invalidToken(context);
-                } else {
-                  List<SessionItem> listSessions = state.sessionsModel.data!;
-                  if (listSessions.isNotEmpty) {
-                    return BlocBuilder<SchedulesCubit, SchedulesState>(
-                      builder: (context, state) {
-                        if (state is SchedulesSuccess) {
-                          List<SchedulesModel> listSchedules =
-                              state.listSchedules;
-                          if (listSchedules.isNotEmpty) {
-                            return Expanded(
-                              child: CustomRefreshPage(
-                                onRefresh: () async {
-                                  await BlocProvider.of<SessionsCubit>(context)
-                                      .getSessions();
-                                  if (context.mounted) {
-                                    await BlocProvider.of<SchedulesCubit>(
-                                            context)
-                                        .getSchedules();
-                                  }
-                                },
+      child: BlocBuilder<SessionsCubit, SessionsState>(
+        builder: (context, state) {
+          if (state is SessionsSuccess) {
+            if (state.sessionsModel.status == 401) {
+              return invalidToken(context);
+            } else {
+              List<SessionItem> listSessions = state.sessionsModel.data!;
+              if (listSessions.isNotEmpty) {
+                return BlocBuilder<SchedulesCubit, SchedulesState>(
+                  builder: (context, state) {
+                    if (state is SchedulesSuccess) {
+                      List<SchedulesModel> listSchedules = state.listSchedules;
+                      if (listSchedules.isNotEmpty) {
+                        return CustomRefreshPage(
+                          onRefresh: () async {
+                            await BlocProvider.of<SessionsCubit>(context)
+                                .getSessions();
+                            if (context.mounted) {
+                              await BlocProvider.of<SchedulesCubit>(context)
+                                  .getSchedules();
+                            }
+                          },
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 40,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  S.of(context).schedules,
+                                  style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Expanded(
                                 child: CustomBuildTable(
                                   listSchedules: listSchedules,
                                   listSessions: listSessions,
                                 ),
                               ),
-                            );
-                          } else {
-                            return Center(
-                                child: Text(S.of(context).no_schedules));
-                          }
-                        } else if (state is SchedulesFailure) {
-                          return CustomErrorMassage(
-                              errorMassage: state.errorMassage);
-                        } else {
-                          return const CustomLoadingWidget();
-                        }
-                      },
-                    );
-                  } else {
-                    return Center(child: Text(S.of(context).no_schedules));
-                  }
-                }
-              } else if (state is SessionsFailure) {
-                return CustomErrorMassage(errorMassage: state.errorMassage);
+                            ],
+                          ),
+                        );
+                      } else {
+                        return Center(child: Text(S.of(context).no_schedules));
+                      }
+                    } else if (state is SchedulesFailure) {
+                      return CustomErrorMassage(
+                          errorMassage: state.errorMassage);
+                    } else {
+                      return const CustomLoadingWidget();
+                    }
+                  },
+                );
               } else {
-                return const CustomLoadingWidget();
+                return Center(child: Text(S.of(context).no_schedules));
               }
-            },
-          )
-        ],
+            }
+          } else if (state is SessionsFailure) {
+            return CustomErrorMassage(errorMassage: state.errorMassage);
+          } else {
+            return const CustomLoadingWidget();
+          }
+        },
       ),
     );
   }

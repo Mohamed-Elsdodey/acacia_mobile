@@ -25,12 +25,14 @@ class AcademicReportWidget extends StatelessWidget {
               color: Color(0xff00C191),
             ),
             alignment: Alignment.center,
-            child: Text(
-              S.of(context).reports_1,
-              style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
+            child: Flexible(
+              child: Text(
+                S.of(context).reports_1,
+                style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white),
+              ),
             ),
           ),
           DecoratedBox(

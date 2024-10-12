@@ -31,9 +31,13 @@ class CustomColumnAcademicReport extends StatelessWidget {
                   width: customBorder == true ? 0.5 : 1.0),
             ),
           ),
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
+          child: Flexible(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              softWrap: true,
+              style: const TextStyle(fontSize: 12),
+            ),
           ),
         ),
         Container(
@@ -53,9 +57,13 @@ class CustomColumnAcademicReport extends StatelessWidget {
                   width: customBorder == true ? 0.5 : 1.0),
             ),
           ),
-          child: Text(
-            subTitle1,
-            textAlign: TextAlign.center,
+          child: Flexible(
+            child: Text(
+              subTitle1,
+              textAlign: TextAlign.center,
+              softWrap: true,
+              style: const TextStyle(fontSize: 12),
+            ),
           ),
         ),
         Container(
@@ -73,9 +81,13 @@ class CustomColumnAcademicReport extends StatelessWidget {
                   width: customBorder == true ? 0.5 : 1.0),
             ),
           ),
-          child: Text(
-            subTitle2,
-            textAlign: TextAlign.center,
+          child: Flexible(
+            child: Text(
+              subTitle2,
+              textAlign: TextAlign.center,
+              softWrap: true,
+              style: const TextStyle(fontSize: 12),
+            ),
           ),
         ),
       ],

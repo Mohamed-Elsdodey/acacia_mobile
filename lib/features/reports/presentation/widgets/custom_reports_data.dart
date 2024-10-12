@@ -26,10 +26,14 @@ class _CustomReportsDataState extends State<CustomReportsData> {
             color: const Color(0xff333333),
           ),
           alignment: Alignment.center,
-          child: Text(
-            S.of(context).reports_title,
-            style: const TextStyle(
-                fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white),
+          child: Flexible(
+            child: Text(
+              S.of(context).reports_title,
+              style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white),
+            ),
           ),
         ),
         AcademicReportWidget(

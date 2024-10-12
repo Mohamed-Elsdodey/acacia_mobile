@@ -23,10 +23,14 @@ class BehavioralReportWidget extends StatelessWidget {
             color: Color(0xff9747FF),
           ),
           alignment: Alignment.center,
-          child: Text(
-            S.of(context).reports_2,
-            style: const TextStyle(
-                fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white),
+          child: Flexible(
+            child: Text(
+              S.of(context).reports_2,
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white),
+            ),
           ),
         ),
         DecoratedBox(

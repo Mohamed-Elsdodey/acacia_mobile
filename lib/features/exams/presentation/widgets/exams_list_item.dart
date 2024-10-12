@@ -100,16 +100,12 @@ class _ExamsListItemState extends State<ExamsListItem> {
           Padding(
             padding: const EdgeInsets.only(bottom: 5, right: 5, left: 5),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  S.of(context).sub_teacher,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w600, fontSize: 10),
-                ),
                 Expanded(
                   child: Text(
-                    widget.examItem.teacher!.name!,
-                    maxLines: 1,
+                    "${S.of(context).sub_teacher}${widget.examItem.teacher!.name!}",
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         fontWeight: FontWeight.w400, fontSize: 12),

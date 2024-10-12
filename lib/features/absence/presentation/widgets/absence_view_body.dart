@@ -21,7 +21,7 @@ class AbsenceViewBody extends StatefulWidget {
 }
 
 class _AbsenceViewBodyState extends State<AbsenceViewBody> {
-   DateTime _currentDate = DateTime.now();
+  DateTime _currentDate = DateTime.now();
   String _currentMonth = DateFormat.yMMM().format(DateTime.now());
   DateTime _targetDateTime = DateTime.now();
 

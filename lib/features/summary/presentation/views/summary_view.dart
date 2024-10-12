@@ -1,6 +1,7 @@
 import 'package:evaluation_and_follow_up/features/summary/presentation/manager/summary/summary_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/go_to.dart';
 import '../../../../core/utils/service_locator.dart';
@@ -33,7 +34,10 @@ class _SummaryViewState extends State<SummaryView> {
           ),
           title: Text(
             S.of(context).summary,
-            style: const TextStyle(color: Colors.white),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w700),
           ),
           centerTitle: true,
         ),

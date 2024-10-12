@@ -68,12 +68,14 @@ class _ReportsViewBodyState extends State<ReportsViewBody> {
                             color: Theme.of(context).primaryColor,
                           ),
                           alignment: Alignment.center,
-                          child: Text(
-                            "${S.of(context).school}$schoolName",
-                            style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white),
+                          child: Flexible(
+                            child: Text(
+                              "${S.of(context).school}$schoolName",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white),
+                            ),
                           ),
                         ),
                         Padding(
@@ -111,18 +113,20 @@ class _ReportsViewBodyState extends State<ReportsViewBody> {
                                       width: 2)),
                               alignment: Alignment.center,
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 16),
+                                padding: EdgeInsets.symmetric(horizontal: 16),
                                 child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      monthText,
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color(0xff2A2F3B)),
+                                    Flexible(
+                                      child: Text(
+                                        monthText,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color: Color(0xff2A2F3B)),
+                                      ),
                                     ),
-                                    const Spacer(),
                                     const Icon(
                                         Icons.keyboard_arrow_down_rounded,
                                         color: Color(0xff2A2F3B))

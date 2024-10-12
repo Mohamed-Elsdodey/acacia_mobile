@@ -2,6 +2,7 @@ import 'package:evaluation_and_follow_up/features/schedules/presentation/manager
 import 'package:evaluation_and_follow_up/features/schedules/presentation/manager/sessions/sessions_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/go_to.dart';
@@ -40,7 +41,10 @@ class _SchedulesViewState extends State<SchedulesView> {
           backgroundColor: Theme.of(context).primaryColor,
           title: Text(
             S.of(context).classes,
-            style: const TextStyle(color: Colors.white),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w700),
           ),
           centerTitle: true,
           actions: [
@@ -50,7 +54,7 @@ class _SchedulesViewState extends State<SchedulesView> {
                     context, NotificationsView(studentId: HomeView.studentId));
               },
               child: Padding(
-                padding: const EdgeInsetsDirectional.only(end: 24),
+                padding: EdgeInsetsDirectional.only(end: 24.r),
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
@@ -58,12 +62,12 @@ class _SchedulesViewState extends State<SchedulesView> {
                       AppAssets.notification,
                       color: Colors.white,
                     ),
-                    const PositionedDirectional(
+                    PositionedDirectional(
                       top: -2,
                       start: 0,
                       child: CircleAvatar(
                         backgroundColor: Colors.red,
-                        radius: 4,
+                        radius: 4.r,
                       ),
                     )
                   ],

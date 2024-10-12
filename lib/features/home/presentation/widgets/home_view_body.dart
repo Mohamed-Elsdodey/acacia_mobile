@@ -43,11 +43,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   int isSelected2 = 1;
   bool isRefresh = false;
   String? tokenFirebase;
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     getChildernData();
     getTokenFirebase();
+
     super.initState();
   }
 
@@ -240,11 +242,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                 shape: RoundedRectangleBorder(
                                   side: BorderSide(
                                       width: 1, color: Colors.grey.shade300),
-                                  borderRadius: BorderRadius.circular(12.r),
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
                                 elevation: 2,
                                 child: Padding(
-                                  padding: EdgeInsets.all(14.r),
+                                  padding: const EdgeInsets.all(14),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -256,7 +258,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                           Text(
                                             S.of(context).summary,
                                             style: TextStyle(
-                                                fontSize: 18.sp,
+                                                fontSize: 18,
                                                 fontWeight: FontWeight.w700,
                                                 color: Theme.of(context)
                                                     .primaryColor),
@@ -280,15 +282,16 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                                   .toString());
                                                 },
                                                 child: Container(
-                                                  padding: EdgeInsets.symmetric(
-                                                      vertical: 5.r,
-                                                      horizontal: 12.r),
-                                                  margin: EdgeInsets.symmetric(
-                                                      horizontal: 5.r),
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      vertical: 5,
+                                                      horizontal: 12),
+                                                  margin: const EdgeInsets
+                                                      .symmetric(horizontal: 5),
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            20.r),
+                                                            20),
                                                     color: isSelected1 == 1
                                                         ? Theme.of(context)
                                                             .primaryColor
@@ -300,7 +303,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.w400,
-                                                          fontSize: 12.sp,
+                                                          fontSize: 12,
                                                           color: isSelected1 ==
                                                                   1
                                                               ? Colors.white
@@ -322,14 +325,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                         DateTime.now().year,
                                                         12),
                                                     monthPickerDialogSettings:
-                                                        MonthPickerDialogSettings(
+                                                        const MonthPickerDialogSettings(
                                                       buttonsSettings:
                                                           PickerButtonsSettings(
                                                         monthTextStyle:
                                                             TextStyle(
-                                                                fontSize:
-                                                                    12.sp),
-                                                        selectedDateRadius: 2.r,
+                                                                fontSize: 12),
+                                                        selectedDateRadius: 2,
                                                       ),
                                                     ),
                                                   ).then((date) {
@@ -360,15 +362,16 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                   });
                                                 },
                                                 child: Container(
-                                                  padding: EdgeInsets.symmetric(
-                                                      vertical: 5.r,
-                                                      horizontal: 12.r),
-                                                  margin: EdgeInsets.symmetric(
-                                                      horizontal: 5.r),
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      vertical: 5,
+                                                      horizontal: 12),
+                                                  margin: const EdgeInsets
+                                                      .symmetric(horizontal: 5),
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            20.r),
+                                                            20),
                                                     color: isSelected1 == 2
                                                         ? Theme.of(context)
                                                             .primaryColor
@@ -383,7 +386,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
-                                                              fontSize: 12.sp,
+                                                              fontSize: 12,
                                                               color:
                                                                   isSelected1 ==
                                                                           2
@@ -395,7 +398,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                         Icon(
                                                           Icons
                                                               .keyboard_arrow_down,
-                                                          size: 16.r,
+                                                          size: 16,
                                                           color: isSelected1 ==
                                                                   2
                                                               ? Colors.white
@@ -410,15 +413,15 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                           ),
                                         ],
                                       ),
-                                      SizedBox(
-                                        height: 45.h,
+                                      const SizedBox(
+                                        height: 45,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 8.0.r),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0),
                                         child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                              MainAxisAlignment.spaceAround,
                                           children: [
                                             Column(
                                               crossAxisAlignment:
@@ -427,7 +430,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 CustomPaint(
-                                                  size: Size(100,
+                                                  size: const Size(100,
                                                       100), // no effect while adding child
                                                   painter: CustomCircularPaint(
                                                       progressValue: isSelected1 ==
@@ -443,7 +446,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                       gradientColor:
                                                           Colors.green),
                                                   child: Card(
-                                                    margin: EdgeInsets.all(8),
+                                                    margin:
+                                                        const EdgeInsets.all(8),
                                                     color: Colors.white,
                                                     shape:
                                                         RoundedRectangleBorder(
@@ -468,13 +472,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  height: 20.h,
+                                                const SizedBox(
+                                                  height: 20,
                                                 ),
                                                 Text(
                                                   S.of(context).academic,
-                                                  style: TextStyle(
-                                                      fontSize: 15.sp,
+                                                  style: const TextStyle(
+                                                      fontSize: 15,
                                                       fontWeight:
                                                           FontWeight.w700),
                                                 )
@@ -502,7 +506,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                       gradientColor:
                                                           Colors.orangeAccent),
                                                   child: Card(
-                                                    margin: EdgeInsets.all(8.r),
+                                                    margin:
+                                                        const EdgeInsets.all(8),
                                                     color: Colors.white,
                                                     shape:
                                                         RoundedRectangleBorder(
@@ -512,7 +517,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                               .grey.shade300),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              100.r),
+                                                              100),
                                                     ),
                                                     elevation: 4,
                                                     child: SizedBox(
@@ -527,13 +532,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  height: 20.h,
+                                                const SizedBox(
+                                                  height: 20,
                                                 ),
                                                 Text(
                                                   S.of(context).behavior,
-                                                  style: TextStyle(
-                                                      fontSize: 15.sp,
+                                                  style: const TextStyle(
+                                                      fontSize: 15,
                                                       fontWeight:
                                                           FontWeight.w700),
                                                 )
@@ -556,7 +561,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                             errorMassage: state.errorMassage);
                       } else if (state is AcademicReportLoading) {
                         return SizedBox(
-                          height: 250.h,
+                          height: 250,
                           child: Card(
                             color: Colors.grey[100],
                             surfaceTintColor: Colors.grey[100],
@@ -621,6 +626,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                 barWidth: 2,
                               ),
                             ];
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              _scrollController.jumpTo(
+                                  _scrollController.position.maxScrollExtent);
+                            });
                             return Card(
                               color: Colors.white,
                               surfaceTintColor: Colors.white,
@@ -789,89 +798,97 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: 45.h,
+                                    const SizedBox(
+                                      height: 45,
                                     ),
-                                    SizedBox(
-                                      height: 300.h,
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 12.r, vertical: 20.r),
-                                        child: LineChart(
-                                          LineChartData(
-                                            borderData:
-                                                FlBorderData(show: false),
-                                            lineBarsData: lineBarsData,
-                                            titlesData: FlTitlesData(
-                                              bottomTitles: AxisTitles(
-                                                sideTitles: SideTitles(
-                                                  showTitles: true,
-                                                  // interval: 0.5,
-                                                  reservedSize: 100,
-                                                  getTitlesWidget:
-                                                      (value, meta) {
-                                                    return Padding(
-                                                      padding:
-                                                          EdgeInsets.all(8.0.r),
-                                                      child: RotatedBox(
-                                                          quarterTurns: 3,
-                                                          child: Text(
-                                                            listData[value
-                                                                    .toInt()]
-                                                                .title!,
-                                                            style: TextStyle(
-                                                                fontSize:
-                                                                    10.sp),
-                                                          )),
-                                                    );
-                                                  },
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      controller: _scrollController,
+                                      child: SizedBox(
+                                        height: 250,
+                                        width: 700,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 12, vertical: 20),
+                                          child: LineChart(
+                                            LineChartData(
+                                              borderData:
+                                                  FlBorderData(show: false),
+                                              lineBarsData: lineBarsData,
+                                              titlesData: FlTitlesData(
+                                                bottomTitles: AxisTitles(
+                                                  sideTitles: SideTitles(
+                                                    showTitles: true,
+                                                    interval: 1,
+                                                    reservedSize: 80,
+                                                    getTitlesWidget:
+                                                        (value, meta) {
+                                                      return Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: RotatedBox(
+                                                            quarterTurns: 3,
+                                                            child: Text(
+                                                              listData[value
+                                                                      .toInt()]
+                                                                  .title!,
+                                                              style:
+                                                                  const TextStyle(
+                                                                      fontSize:
+                                                                          10),
+                                                            )),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                leftTitles: const AxisTitles(
+                                                  axisNameWidget: Text(''),
+                                                  axisNameSize: 20,
+                                                  sideTitles: SideTitles(
+                                                    showTitles: false,
+                                                    reservedSize: 0,
+                                                  ),
+                                                ),
+                                                rightTitles: const AxisTitles(
+                                                  axisNameWidget: Text(''),
+                                                  sideTitles: SideTitles(
+                                                    showTitles: false,
+                                                    reservedSize: 0,
+                                                  ),
+                                                ),
+                                                topTitles: const AxisTitles(
+                                                  axisNameWidget: Text(''),
+                                                  axisNameSize: 24,
+                                                  sideTitles: SideTitles(
+                                                    showTitles: true,
+                                                    reservedSize: 0,
+                                                  ),
                                                 ),
                                               ),
-                                              leftTitles: AxisTitles(
-                                                axisNameWidget: Text(''),
-                                                axisNameSize: 20.r,
-                                                sideTitles: SideTitles(
-                                                  showTitles: false,
-                                                  reservedSize: 0.r,
-                                                ),
-                                              ),
-                                              rightTitles: AxisTitles(
-                                                axisNameWidget: Text(''),
-                                                sideTitles: SideTitles(
-                                                  showTitles: false,
-                                                  reservedSize: 0.r,
-                                                ),
-                                              ),
-                                              topTitles: AxisTitles(
-                                                axisNameWidget: Text(''),
-                                                axisNameSize: 24.r,
-                                                sideTitles: SideTitles(
-                                                  showTitles: true,
-                                                  reservedSize: 0.r,
-                                                ),
-                                              ),
+                                              gridData:
+                                                  const FlGridData(show: true),
+                                              extraLinesData:
+                                                  const ExtraLinesData(),
+                                              minY: 0,
+                                              lineTouchData:
+                                                  custombuildLineTouchData(),
+                                              showingTooltipIndicators:
+                                                  List.generate(
+                                                listData.length,
+                                                (index) => index,
+                                              ).map((index) {
+                                                return ShowingTooltipIndicators([
+                                                  LineBarSpot(
+                                                    lineBarsData[0],
+                                                    lineBarsData.indexOf(
+                                                        lineBarsData[0]),
+                                                    lineBarsData[0]
+                                                        .spots[index],
+                                                  ),
+                                                ]);
+                                              }).toList(),
                                             ),
-                                            gridData:
-                                                const FlGridData(show: true),
-                                            extraLinesData:
-                                                const ExtraLinesData(),
-                                            minY: 0,
-                                            lineTouchData:
-                                                custombuildLineTouchData(),
-                                            showingTooltipIndicators:
-                                                List.generate(
-                                              listData.length,
-                                              (index) => index,
-                                            ).map((index) {
-                                              return ShowingTooltipIndicators([
-                                                LineBarSpot(
-                                                  lineBarsData[0],
-                                                  lineBarsData
-                                                      .indexOf(lineBarsData[0]),
-                                                  lineBarsData[0].spots[index],
-                                                ),
-                                              ]);
-                                            }).toList(),
                                           ),
                                         ),
                                       ),
@@ -889,7 +906,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                             errorMassage: state.errorMassage);
                       } else if (state is SubjectReportLoading) {
                         return SizedBox(
-                          height: 250.h,
+                          height: 250,
                           child: Card(
                             color: Colors.grey[100],
                             surfaceTintColor: Colors.grey[100],
@@ -937,7 +954,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           return TouchedSpotIndicatorData(
             FlLine(
               strokeWidth: 1.5.w,
-              color: Color(0xFFB48200),
+              color: const Color(0xFFB48200),
             ),
             FlDotData(
               show: true,
