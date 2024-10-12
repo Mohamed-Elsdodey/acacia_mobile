@@ -11,7 +11,7 @@ part 'notifications_state.dart';
 class NotificationsCubit extends Cubit<NotificationsState> {
   NotificationsCubit(this.notificationsRepo) : super(NotificationsInitial());
   final NotificationsRepo notificationsRepo;
-  Future<void> getNotifications({required int studentId}) async {
+  Future<void> getNotifications({int? studentId}) async {
     emit(NotificationsLoading());
     Either<Failure, NotificationsModel> result =
         await notificationsRepo.getNotifications(studentId: studentId);

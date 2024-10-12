@@ -1,6 +1,4 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
-import 'package:evaluation_and_follow_up/core/widgets/custom_refresh_page.dart';
-import 'package:evaluation_and_follow_up/features/home/presentation/views/home_view.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +14,7 @@ import '../../../../core/utils/methods.dart';
 import '../../../../core/widgets/childern_info.dart';
 import '../../../../core/widgets/custom_error_massage.dart';
 import '../../../../core/widgets/custom_loading_widget.dart';
+import '../../../../core/widgets/custom_refresh_page.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/models/academic_report_model.dart';
 import '../../data/models/subject_report_model.dart';
@@ -85,8 +84,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         if (childernId == -1) {
                           childernId = listChildern[0].id!;
                           childernData = listChildern[0];
-                          HomeView.studentId = listChildern[0].id!;
-                          HomeView.studentname = listChildern[0].name!;
+                          // HomeView.studentId = listChildern[0].id!;
+                          // HomeView.studentname = listChildern[0].name!;
                           Pref.saveIntToPref(
                               key: AppStrings.childernIdKey, value: childernId);
                           Pref.saveStringToPref(
@@ -104,8 +103,12 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                           childernData = listChildern.firstWhere(
                             (element) => element.id == childernId,
                           );
-                          HomeView.studentId = childernData.id!;
-                          HomeView.studentname = childernData.name!;
+                          // print("///////////////////////////////////");
+                          // print(childernData.id!);
+                          // print(HomeView.studentId);
+                          // HomeView.studentId = childernData.id!;
+                          // HomeView.studentname = childernData.name!;
+                          // print(HomeView.studentId);
                           BlocProvider.of<AcademicReportCubit>(context)
                               .getAcademicReport(
                                   month: DateTime.now().month.toString(),
@@ -146,10 +149,14 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                     childernData = listChildern.firstWhere(
                                       (element) => element.name == value,
                                     );
-                                    HomeView.studentId = childernData.id!;
-                                    HomeView.studentname = childernData.name!;
+                                    // print(
+                                    //     "+++++++++++++++++++++++++++++++++++++++++++");
+                                    // print(childernData.id!);
+                                    // print(HomeView.studentId);
+                                    // HomeView.studentId = childernData.id!;
+                                    // HomeView.studentname = childernData.name!;
                                   });
-
+                                  // print(HomeView.studentId);
                                   BlocProvider.of<AcademicReportCubit>(context)
                                       .getAcademicReport(
                                           month:

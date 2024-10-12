@@ -8,7 +8,6 @@ import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/go_to.dart';
 import '../../../../core/utils/service_locator.dart';
 import '../../../../generated/l10n.dart';
-import '../../../home/presentation/views/home_view.dart';
 import '../../../notifications/presentation/views/notifications_view.dart';
 import '../../data/repositories/schedules_repo_impl.dart';
 import '../widgets/schedules_view_body.dart';
@@ -50,8 +49,7 @@ class _SchedulesViewState extends State<SchedulesView> {
           actions: [
             InkWell(
               onTap: () {
-                GoTo.push(
-                    context, NotificationsView(studentId: HomeView.studentId));
+                GoTo.push(context, const NotificationsView());
               },
               child: Padding(
                 padding: EdgeInsetsDirectional.only(end: 24.r),

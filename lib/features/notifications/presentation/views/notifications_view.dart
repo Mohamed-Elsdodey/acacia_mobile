@@ -10,8 +10,8 @@ import '../manager/notifications/notifications_cubit.dart';
 import '../widgets/notifications_view_body.dart';
 
 class NotificationsView extends StatefulWidget {
-  const NotificationsView({super.key, required this.studentId});
-  final int studentId;
+  const NotificationsView({super.key, this.studentId});
+  final int? studentId;
 
   @override
   State<NotificationsView> createState() => _NotificationsViewState();
@@ -42,7 +42,9 @@ class _NotificationsViewState extends State<NotificationsView> {
           ),
           centerTitle: true,
         ),
-        body: const NotificationsViewBody(),
+        body: NotificationsViewBody(
+          studentId: widget.studentId,
+        ),
       ),
     );
   }

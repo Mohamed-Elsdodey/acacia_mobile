@@ -15,15 +15,19 @@ class NotificationsRepoImpl implements NotificationsRepo {
 
   @override
   Future<Either<Failure, NotificationsModel>> getNotifications(
-      {required int studentId}) async {
+      {int? studentId}) async {
     try {
       String schoolDomain =
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
+
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+
+      int id = await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
+
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
-        endPoint: "student/getNotifications?student_id=$studentId",
+        endPoint: "student/getNotifications?student_id=${studentId ?? id}",
         headers: {
           "Authorization": "Bearer $token",
         },

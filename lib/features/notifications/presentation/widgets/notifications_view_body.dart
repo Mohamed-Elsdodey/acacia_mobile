@@ -1,5 +1,4 @@
 import 'package:evaluation_and_follow_up/core/widgets/custom_refresh_page.dart';
-import 'package:evaluation_and_follow_up/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,8 +12,8 @@ import '../manager/notifications/notifications_cubit.dart';
 import 'notifications_list_item.dart';
 
 class NotificationsViewBody extends StatefulWidget {
-  const NotificationsViewBody({super.key});
-
+  const NotificationsViewBody({super.key, this.studentId});
+  final int? studentId;
   @override
   State<NotificationsViewBody> createState() => _NotificationsViewBodyState();
 }
@@ -25,7 +24,7 @@ class _NotificationsViewBodyState extends State<NotificationsViewBody> {
     return CustomRefreshPage(
       onRefresh: () async {
         await BlocProvider.of<NotificationsCubit>(context)
-            .getNotifications(studentId: HomeView.studentId);
+            .getNotifications(studentId: widget.studentId);
       },
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),

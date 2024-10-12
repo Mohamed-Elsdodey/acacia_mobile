@@ -15,8 +15,8 @@ import '../widgets/home_view_body.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
-  static int studentId = -1;
-  static String studentname = "";
+  // static int studentId = -1;
+  // static String studentname = "";
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -61,8 +61,7 @@ class _HomeViewState extends State<HomeView> {
           actions: [
             InkWell(
               onTap: () {
-                GoTo.push(
-                    context, NotificationsView(studentId: HomeView.studentId));
+                GoTo.push(context, const NotificationsView());
               },
               child: Stack(
                 clipBehavior: Clip.none,

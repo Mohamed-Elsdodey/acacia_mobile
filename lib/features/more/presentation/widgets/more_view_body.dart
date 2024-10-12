@@ -1,5 +1,4 @@
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
-import 'package:evaluation_and_follow_up/features/dataAccount/presentation/views/data_account_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -11,8 +10,8 @@ import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/methods.dart';
 import '../../../../generated/l10n.dart';
 import '../../../absence/presentation/views/absence_view.dart';
+import '../../../dataAccount/presentation/views/data_account_view.dart';
 import '../../../exams/presentation/views/exams_view.dart';
-import '../../../home/presentation/views/home_view.dart';
 import '../../../login/presentation/views/login_view.dart';
 import '../../../notifications/presentation/views/notifications_view.dart';
 import '../../../opinions/presentation/views/opinions_view.dart';
@@ -61,8 +60,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
           actions: [
             InkWell(
               onTap: () {
-                GoTo.push(
-                    context, NotificationsView(studentId: HomeView.studentId));
+                GoTo.push(context, const NotificationsView());
               },
               child: Padding(
                 padding: const EdgeInsetsDirectional.only(end: 24),
