@@ -1,5 +1,5 @@
 class AppStrings {
-  static const String appDomainKey = "http://acacia-ai.com";
+  static const String appDomainKey = "https://acacia-ai.com";
   static const String appTitleKey = "Evaluation and follow up";
   static const String enLangKey = "en";
   static const String arLangKey = "ar";
