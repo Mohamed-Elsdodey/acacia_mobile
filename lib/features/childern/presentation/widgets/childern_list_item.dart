@@ -1,11 +1,11 @@
 import 'package:evaluation_and_follow_up/core/utils/app_assets.dart';
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
-import 'package:evaluation_and_follow_up/features/notifications/presentation/views/notifications_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/models/childern_model.dart';
 import '../../../../generated/l10n.dart';
+import '../../../notifications/presentation/views/notifications_view.dart';
 
 class ChildernListItem extends StatelessWidget {
   const ChildernListItem({super.key, required this.childernInfo});

@@ -19,11 +19,7 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
     return Padding(
       padding: EdgeInsets.only(bottom: 8.r),
       child: Card(
-        color: widget.notificationItem.type == "review"
-            ? Colors.green.shade50
-            : widget.notificationItem.type == "exam"
-                ? Colors.yellow.shade50
-                : Colors.red.shade50,
+        color: getBackgroundColor(widget.notificationItem.type!),
         surfaceTintColor: Colors.white,
         shadowColor: Colors.white,
         shape: RoundedRectangleBorder(
@@ -37,46 +33,26 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
             borderRadius: BorderRadius.circular(12),
             border: BorderDirectional(
               top: BorderSide(
-                  width: 1,
-                  color: widget.notificationItem.type == "review"
-                      ? const Color(0xff00CC99)
-                      : widget.notificationItem.type == "exam"
-                          ? const Color(0xffFFD200)
-                          : const Color(0xffEB5757)),
+                  width: 1, color: getColor(widget.notificationItem.type!)),
               bottom: BorderSide(
-                  width: 1,
-                  color: widget.notificationItem.type == "review"
-                      ? const Color(0xff00CC99)
-                      : widget.notificationItem.type == "exam"
-                          ? const Color(0xffFFD200)
-                          : const Color(0xffEB5757)),
+                  width: 1, color: getColor(widget.notificationItem.type!)),
               end: BorderSide(
-                  width: 1,
-                  color: widget.notificationItem.type == "review"
-                      ? const Color(0xff00CC99)
-                      : widget.notificationItem.type == "exam"
-                          ? const Color(0xffFFD200)
-                          : const Color(0xffEB5757)),
+                  width: 1, color: getColor(widget.notificationItem.type!)),
               start: BorderSide(
-                  width: 10,
-                  color: widget.notificationItem.type == "review"
-                      ? const Color(0xff00CC99)
-                      : widget.notificationItem.type == "exam"
-                          ? const Color(0xffFFD200)
-                          : const Color(0xffEB5757)),
+                  width: 10, color: getColor(widget.notificationItem.type!)),
             ),
           ),
           child: Row(
             children: [
-              Image.asset(
-                widget.notificationItem.type == "review"
-                    ? AppAssets.check
-                    : widget.notificationItem.type == "exam"
-                        ? AppAssets.warning
-                        : AppAssets.close,
-                height: 40,
-                width: 40,
-              ),
+              getIconPath(widget.notificationItem.type!) != null
+                  ? Image.asset(
+                      getIconPath(widget.notificationItem.type!)!,
+                      height: 40,
+                      width: 40,
+                    )
+                  : const SizedBox(
+                      width: 10,
+                    ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -105,5 +81,56 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
         ),
       ),
     );
+  }
+
+  Color getColor(String type) {
+    switch (type) {
+      case "positive":
+        return const Color(0xff00CC99);
+      case "negative":
+        return const Color(0xffEB5757);
+      case "absence":
+        return const Color(0xffEB5757);
+      case "exam":
+        return Colors.blue;
+      case "message":
+        return const Color(0xffFFD200);
+      default:
+        return Colors.purple;
+    }
+  }
+
+  Color getBackgroundColor(String type) {
+    switch (type) {
+      case "positive":
+        return Colors.green.shade50;
+      case "negative":
+        return Colors.red.shade50;
+      case "absence":
+        return Colors.red.shade50;
+      case "exam":
+        return Colors.blue.shade50;
+      case "message":
+        return Colors.yellow.shade50;
+      default:
+        return Colors.purple.shade50;
+    }
+  }
+
+  String? getIconPath(String type) {
+    switch (type) {
+      case "positive":
+        return AppAssets.check;
+      case "negative":
+        return AppAssets.close;
+      case "absence":
+        return AppAssets.close;
+      case "exam":
+        return null;
+      case "message":
+        return AppAssets.warning;
+      default:
+        return null;
+    }
   }
 }

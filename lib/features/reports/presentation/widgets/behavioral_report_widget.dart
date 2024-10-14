@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
@@ -23,14 +24,12 @@ class BehavioralReportWidget extends StatelessWidget {
             color: Color(0xff9747FF),
           ),
           alignment: Alignment.center,
-          child: Flexible(
-            child: Text(
-              S.of(context).reports_2,
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
-            ),
+          child: AutoSizeText(
+            S.of(context).reports_2,
+            maxLines: 1,
+            minFontSize: 10,
+            style: const TextStyle(
+                fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white),
           ),
         ),
         DecoratedBox(

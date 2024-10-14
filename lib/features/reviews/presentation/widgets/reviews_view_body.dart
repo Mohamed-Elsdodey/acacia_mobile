@@ -71,7 +71,7 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
               } else {
                 return Padding(
                   padding: EdgeInsets.symmetric(vertical: 100.r),
-                  child: CustomLoadingWidget(),
+                  child: const CustomLoadingWidget(),
                 );
               }
             },

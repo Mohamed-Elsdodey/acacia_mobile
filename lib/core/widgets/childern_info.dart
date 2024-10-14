@@ -1,8 +1,8 @@
 import 'package:evaluation_and_follow_up/core/utils/app_assets.dart';
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
-import 'package:evaluation_and_follow_up/features/notifications/presentation/views/notifications_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/notifications/presentation/views/notifications_view.dart';
 import '../../generated/l10n.dart';
 import '../helper/SharedPreferences/pref.dart';
 import '../models/childern_model.dart';

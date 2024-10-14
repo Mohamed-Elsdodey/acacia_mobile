@@ -64,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "logout_massge": MessageLookupByLibrary.simpleMessage(
             "هل تريد بالفعل تسجيل الخروج؟"),
+        "messages": MessageLookupByLibrary.simpleMessage("الرسائل"),
         "more": MessageLookupByLibrary.simpleMessage("المزيد"),
         "motivation": MessageLookupByLibrary.simpleMessage("التحفيز"),
         "nagative": MessageLookupByLibrary.simpleMessage("عقوبة"),
@@ -80,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_email":
             MessageLookupByLibrary.simpleMessage("البريدالإلكتروني غير صحيح"),
         "no_exams": MessageLookupByLibrary.simpleMessage("لا يوجد إختبارات"),
+        "no_messages": MessageLookupByLibrary.simpleMessage("لا يوجد رسائل"),
         "no_notifications":
             MessageLookupByLibrary.simpleMessage("لا يوجد الإشعارات"),
         "no_password":

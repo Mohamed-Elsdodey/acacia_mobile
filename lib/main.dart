@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:evaluation_and_follow_up/core/utils/my_http_overrides.dart';
-import 'package:evaluation_and_follow_up/features/notifications/presentation/views/notifications_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,7 @@ import 'core/helper/SharedPreferences/pref.dart';
 import 'core/manager/color_provider.dart';
 import 'core/utils/app_strings.dart';
 import 'core/utils/service_locator.dart';
+import 'features/notifications/presentation/views/notifications_view.dart';
 import 'features/splash/presentation/views/splash_view.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';

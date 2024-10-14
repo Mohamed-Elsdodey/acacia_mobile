@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 
 import '../../../../core/utils/go_to.dart';
 import '../../../../core/utils/service_locator.dart';
+import '../../../messages/presentation/views/messages_view.dart';
 import '../../../notifications/presentation/views/notifications_view.dart';
 import '../../data/repositories/home_repo_impl.dart';
 import '../manager/academicReport/academic_report_cubit.dart';
@@ -82,7 +83,9 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                GoTo.push(context, const MessagesView());
+              },
               child: Padding(
                 padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
                 child: Stack(

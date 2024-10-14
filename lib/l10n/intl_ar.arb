@@ -124,7 +124,10 @@
   "weekly_message": "الرسالة الإسبوعية",
 
   "choose_maoth": "حدد الشهر",
-  "choose_week": "حدد الإسبوع"
+  "choose_week": "حدد الإسبوع",
+
+  "messages": "الرسائل",
+  "no_messages": "لا يوجد رسائل"
 
 
 }

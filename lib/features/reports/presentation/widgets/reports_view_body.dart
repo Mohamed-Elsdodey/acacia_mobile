@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -68,10 +69,10 @@ class _ReportsViewBodyState extends State<ReportsViewBody> {
                             color: Theme.of(context).primaryColor,
                           ),
                           alignment: Alignment.center,
-                          child: Flexible(
+                          child: FittedBox(
                             child: Text(
                               "${S.of(context).school}$schoolName",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
                                   color: Colors.white),
@@ -113,19 +114,20 @@ class _ReportsViewBodyState extends State<ReportsViewBody> {
                                       width: 2)),
                               alignment: Alignment.center,
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Flexible(
-                                      child: Text(
-                                        monthText,
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xff2A2F3B)),
-                                      ),
+                                    AutoSizeText(
+                                      monthText,
+                                      maxLines: 1,
+                                      minFontSize: 10,
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xff2A2F3B)),
                                     ),
                                     const Icon(
                                         Icons.keyboard_arrow_down_rounded,

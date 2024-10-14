@@ -60,7 +60,7 @@ class _ChildernViewBodyState extends State<ChildernViewBody> {
               } else {
                 return Padding(
                   padding: EdgeInsets.symmetric(vertical: 100.r),
-                  child: CustomLoadingWidget(),
+                  child: const CustomLoadingWidget(),
                 );
               }
             },

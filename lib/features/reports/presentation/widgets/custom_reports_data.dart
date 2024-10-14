@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:evaluation_and_follow_up/features/reports/presentation/widgets/academic_report_widget.dart';
 import 'package:evaluation_and_follow_up/features/reports/presentation/widgets/behavioral_report_widget.dart';
 import 'package:flutter/material.dart';
@@ -26,14 +27,12 @@ class _CustomReportsDataState extends State<CustomReportsData> {
             color: const Color(0xff333333),
           ),
           alignment: Alignment.center,
-          child: Flexible(
-            child: Text(
-              S.of(context).reports_title,
-              style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
-            ),
+          child: AutoSizeText(
+            S.of(context).reports_title,
+            minFontSize: 10,
+            maxLines: 1,
+            style: const TextStyle(
+                fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white),
           ),
         ),
         AcademicReportWidget(

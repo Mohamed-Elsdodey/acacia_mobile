@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class CustomColumnBehavioralReport extends StatelessWidget {
@@ -24,13 +25,13 @@ class CustomColumnBehavioralReport extends StatelessWidget {
               end: BorderSide(color: Colors.grey.shade400, width: 0.5),
             ),
           ),
-          child: Flexible(
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: const TextStyle(fontSize: 12),
-            ),
+          child: AutoSizeText(
+            title,
+            minFontSize: 10,
+            textAlign: TextAlign.center,
+            softWrap: true,
+            maxLines: 2,
+            style: const TextStyle(fontSize: 12),
           ),
         ),
         Container(
@@ -46,13 +47,13 @@ class CustomColumnBehavioralReport extends StatelessWidget {
               end: BorderSide(color: Colors.grey.shade400, width: 0.5),
             ),
           ),
-          child: Flexible(
-            child: Text(
-              subTitle,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: const TextStyle(fontSize: 12),
-            ),
+          child: AutoSizeText(
+            subTitle,
+            textAlign: TextAlign.center,
+            softWrap: true,
+            maxLines: 2,
+            minFontSize: 10,
+            style: const TextStyle(fontSize: 12),
           ),
         ),
       ],

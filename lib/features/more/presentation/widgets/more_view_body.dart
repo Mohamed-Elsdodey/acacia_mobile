@@ -13,6 +13,7 @@ import '../../../absence/presentation/views/absence_view.dart';
 import '../../../dataAccount/presentation/views/data_account_view.dart';
 import '../../../exams/presentation/views/exams_view.dart';
 import '../../../login/presentation/views/login_view.dart';
+import '../../../messages/presentation/views/messages_view.dart';
 import '../../../notifications/presentation/views/notifications_view.dart';
 import '../../../opinions/presentation/views/opinions_view.dart';
 import '../../../reports/presentation/views/reports_view.dart';
@@ -42,6 +43,8 @@ class _MoreViewBodyState extends State<MoreViewBody> {
       MoreItemModel(title: S.of(context).opinions, imagePath: AppAssets.frame2),
       MoreItemModel(
           title: S.of(context).weekly_message, imagePath: AppAssets.frame4),
+      MoreItemModel(
+          title: S.of(context).messages, imagePath: AppAssets.massge),
       MoreItemModel(
           title: S.of(context).about_app, imagePath: AppAssets.frame5),
       MoreItemModel(title: S.of(context).logout, imagePath: AppAssets.frame6),
@@ -90,9 +93,9 @@ class _MoreViewBodyState extends State<MoreViewBody> {
           padding: const EdgeInsets.all(8.0),
           child: GridView.count(
             crossAxisCount:
-                MediaQuery.of(context).size.width ~/ 150, // عدد الأعمدة
-            crossAxisSpacing: 10, // المسافة الأفقية بين العناصر
-            mainAxisSpacing: 10, // المسافة الرأسية بين العناصر
+                MediaQuery.of(context).size.width ~/ 150,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
             childAspectRatio: 5 / 3,
             padding: const EdgeInsets.all(10),
             children: List.generate(moreList.length, (index) {
@@ -124,8 +127,11 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                       GoTo.push(context, const WeeklyMessageView());
                       break;
                     case 7:
+                      GoTo.push(context, const MessagesView());
                       break;
                     case 8:
+                      break;
+                    case 9:
                       String firebaseToken = await getTokenFirebase();
                       if (context.mounted) {
                         CustomAlertDialog.alertWithTwoButton(
@@ -181,7 +187,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                         width: 36,
                         height: 36,
                         color:
-                            index == 7 ? Theme.of(context).primaryColor : null,
+                            index == 8 ? Theme.of(context).primaryColor : null,
                       ),
                       Text(
                         moreList[index].title,

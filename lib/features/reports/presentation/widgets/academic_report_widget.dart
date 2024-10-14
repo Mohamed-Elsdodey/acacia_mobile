@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
@@ -25,14 +26,14 @@ class AcademicReportWidget extends StatelessWidget {
               color: Color(0xff00C191),
             ),
             alignment: Alignment.center,
-            child: Flexible(
-              child: Text(
-                S.of(context).reports_1,
-                style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white),
-              ),
+            child: AutoSizeText(
+              S.of(context).reports_1,
+              maxLines: 1,
+              minFontSize: 10,
+              style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white),
             ),
           ),
           DecoratedBox(

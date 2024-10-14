@@ -1079,6 +1079,26 @@ class S {
       args: [],
     );
   }
+
+  /// `الرسائل`
+  String get messages {
+    return Intl.message(
+      'الرسائل',
+      name: 'messages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لا يوجد رسائل`
+  String get no_messages {
+    return Intl.message(
+      'لا يوجد رسائل',
+      name: 'no_messages',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class CustomColumnAcademicReport extends StatelessWidget {
@@ -31,13 +32,13 @@ class CustomColumnAcademicReport extends StatelessWidget {
                   width: customBorder == true ? 0.5 : 1.0),
             ),
           ),
-          child: Flexible(
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: const TextStyle(fontSize: 12),
-            ),
+          child: AutoSizeText(
+            title,
+            maxLines: 2,
+            minFontSize: 10,
+            textAlign: TextAlign.center,
+            softWrap: true,
+            style: const TextStyle(fontSize: 12),
           ),
         ),
         Container(
@@ -57,13 +58,13 @@ class CustomColumnAcademicReport extends StatelessWidget {
                   width: customBorder == true ? 0.5 : 1.0),
             ),
           ),
-          child: Flexible(
-            child: Text(
-              subTitle1,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: const TextStyle(fontSize: 12),
-            ),
+          child: AutoSizeText(
+            subTitle1,
+            maxLines: 2,
+            minFontSize: 10,
+            textAlign: TextAlign.center,
+            softWrap: true,
+            style: const TextStyle(fontSize: 12),
           ),
         ),
         Container(
@@ -81,13 +82,13 @@ class CustomColumnAcademicReport extends StatelessWidget {
                   width: customBorder == true ? 0.5 : 1.0),
             ),
           ),
-          child: Flexible(
-            child: Text(
-              subTitle2,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: const TextStyle(fontSize: 12),
-            ),
+          child: AutoSizeText(
+            subTitle2,
+            textAlign: TextAlign.center,
+            softWrap: true,
+            maxLines: 2,
+            minFontSize: 10,
+            style: const TextStyle(fontSize: 12),
           ),
         ),
       ],

@@ -7,6 +7,7 @@ import '../../features/dataAccount/data/repositories/data_account_repo_impl.dart
 import '../../features/exams/data/repositories/exams_repo_impl.dart';
 import '../../features/home/data/repositories/home_repo_impl.dart';
 import '../../features/login/data/repositories/login_repo_impl.dart';
+import '../../features/messages/data/repositories/notifications_repo_impl.dart';
 import '../../features/notifications/data/repositories/notifications_repo_impl.dart';
 import '../../features/opinions/data/repositories/opinions_repo_impl.dart';
 import '../../features/reports/data/repositories/reports_repo_impl.dart';
@@ -99,6 +100,12 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<WeeklyMessageRepoImpl>(
     WeeklyMessageRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+
+  getIt.registerSingleton<MessagesRepoImpl>(
+    MessagesRepoImpl(
       getIt.get<ApiService>(),
     ),
   );
