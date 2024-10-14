@@ -4,6 +4,7 @@ import 'package:evaluation_and_follow_up/core/errors/failures.dart';
 import 'package:evaluation_and_follow_up/core/utils/api_service.dart';
 import 'package:evaluation_and_follow_up/features/schoolCode/data/models/school_code_model.dart';
 
+import '../../../../core/utils/app_strings.dart';
 import 'school_code_repo.dart';
 
 class SchoolCodeRepoImpl implements SchoolCodeRepo {
@@ -16,7 +17,7 @@ class SchoolCodeRepoImpl implements SchoolCodeRepo {
       {required String code}) async {
     try {
       Map<String, dynamic> data = await apiService.post(
-        host: "https://arabicinnovate.com",
+        host: AppStrings.appDomainKey,
         endPoint: "settings/get_school?code=$code",
         data: null,
         headers: {
