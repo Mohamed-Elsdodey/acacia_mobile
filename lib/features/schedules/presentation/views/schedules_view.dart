@@ -74,7 +74,11 @@ class _SchedulesViewState extends State<SchedulesView> {
             )
           ],
         ),
-        body: const SchedulesViewBody(),
+        body: InteractiveViewer(
+            panEnabled: true,
+            minScale: 0.5,
+            maxScale: 4.0,
+            child: const SchedulesViewBody()),
       ),
     );
   }

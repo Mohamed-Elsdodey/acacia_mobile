@@ -49,7 +49,9 @@ class _CustomBuildTableState extends State<CustomBuildTable> {
           gridLinesVisibility: GridLinesVisibility.both,
           headerGridLinesVisibility: GridLinesVisibility.both,
           columnWidthMode: ColumnWidthMode.fill,
-          isScrollbarAlwaysShown: true,
+          isScrollbarAlwaysShown: false,
+          horizontalScrollPhysics: NeverScrollableScrollPhysics(),
+          verticalScrollPhysics: NeverScrollableScrollPhysics(),
           columns: [
             GridColumn(
               columnName: "day",

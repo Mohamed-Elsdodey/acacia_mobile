@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
@@ -52,10 +53,11 @@ class TableDataSource extends DataGridSource {
         return Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(8),
-            child: Text(
+            child: AutoSizeText(
               e.value,
               textAlign: TextAlign.center,
               maxLines: 2,
+              minFontSize: 5,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                   color: Colors.black,
