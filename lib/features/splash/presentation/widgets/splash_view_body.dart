@@ -1,9 +1,11 @@
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/helper/SharedPreferences/pref.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/methods.dart';
 import '../../../bottomNavigationBar/presentation/views/bottom_navigatiaon_bar_view.dart';
 import '../../../login/presentation/views/login_view.dart';
 import '../../../schoolCode/presentation/views/school_code_view.dart';
@@ -66,6 +68,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
         if (isLogin == true && schoolDomain.isNotEmpty) {
           if (mounted) {
             //go to home
+
+            getTokenFirebase();
             GoTo.pushAndRemoveUntil(context, const BottomNavigationBarView());
           }
         } else if (isLogin == false && schoolDomain.isNotEmpty) {
@@ -93,5 +97,18 @@ class _SplashViewBodyState extends State<SplashViewBody>
     sliderAnimation = Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
         .animate(animationController);
     animationController.forward();
+  }
+
+  void getTokenFirebase() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    String? token = await messaging.getToken();
+    Pref.saveStringToPref(key: AppStrings.firebaseTokenKey, value: token ?? "");
+    String tokenLogin =
+        await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+    upDateTokenNotifications(
+      tokenLogin: tokenLogin,
+      tokenFirebase: token ?? "",
+    );
   }
 }

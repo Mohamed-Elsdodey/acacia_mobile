@@ -1,4 +1,5 @@
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
+import 'package:evaluation_and_follow_up/features/HomeWork/presentation/views/home_work_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -37,16 +38,12 @@ class _MoreViewBodyState extends State<MoreViewBody> {
       MoreItemModel(title: S.of(context).exams, imagePath: AppAssets.frame1),
       MoreItemModel(title: S.of(context).reports, imagePath: AppAssets.frame2),
       MoreItemModel(title: S.of(context).absences, imagePath: AppAssets.frame3),
-      MoreItemModel(
-          title: S.of(context).data_acount, imagePath: AppAssets.frame4),
+      MoreItemModel(title: S.of(context).data_acount, imagePath: AppAssets.frame4),
       MoreItemModel(title: S.of(context).summary, imagePath: AppAssets.frame1),
       MoreItemModel(title: S.of(context).opinions, imagePath: AppAssets.frame2),
-      MoreItemModel(
-          title: S.of(context).weekly_message, imagePath: AppAssets.frame4),
-      MoreItemModel(
-          title: S.of(context).messages, imagePath: AppAssets.massge),
-      MoreItemModel(
-          title: S.of(context).about_app, imagePath: AppAssets.frame5),
+      MoreItemModel(title: S.of(context).weekly_message, imagePath: AppAssets.frame4),
+      MoreItemModel(title: S.of(context).messages, imagePath: AppAssets.massge),
+      MoreItemModel(title: S.of(context).home_work, imagePath: AppAssets.frame2),
       MoreItemModel(title: S.of(context).logout, imagePath: AppAssets.frame6),
     ];
     return Scaffold(
@@ -130,6 +127,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                       GoTo.push(context, const MessagesView());
                       break;
                     case 8:
+                      GoTo.push(context, const HomeWorkView());
                       break;
                     case 9:
                       String firebaseToken = await getTokenFirebase();

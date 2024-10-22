@@ -109,7 +109,15 @@ class S {
       args: [],
     );
   }
-
+  /// `الواجب المدرسي`
+  String get home_work {
+    return Intl.message(
+      'الواجب المدرسي',
+      name: 'home_work',
+      desc: '',
+      args: [],
+    );
+  }
   /// `البريد الإلكتروني`
   String get email {
     return Intl.message(
@@ -769,6 +777,15 @@ class S {
       args: [],
     );
   }
+  /// `طباعة`
+  String get print {
+    return Intl.message(
+      'طباعة',
+      name: 'print',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `لا يوجد جدول حصص`
   String get no_schedules {
@@ -1065,6 +1082,24 @@ class S {
     return Intl.message(
       'حدد الشهر',
       name: 'choose_maoth',
+      desc: '',
+      args: [],
+    );
+  }
+  /// `حدد اليوم`
+  String get choose_day {
+    return Intl.message(
+      'حدد اليوم',
+      name: 'choose_day',
+      desc: '',
+      args: [],
+    );
+  }
+  /// `حدد السنة`
+  String get choose_year {
+    return Intl.message(
+      'حدد السنة',
+      name: 'choose_year',
       desc: '',
       args: [],
     );

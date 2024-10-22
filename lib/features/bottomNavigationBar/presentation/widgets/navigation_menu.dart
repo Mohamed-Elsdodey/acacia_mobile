@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../generated/l10n.dart';
@@ -33,7 +34,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
           id: 5, iconPath: AppAssets.icon5, title: S.of(context).more),
     ];
     return Container(
-      height: 50,
+      height: 70.h,
       width: MediaQuery.of(context).size.width,
       color: Theme.of(context).primaryColor,
       child: Row(

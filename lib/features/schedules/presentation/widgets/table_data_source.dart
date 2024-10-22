@@ -1,4 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 import '../../data/models/schedules_model.dart';
@@ -44,22 +46,24 @@ class TableDataSource extends DataGridSource {
           child: Text(
             e.value,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 10, fontWeight: FontWeight.w700),
+            style:  TextStyle(
+                color: Colors.white, fontSize: 10.sp, fontWeight: FontWeight.w700),
           ),
         );
       } else {
         return Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(8),
-            child: Text(
+            child: AutoSizeText(
               e.value,
               textAlign: TextAlign.center,
-              maxLines: 2,
+              maxLines: 4,
+              minFontSize: 5,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
+              style:  TextStyle(
+                fontSize: 7.sp,
                   color: Colors.black,
-                  fontSize: 10,
+
                   fontWeight: FontWeight.w400),
             ));
       }

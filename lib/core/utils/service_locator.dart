@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:evaluation_and_follow_up/features/HomeWork/data/repositories/home_work_repo_impl.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/absence/data/repositories/absence_repo_impl.dart';
@@ -106,6 +107,11 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<MessagesRepoImpl>(
     MessagesRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+  getIt.registerSingleton<HomeWorkRepoImpl>(
+    HomeWorkRepoImpl(
       getIt.get<ApiService>(),
     ),
   );
