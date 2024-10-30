@@ -47,6 +47,7 @@ class _SchedulesViewBodyState extends State<SchedulesViewBody> {
                   return BlocBuilder<SchedulesCubit, SchedulesState>(
                     builder: (context, state) {
                       if (state is SchedulesSuccess) {
+
                         List<SchedulesModel> listSchedules = state.listSchedules;
                         if (listSchedules.isNotEmpty) {
                           return CustomRefreshPage(
