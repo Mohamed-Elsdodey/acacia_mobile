@@ -54,6 +54,7 @@ class _SchedulesViewBodyState extends State<SchedulesViewBody> {
                               await BlocProvider.of<SessionsCubit>(context)
                                   .getSessions();
                               if (context.mounted) {
+
                                 await BlocProvider.of<SchedulesCubit>(context)
                                     .getSchedules();
                               }
