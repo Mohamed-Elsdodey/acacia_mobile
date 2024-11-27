@@ -1,7 +1,10 @@
 import 'package:evaluation_and_follow_up/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../data/models/messages_model.dart';
 
 
@@ -67,10 +70,14 @@ class _MessagesListItemState extends State<MessagesListItem> {
                             fontSize: 14, fontWeight: FontWeight.w700),
                       ),
                       const SizedBox(height: 2),
-                      Text(
-                        widget.messageData.text.toString(),
-                        softWrap: true,
-                        style: const TextStyle(
+                      Linkify(
+                        onOpen: onOpenLink,
+                        text: widget.messageData.text.toString(),
+                        options: LinkifyOptions(humanize: false),
+                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
+                        linkStyle: TextStyle(color: Colors.blue,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.blue,
                             fontSize: 13, fontWeight: FontWeight.w400),
                       ),
                     ],
@@ -132,6 +139,13 @@ class _MessagesListItemState extends State<MessagesListItem> {
         return AppAssets.warning;
       default:
         return null;
+    }
+  }
+  Future<void> onOpenLink(LinkableElement link) async {
+    if (await canLaunchUrl(Uri.parse(link.url))) {
+      await launchUrl(Uri.parse(link.url));
+    } else {
+      throw '${S.of(context).no_open_link}${link.url}';
     }
   }
 }

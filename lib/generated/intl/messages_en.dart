@@ -35,9 +35,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "childern": MessageLookupByLibrary.simpleMessage("الأبناء"),
         "choose_anther_school":
             MessageLookupByLibrary.simpleMessage("حدد مدرسة أخرى"),
+        "choose_day": MessageLookupByLibrary.simpleMessage("حدد اليوم"),
         "choose_maoth": MessageLookupByLibrary.simpleMessage("حدد الشهر"),
         "choose_school": MessageLookupByLibrary.simpleMessage("تحديد المدرسة"),
         "choose_week": MessageLookupByLibrary.simpleMessage("حدد الإسبوع"),
+        "choose_year": MessageLookupByLibrary.simpleMessage("حدد السنة"),
         "classes": MessageLookupByLibrary.simpleMessage("الحصص"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
@@ -56,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "field_is_required":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "home_work": MessageLookupByLibrary.simpleMessage("الواجب المدرسي"),
         "invalid_email": MessageLookupByLibrary.simpleMessage(
             "برجاء ادخال بريدإلكتروني صحيح"),
         "invalid_password":
@@ -84,6 +87,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_messages": MessageLookupByLibrary.simpleMessage("لا يوجد رسائل"),
         "no_notifications":
             MessageLookupByLibrary.simpleMessage("لا يوجد الإشعارات"),
+        "no_open_link":
+            MessageLookupByLibrary.simpleMessage("Link cannot be opened: "),
         "no_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة"),
         "no_reviews": MessageLookupByLibrary.simpleMessage("لا يوجد تحفيز"),
@@ -106,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "points": MessageLookupByLibrary.simpleMessage("النقاط: "),
         "positive": MessageLookupByLibrary.simpleMessage("تميز"),
         "positive_point": MessageLookupByLibrary.simpleMessage("نقاط إجابية"),
+        "print": MessageLookupByLibrary.simpleMessage("طباعة"),
         "rank_room":
             MessageLookupByLibrary.simpleMessage("الترتيب على الفصل: "),
         "rank_row": MessageLookupByLibrary.simpleMessage("الترتيب على الصف: "),

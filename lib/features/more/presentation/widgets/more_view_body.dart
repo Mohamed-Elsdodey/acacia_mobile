@@ -184,8 +184,8 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                         moreList[index].imagePath,
                         width: 36,
                         height: 36,
-                        color:
-                            index == 8 ? Theme.of(context).primaryColor : null,
+                        // color:
+                        //     index == 8 ? Theme.of(context).primaryColor : null,
                       ),
                       Text(
                         moreList[index].title,

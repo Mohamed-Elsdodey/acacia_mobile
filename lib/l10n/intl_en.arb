@@ -133,8 +133,13 @@
   "weekly_message": "الرسالة الإسبوعية",
   "choose_maoth": "حدد الشهر",
   "choose_week": "حدد الإسبوع",
-
+  "choose_day": "حدد اليوم",
+  "choose_year": "حدد السنة",
+  "home_work": "الواجب المدرسي",
+  "print": "طباعة",
 
   "messages": "الرسائل",
-  "no_messages": "لا يوجد رسائل"
+  "no_messages": "لا يوجد رسائل",
+
+  "no_open_link": "Link cannot be opened: "
 }

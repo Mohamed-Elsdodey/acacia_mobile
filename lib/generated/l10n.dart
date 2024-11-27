@@ -109,15 +109,7 @@ class S {
       args: [],
     );
   }
-  /// `الواجب المدرسي`
-  String get home_work {
-    return Intl.message(
-      'الواجب المدرسي',
-      name: 'home_work',
-      desc: '',
-      args: [],
-    );
-  }
+
   /// `البريد الإلكتروني`
   String get email {
     return Intl.message(
@@ -777,15 +769,6 @@ class S {
       args: [],
     );
   }
-  /// `طباعة`
-  String get print {
-    return Intl.message(
-      'طباعة',
-      name: 'print',
-      desc: '',
-      args: [],
-    );
-  }
 
   /// `لا يوجد جدول حصص`
   String get no_schedules {
@@ -1086,6 +1069,17 @@ class S {
       args: [],
     );
   }
+
+  /// `حدد الإسبوع`
+  String get choose_week {
+    return Intl.message(
+      'حدد الإسبوع',
+      name: 'choose_week',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `حدد اليوم`
   String get choose_day {
     return Intl.message(
@@ -1095,6 +1089,7 @@ class S {
       args: [],
     );
   }
+
   /// `حدد السنة`
   String get choose_year {
     return Intl.message(
@@ -1105,11 +1100,21 @@ class S {
     );
   }
 
-  /// `حدد الإسبوع`
-  String get choose_week {
+  /// `الواجب المدرسي`
+  String get home_work {
     return Intl.message(
-      'حدد الإسبوع',
-      name: 'choose_week',
+      'الواجب المدرسي',
+      name: 'home_work',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `طباعة`
+  String get print {
+    return Intl.message(
+      'طباعة',
+      name: 'print',
       desc: '',
       args: [],
     );
@@ -1130,6 +1135,16 @@ class S {
     return Intl.message(
       'لا يوجد رسائل',
       name: 'no_messages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Link cannot be opened: `
+  String get no_open_link {
+    return Intl.message(
+      'Link cannot be opened: ',
+      name: 'no_open_link',
       desc: '',
       args: [],
     );
