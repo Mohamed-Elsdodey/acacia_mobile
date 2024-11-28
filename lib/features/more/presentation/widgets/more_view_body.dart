@@ -1,5 +1,6 @@
 import 'package:evaluation_and_follow_up/core/utils/go_to.dart';
 import 'package:evaluation_and_follow_up/features/HomeWork/presentation/views/home_work_view.dart';
+import 'package:evaluation_and_follow_up/features/settings/presentation/views/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -38,12 +39,16 @@ class _MoreViewBodyState extends State<MoreViewBody> {
       MoreItemModel(title: S.of(context).exams, imagePath: AppAssets.frame1),
       MoreItemModel(title: S.of(context).reports, imagePath: AppAssets.frame2),
       MoreItemModel(title: S.of(context).absences, imagePath: AppAssets.frame3),
-      MoreItemModel(title: S.of(context).data_acount, imagePath: AppAssets.frame4),
+      MoreItemModel(
+          title: S.of(context).data_acount, imagePath: AppAssets.frame4),
       MoreItemModel(title: S.of(context).summary, imagePath: AppAssets.frame1),
       MoreItemModel(title: S.of(context).opinions, imagePath: AppAssets.frame2),
-      MoreItemModel(title: S.of(context).weekly_message, imagePath: AppAssets.frame4),
+      MoreItemModel(
+          title: S.of(context).weekly_message, imagePath: AppAssets.frame4),
       MoreItemModel(title: S.of(context).messages, imagePath: AppAssets.massge),
-      MoreItemModel(title: S.of(context).home_work, imagePath: AppAssets.frame2),
+      MoreItemModel(
+          title: S.of(context).home_work, imagePath: AppAssets.frame2),
+      MoreItemModel(title: S.of(context).settings, imagePath: AppAssets.frame7),
       MoreItemModel(title: S.of(context).logout, imagePath: AppAssets.frame6),
     ];
     return Scaffold(
@@ -89,8 +94,7 @@ class _MoreViewBodyState extends State<MoreViewBody> {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GridView.count(
-            crossAxisCount:
-                MediaQuery.of(context).size.width ~/ 150,
+            crossAxisCount: MediaQuery.of(context).size.width ~/ 150,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
             childAspectRatio: 5 / 3,
@@ -130,6 +134,9 @@ class _MoreViewBodyState extends State<MoreViewBody> {
                       GoTo.push(context, const HomeWorkView());
                       break;
                     case 9:
+                      GoTo.push(context, const SettingsView());
+                      break;
+                    case 10:
                       String firebaseToken = await getTokenFirebase();
                       if (context.mounted) {
                         CustomAlertDialog.alertWithTwoButton(

@@ -22,147 +22,154 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "about_app": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
-        "absence": MessageLookupByLibrary.simpleMessage("غياب"),
-        "absences": MessageLookupByLibrary.simpleMessage("الغياب والتأخير"),
-        "academic": MessageLookupByLibrary.simpleMessage("أكاديمي"),
+        "about_app": MessageLookupByLibrary.simpleMessage("About the App"),
+        "absence": MessageLookupByLibrary.simpleMessage("Absence"),
+        "absences":
+            MessageLookupByLibrary.simpleMessage("Absences and Tardiness"),
+        "academic": MessageLookupByLibrary.simpleMessage("Academic"),
         "academic_degree":
-            MessageLookupByLibrary.simpleMessage("التقدير الاكاديمي"),
-        "all": MessageLookupByLibrary.simpleMessage("الكل"),
+            MessageLookupByLibrary.simpleMessage("Academic Grade"),
+        "all": MessageLookupByLibrary.simpleMessage("All"),
         "appreciation_percentage":
-            MessageLookupByLibrary.simpleMessage("التقدير السلوكي"),
-        "behavior": MessageLookupByLibrary.simpleMessage("سلوكي"),
-        "childern": MessageLookupByLibrary.simpleMessage("الأبناء"),
+            MessageLookupByLibrary.simpleMessage("Behavioral Rating"),
+        "behavior": MessageLookupByLibrary.simpleMessage("Behavior"),
+        "childern": MessageLookupByLibrary.simpleMessage("Children"),
         "choose_anther_school":
-            MessageLookupByLibrary.simpleMessage("حدد مدرسة أخرى"),
-        "choose_day": MessageLookupByLibrary.simpleMessage("حدد اليوم"),
-        "choose_maoth": MessageLookupByLibrary.simpleMessage("حدد الشهر"),
-        "choose_school": MessageLookupByLibrary.simpleMessage("تحديد المدرسة"),
-        "choose_week": MessageLookupByLibrary.simpleMessage("حدد الإسبوع"),
-        "choose_year": MessageLookupByLibrary.simpleMessage("حدد السنة"),
-        "classes": MessageLookupByLibrary.simpleMessage("الحصص"),
+            MessageLookupByLibrary.simpleMessage("Choose Another School"),
+        "choose_day": MessageLookupByLibrary.simpleMessage("Choose day"),
+        "choose_maoth": MessageLookupByLibrary.simpleMessage("Select Month"),
+        "choose_school": MessageLookupByLibrary.simpleMessage("Choose School"),
+        "choose_week": MessageLookupByLibrary.simpleMessage("Select Week"),
+        "choose_year": MessageLookupByLibrary.simpleMessage("Choose year"),
+        "classes": MessageLookupByLibrary.simpleMessage("Classes"),
         "confirm_password":
-            MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
-        "data_acount": MessageLookupByLibrary.simpleMessage("بيانات الحساب"),
-        "date": MessageLookupByLibrary.simpleMessage("التاريخ: "),
-        "day": MessageLookupByLibrary.simpleMessage("اليوم"),
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "data_acount": MessageLookupByLibrary.simpleMessage("Account Data"),
+        "date": MessageLookupByLibrary.simpleMessage("Date: "),
+        "day": MessageLookupByLibrary.simpleMessage("Day"),
         "day_absence":
-            MessageLookupByLibrary.simpleMessage("عدد أيام الغياب: "),
-        "day_delay": MessageLookupByLibrary.simpleMessage("عدد أيام التأخير: "),
-        "degree_stu": MessageLookupByLibrary.simpleMessage("درجة الطالب"),
-        "delay": MessageLookupByLibrary.simpleMessage("تأخير"),
-        "download_file": MessageLookupByLibrary.simpleMessage("تحميل الملف"),
-        "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
-        "error": MessageLookupByLibrary.simpleMessage("خطأ"),
-        "exams": MessageLookupByLibrary.simpleMessage("الاختبارات"),
+            MessageLookupByLibrary.simpleMessage("Number of Absence Days: "),
+        "day_delay":
+            MessageLookupByLibrary.simpleMessage("Number of Tardiness Days: "),
+        "degree_stu": MessageLookupByLibrary.simpleMessage("Student Degree"),
+        "delay": MessageLookupByLibrary.simpleMessage("Tardiness"),
+        "download_file": MessageLookupByLibrary.simpleMessage("Download File"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "error": MessageLookupByLibrary.simpleMessage("Error"),
+        "exams": MessageLookupByLibrary.simpleMessage("Exams"),
         "field_is_required":
-            MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
-        "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
-        "home_work": MessageLookupByLibrary.simpleMessage("الواجب المدرسي"),
-        "invalid_email": MessageLookupByLibrary.simpleMessage(
-            "برجاء ادخال بريدإلكتروني صحيح"),
-        "invalid_password":
-            MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر غير مطابقة"),
-        "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
-        "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+            MessageLookupByLibrary.simpleMessage("This field is required"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "home_work": MessageLookupByLibrary.simpleMessage("Homework"),
+        "invalid_email":
+            MessageLookupByLibrary.simpleMessage("Please enter a valid email"),
+        "invalid_password": MessageLookupByLibrary.simpleMessage(
+            "Password confirmation does not match"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logout_massge": MessageLookupByLibrary.simpleMessage(
-            "هل تريد بالفعل تسجيل الخروج؟"),
-        "messages": MessageLookupByLibrary.simpleMessage("الرسائل"),
-        "more": MessageLookupByLibrary.simpleMessage("المزيد"),
-        "motivation": MessageLookupByLibrary.simpleMessage("التحفيز"),
-        "nagative": MessageLookupByLibrary.simpleMessage("عقوبة"),
-        "name": MessageLookupByLibrary.simpleMessage("الاسم"),
-        "negative_point": MessageLookupByLibrary.simpleMessage("نقاط سلبية"),
-        "new_password":
-            MessageLookupByLibrary.simpleMessage("كلمة السر الجديدة"),
-        "next": MessageLookupByLibrary.simpleMessage("متابعة"),
-        "no": MessageLookupByLibrary.simpleMessage("لا"),
+            "Are you sure you want to log out?"),
+        "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+        "more": MessageLookupByLibrary.simpleMessage("More"),
+        "motivation": MessageLookupByLibrary.simpleMessage("Motivation"),
+        "nagative": MessageLookupByLibrary.simpleMessage("Negative"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "negative_point":
+            MessageLookupByLibrary.simpleMessage("Negative Points"),
+        "new_password": MessageLookupByLibrary.simpleMessage("New Password"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "no_absence":
-            MessageLookupByLibrary.simpleMessage("لا يوجد غيابات أو تأخير"),
-        "no_childern": MessageLookupByLibrary.simpleMessage("لا يوجد أبناء"),
-        "no_dec": MessageLookupByLibrary.simpleMessage("بدون تفاصيل"),
-        "no_email":
-            MessageLookupByLibrary.simpleMessage("البريدالإلكتروني غير صحيح"),
-        "no_exams": MessageLookupByLibrary.simpleMessage("لا يوجد إختبارات"),
-        "no_messages": MessageLookupByLibrary.simpleMessage("لا يوجد رسائل"),
+            MessageLookupByLibrary.simpleMessage("No absences or tardiness"),
+        "no_childern": MessageLookupByLibrary.simpleMessage("No children"),
+        "no_dec": MessageLookupByLibrary.simpleMessage("No Details"),
+        "no_email": MessageLookupByLibrary.simpleMessage("Email is invalid"),
+        "no_exams": MessageLookupByLibrary.simpleMessage("No exams available"),
+        "no_messages": MessageLookupByLibrary.simpleMessage("No messages"),
         "no_notifications":
-            MessageLookupByLibrary.simpleMessage("لا يوجد الإشعارات"),
+            MessageLookupByLibrary.simpleMessage("No notifications"),
         "no_open_link":
             MessageLookupByLibrary.simpleMessage("Link cannot be opened: "),
         "no_password":
-            MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة"),
-        "no_reviews": MessageLookupByLibrary.simpleMessage("لا يوجد تحفيز"),
+            MessageLookupByLibrary.simpleMessage("Password is incorrect"),
+        "no_reviews": MessageLookupByLibrary.simpleMessage("No motivation"),
         "no_schedules":
-            MessageLookupByLibrary.simpleMessage("لا يوجد جدول حصص"),
-        "no_school_code":
-            MessageLookupByLibrary.simpleMessage("لا يوجد مدرسة بهذا الكود"),
-        "no_summary": MessageLookupByLibrary.simpleMessage("لا يوجد موجز"),
-        "no_title": MessageLookupByLibrary.simpleMessage("بدون عنوان"),
-        "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+            MessageLookupByLibrary.simpleMessage("No schedules available"),
+        "no_school_code": MessageLookupByLibrary.simpleMessage(
+            "No school found with this code"),
+        "no_summary":
+            MessageLookupByLibrary.simpleMessage("No summary available"),
+        "no_title": MessageLookupByLibrary.simpleMessage("No Title"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "number_of_absence_day":
-            MessageLookupByLibrary.simpleMessage("ايام الغياب"),
+            MessageLookupByLibrary.simpleMessage("Days of Absence"),
         "number_of_delay_day":
-            MessageLookupByLibrary.simpleMessage("ايام التأخير"),
-        "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
-        "opinions": MessageLookupByLibrary.simpleMessage("الأراء"),
-        "p_choose_school":
-            MessageLookupByLibrary.simpleMessage("من فضلك أدخل كود المدرسة!❤"),
-        "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
-        "points": MessageLookupByLibrary.simpleMessage("النقاط: "),
-        "positive": MessageLookupByLibrary.simpleMessage("تميز"),
-        "positive_point": MessageLookupByLibrary.simpleMessage("نقاط إجابية"),
-        "print": MessageLookupByLibrary.simpleMessage("طباعة"),
-        "rank_room":
-            MessageLookupByLibrary.simpleMessage("الترتيب على الفصل: "),
-        "rank_row": MessageLookupByLibrary.simpleMessage("الترتيب على الصف: "),
-        "rank_school":
-            MessageLookupByLibrary.simpleMessage("الترتيب على المدرسة: "),
-        "reports": MessageLookupByLibrary.simpleMessage("التقارير"),
-        "reports_1": MessageLookupByLibrary.simpleMessage("التقرير الاكاديمي"),
-        "reports_2": MessageLookupByLibrary.simpleMessage("تقرير السلوك"),
+            MessageLookupByLibrary.simpleMessage("Days of Tardiness"),
+        "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "opinions": MessageLookupByLibrary.simpleMessage("Opinions"),
+        "p_choose_school": MessageLookupByLibrary.simpleMessage(
+            "Please enter the school code!❤"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "points": MessageLookupByLibrary.simpleMessage("Points: "),
+        "positive": MessageLookupByLibrary.simpleMessage("Positive"),
+        "positive_point":
+            MessageLookupByLibrary.simpleMessage("Positive Points"),
+        "print": MessageLookupByLibrary.simpleMessage("Print"),
+        "rank_room": MessageLookupByLibrary.simpleMessage("Rank in room: "),
+        "rank_row": MessageLookupByLibrary.simpleMessage("Rank in row: "),
+        "rank_school": MessageLookupByLibrary.simpleMessage("Rank in school: "),
+        "reports": MessageLookupByLibrary.simpleMessage("Reports"),
+        "reports_1": MessageLookupByLibrary.simpleMessage("Academic Report"),
+        "reports_2": MessageLookupByLibrary.simpleMessage("Behavioral Report"),
         "reports_title": MessageLookupByLibrary.simpleMessage(
-            "تقرير الطالب للجانب الاكاديمي والسلوكي"),
-        "room": MessageLookupByLibrary.simpleMessage("رقم الفصل: "),
-        "row": MessageLookupByLibrary.simpleMessage("رقم الصف: "),
-        "save": MessageLookupByLibrary.simpleMessage("حفظ"),
-        "save_changes": MessageLookupByLibrary.simpleMessage("حفظ التعديلات"),
-        "schedules": MessageLookupByLibrary.simpleMessage("الحصص اليومية"),
-        "school": MessageLookupByLibrary.simpleMessage("مدرسة "),
-        "school_code": MessageLookupByLibrary.simpleMessage("كود المدرسة"),
-        "st_degree": MessageLookupByLibrary.simpleMessage("درجة الطالب: "),
-        "st_info": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
-        "student_type": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
-        "sub": MessageLookupByLibrary.simpleMessage("المادة الدراسية"),
-        "sub_opinion": MessageLookupByLibrary.simpleMessage("المادة"),
-        "sub_teacher": MessageLookupByLibrary.simpleMessage("اسم المدرس: "),
-        "subject": MessageLookupByLibrary.simpleMessage("المادة الدراسية: "),
-        "summary": MessageLookupByLibrary.simpleMessage("الموجز"),
-        "summary_degree": MessageLookupByLibrary.simpleMessage("الدرجة"),
-        "summary_degree_title": MessageLookupByLibrary.simpleMessage("التقييم"),
+            "Student Report for Academic and Behavioral Aspects"),
+        "room": MessageLookupByLibrary.simpleMessage("Room: "),
+        "row": MessageLookupByLibrary.simpleMessage("Row: "),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "save_changes": MessageLookupByLibrary.simpleMessage("Save Changes"),
+        "schedules": MessageLookupByLibrary.simpleMessage("Daily Schedules"),
+        "school": MessageLookupByLibrary.simpleMessage("School"),
+        "school_code": MessageLookupByLibrary.simpleMessage("School Code"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "st_degree": MessageLookupByLibrary.simpleMessage("Student Degree: "),
+        "st_info": MessageLookupByLibrary.simpleMessage("Student Status: "),
+        "student_type":
+            MessageLookupByLibrary.simpleMessage("Student Status: "),
+        "sub": MessageLookupByLibrary.simpleMessage("Subject"),
+        "sub_opinion": MessageLookupByLibrary.simpleMessage("Subject"),
+        "sub_teacher": MessageLookupByLibrary.simpleMessage("Teacher Name: "),
+        "subject": MessageLookupByLibrary.simpleMessage("Subject: "),
+        "summary": MessageLookupByLibrary.simpleMessage("Summary"),
+        "summary_degree": MessageLookupByLibrary.simpleMessage("Degree"),
+        "summary_degree_title":
+            MessageLookupByLibrary.simpleMessage("Evaluation"),
         "summary_subject_name":
-            MessageLookupByLibrary.simpleMessage("اسم المادة"),
-        "summary_title1": MessageLookupByLibrary.simpleMessage("ادائك "),
+            MessageLookupByLibrary.simpleMessage("Subject Name"),
+        "summary_title1":
+            MessageLookupByLibrary.simpleMessage("Your performance"),
         "summary_title2": MessageLookupByLibrary.simpleMessage(
-            " هذا الشهر .. استمر في التحسن"),
-        "teacher": MessageLookupByLibrary.simpleMessage("اسم مدرس المادة: "),
+            " this month .. keep improving"),
+        "teacher":
+            MessageLookupByLibrary.simpleMessage("Subject Teacher Name: "),
         "total_absence":
-            MessageLookupByLibrary.simpleMessage("إجمالي الغياب: "),
-        "total_degree": MessageLookupByLibrary.simpleMessage("الدرجة الكلية: "),
-        "total_degrees": MessageLookupByLibrary.simpleMessage("الدرجة الكلية"),
-        "total_delay": MessageLookupByLibrary.simpleMessage("إجمالي التأخير: "),
+            MessageLookupByLibrary.simpleMessage("Total Absence: "),
+        "total_degree": MessageLookupByLibrary.simpleMessage("Total Degree: "),
+        "total_degrees": MessageLookupByLibrary.simpleMessage("Total Degree"),
+        "total_delay":
+            MessageLookupByLibrary.simpleMessage("Total Tardiness: "),
         "total_nagative":
-            MessageLookupByLibrary.simpleMessage("رصيد العقوبات أصبح: "),
-        "total_point":
-            MessageLookupByLibrary.simpleMessage("الرصيد الإجمالي: "),
+            MessageLookupByLibrary.simpleMessage("Total Negative Balance: "),
+        "total_point": MessageLookupByLibrary.simpleMessage("Total Balance: "),
         "total_positive":
-            MessageLookupByLibrary.simpleMessage("رصيد التميزات أصبح: "),
+            MessageLookupByLibrary.simpleMessage("Total Positive Balance: "),
         "updated_successfully":
-            MessageLookupByLibrary.simpleMessage("تم تحديث البيانات بنجاح"),
-        "warning": MessageLookupByLibrary.simpleMessage("عفواً"),
+            MessageLookupByLibrary.simpleMessage("Data updated successfully"),
+        "warning": MessageLookupByLibrary.simpleMessage("Warning"),
         "warning_massge": MessageLookupByLibrary.simpleMessage(
-            "لقد انتهت صلاحية الجلسة برجاء تسجيل الدخول مرة أخرى."),
+            "Your session has expired, please log in again."),
         "weekly_message":
-            MessageLookupByLibrary.simpleMessage("الرسالة الإسبوعية"),
-        "welcome": MessageLookupByLibrary.simpleMessage("أهلا بكم فى مدرسة ")
+            MessageLookupByLibrary.simpleMessage("Weekly Message"),
+        "welcome": MessageLookupByLibrary.simpleMessage("Welcome to School")
       };
 }

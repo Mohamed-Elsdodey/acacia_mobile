@@ -1,4 +1,5 @@
 {
+  "@@locale": "ar",
   "choose_school": "تحديد المدرسة",
   "p_choose_school": "من فضلك أدخل كود المدرسة!❤",
   "school_code": "كود المدرسة",
@@ -22,6 +23,7 @@
   "absences": "الغياب والتأخير",
   "data_acount": "بيانات الحساب",
   "about_app": "حول التطبيق",
+  "settings":"الإعدادات",
   "logout": "تسجيل الخروج",
   "no_childern": "لا يوجد أبناء",
 
@@ -117,24 +119,17 @@
 
   "no_title": "بدون عنوان",
   "no_dec": "بدون تفاصيل",
-
   "opinions": "الأراء",
   "sub_opinion": "المادة",
-
   "weekly_message": "الرسالة الإسبوعية",
-
   "choose_maoth": "حدد الشهر",
   "choose_week": "حدد الإسبوع",
-  "choose_day": "حدد اليوم",
-  "choose_year": "حدد السنة",
-  "home_work": "الواجب المدرسي",
-  "print": "طباعة",
-
-
   "messages": "الرسائل",
+  "print": "طباعة",
+  "choose_day": "اختر يوم",
+  "choose_year": "اختر سنة",
+  "home_work": "الواجب المدرسي",
   "no_messages": "لا يوجد رسائل",
-
-  "no_open_link": "لا يمكن فتح الرابط: "
-
-
+  "language": "اللغة",
+  "no_open_link": "لا يمكنك فتح هذا الرابط"
 }

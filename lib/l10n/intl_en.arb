@@ -1,145 +1,134 @@
 {
-  "choose_school": "تحديد المدرسة",
-  "p_choose_school": "من فضلك أدخل كود المدرسة!❤",
-  "school_code": "كود المدرسة",
-  "next": "متابعة",
-  "login": "تسجيل الدخول",
-  "welcome": "أهلا بكم فى مدرسة ",
-  "email": "البريد الإلكتروني",
-  "password": "كلمة المرور",
-  "choose_anther_school": "حدد مدرسة أخرى",
-  "field_is_required": "هذا الحقل مطلوب",
-  "ok": "حسناً",
-  "error": "خطأ",
-  "home": "الرئيسية",
-  "motivation": "التحفيز",
-  "childern": "الأبناء",
-  "classes": "الحصص",
-  "more": "المزيد",
-
-  "exams": "الاختبارات",
-  "reports": "التقارير",
-  "absences": "الغياب والتأخير",
-  "data_acount": "بيانات الحساب",
-  "about_app": "حول التطبيق",
-  "logout": "تسجيل الخروج",
-  "no_childern": "لا يوجد أبناء",
-  "row": "رقم الصف: ",
-  "room": "رقم الفصل: ",
-  "rank_school": "الترتيب على المدرسة: ",
-  "rank_row": "الترتيب على الصف: ",
-  "rank_room": "الترتيب على الفصل: ",
-
-  "warning": "عفواً",
-  "warning_massge": "لقد انتهت صلاحية الجلسة برجاء تسجيل الدخول مرة أخرى.",
-
-  "st_info": "حالة الطالب: ",
-  "points": "النقاط: ",
-  "total_point": "الرصيد الإجمالي: ",
-  "subject": "المادة الدراسية: ",
-  "sub_teacher": "اسم المدرس: ",
-  "total_degree": "الدرجة الكلية: ",
-  "st_degree": "درجة الطالب: ",
-  "teacher": "اسم مدرس المادة: ",
-  "date": "التاريخ: ",
-  "total_positive": "رصيد التميزات أصبح: ",
-  "total_nagative": "رصيد العقوبات أصبح: ",
-  "positive": "تميز",
-  "nagative": "عقوبة",
-
-
-  "logout_massge": "هل تريد بالفعل تسجيل الخروج؟",
-  "no": "لا",
-  "no_reviews": "لا يوجد تحفيز",
-
-  "invalid_email": "برجاء ادخال بريدإلكتروني صحيح",
-  "no_email": "البريدالإلكتروني غير صحيح",
-  "no_password":"كلمة المرور غير صحيحة",
-
-  "no_exams": "لا يوجد إختبارات",
-
-  "notifications": "الإشعارات",
-  "no_notifications": "لا يوجد الإشعارات",
-
-
-  "name": "الاسم",
-  "new_password": "كلمة السر الجديدة",
-  "confirm_password":"تأكيد كلمة السر",
-  "save_changes": "حفظ التعديلات",
-  "invalid_password": "تأكيد كلمة السر غير مطابقة",
-  "updated_successfully": "تم تحديث البيانات بنجاح",
-
-
-  "no_absence": "لا يوجد غيابات أو تأخير",
-
-
-  "student_type": "حالة الطالب: ",
-  "delay": "تأخير",
-  "absence": "غياب",
-  "day_delay": "عدد أيام التأخير: ",
-  "day_absence": "عدد أيام الغياب: ",
-  "total_absence": "إجمالي الغياب: ",
-  "total_delay": "إجمالي التأخير: ",
-
-
-  "summary": "الموجز",
-  "all": "الكل",
-  "behavior": "سلوكي",
-  "academic": "أكاديمي",
-
-  "schedules": "الحصص اليومية",
-  "no_schedules": "لا يوجد جدول حصص",
-
-  "day": "اليوم",
-
-  "no_school_code": "لا يوجد مدرسة بهذا الكود",
-  "no_summary": "لا يوجد موجز",
-
-
-  "summary_title1": "ادائك ",
-  "summary_title2": " هذا الشهر .. استمر في التحسن",
-  "summary_subject_name": "اسم المادة",
-  "summary_degree": "الدرجة",
-  "summary_degree_title": "التقييم",
-  "download_file": "تحميل الملف",
-
-
-  "school": "مدرسة ",
-
-  "reports_title": "تقرير الطالب للجانب الاكاديمي والسلوكي",
-  "reports_1": "التقرير الاكاديمي",
-  "reports_2": "تقرير السلوك",
-
-  "sub": "المادة الدراسية",
-  "total_degrees": "الدرجة الكلية",
-  "degree_stu": "درجة الطالب",
-  "academic_degree": "التقدير الاكاديمي",
-  "number_of_absence_day":"ايام الغياب",
-  "number_of_delay_day":"ايام التأخير",
-  "positive_point":"نقاط إجابية",
-  "negative_point":"نقاط سلبية",
-  "appreciation_percentage":"التقدير السلوكي",
-  "save": "حفظ",
-
-
-  "no_title": "بدون عنوان",
-  "no_dec": "بدون تفاصيل",
-
-
-  "opinions": "الأراء",
-  "sub_opinion": "المادة",
-
-
-  "weekly_message": "الرسالة الإسبوعية",
-  "choose_maoth": "حدد الشهر",
-  "choose_week": "حدد الإسبوع",
-  "choose_day": "حدد اليوم",
-  "choose_year": "حدد السنة",
-  "home_work": "الواجب المدرسي",
-  "print": "طباعة",
-
-  "messages": "الرسائل",
-  "no_messages": "لا يوجد رسائل",
-
+  "@@locale": "en",
+  "choose_school": "Choose School",
+  "p_choose_school": "Please enter the school code!❤",
+  "school_code": "School Code",
+  "next": "Next",
+  "login": "Login",
+  "welcome": "Welcome to School",
+  "email": "Email",
+  "password": "Password",
+  "choose_anther_school": "Choose Another School",
+  "field_is_required": "This field is required",
+  "ok": "OK",
+  "error": "Error",
+  "home": "Home",
+  "motivation": "Motivation",
+  "childern": "Children",
+  "classes": "Classes",
+  "more": "More",
+  
+  "exams": "Exams",
+  "reports": "Reports",
+  "absences": "Absences and Tardiness",
+  "data_acount": "Account Data",
+  "about_app": "About the App",
+  "settings":"Settings",
+  "logout": "Logout",
+  "no_childern": "No children",
+  
+  "row": "Row: ",
+  "room": "Room: ",
+  "rank_school": "Rank in school: ",
+  "rank_row": "Rank in row: ",
+  "rank_room": "Rank in room: ",
+  
+  "warning": "Warning",
+  "warning_massge": "Your session has expired, please log in again.",
+  
+  "st_info": "Student Status: ",
+  "points": "Points: ",
+  "total_point": "Total Balance: ",
+  "subject": "Subject: ",
+  "teacher": "Subject Teacher Name: ",
+  "sub_teacher": "Teacher Name: ",
+  "total_degree": "Total Degree: ",
+  "st_degree": "Student Degree: ",
+  "date": "Date: ",
+  "total_positive": "Total Positive Balance: ",
+  "total_nagative": "Total Negative Balance: ",
+  "positive": "Positive",
+  "nagative": "Negative",
+  
+  "logout_massge": "Are you sure you want to log out?",
+  "no": "No",
+  "no_reviews": "No motivation",
+  
+  "invalid_email": "Please enter a valid email",
+  "no_email": "Email is invalid",
+  "no_password": "Password is incorrect",
+  
+  "no_exams": "No exams available",
+  
+  "notifications": "Notifications",
+  "no_notifications": "No notifications",
+  
+  "name": "Name",
+  "new_password": "New Password",
+  "confirm_password": "Confirm Password",
+  "save_changes": "Save Changes",
+  "invalid_password": "Password confirmation does not match",
+  "updated_successfully": "Data updated successfully",
+  
+  "no_absence": "No absences or tardiness",
+  
+  "student_type": "Student Status: ",
+  "delay": "Tardiness",
+  "absence": "Absence",
+  "day_delay": "Number of Tardiness Days: ",
+  "day_absence": "Number of Absence Days: ",
+  "total_absence": "Total Absence: ",
+  "total_delay": "Total Tardiness: ",
+  
+  "summary": "Summary",
+  "all": "All",
+  "behavior": "Behavior",
+  "academic": "Academic",
+  
+  "schedules": "Daily Schedules",
+  "no_schedules": "No schedules available",
+  
+  "day": "Day",
+  
+  "no_school_code": "No school found with this code",
+  "no_summary": "No summary available",
+  
+  "summary_title1": "Your performance",
+  "summary_title2": " this month .. keep improving",
+  "summary_subject_name": "Subject Name",
+  "summary_degree": "Degree",
+  "summary_degree_title": "Evaluation",
+  "download_file": "Download File",
+  
+  "school": "School",
+  "reports_title": "Student Report for Academic and Behavioral Aspects",
+  "reports_1": "Academic Report",
+  "reports_2": "Behavioral Report",
+  
+  "sub": "Subject",
+  "total_degrees": "Total Degree",
+  "degree_stu": "Student Degree",
+  "academic_degree": "Academic Grade",
+  "number_of_absence_day": "Days of Absence",
+  "number_of_delay_day": "Days of Tardiness",
+  "positive_point": "Positive Points",
+  "negative_point": "Negative Points",
+  "appreciation_percentage": "Behavioral Rating",
+  "save": "Save",
+  
+  "no_title": "No Title",
+  "no_dec": "No Details",
+  "opinions": "Opinions",
+  "sub_opinion": "Subject",
+  "weekly_message": "Weekly Message",
+  "choose_maoth": "Select Month",
+  "choose_week": "Select Week",
+  "messages": "Messages",
+  "print": "Print",
+  "choose_day": "Choose day",
+  "choose_year": "Choose year",
+  "home_work": "Homework",
+  "no_messages": "No messages",
+  "language": "Language",
   "no_open_link": "Link cannot be opened: "
 }

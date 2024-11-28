@@ -35,11 +35,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "childern": MessageLookupByLibrary.simpleMessage("الأبناء"),
         "choose_anther_school":
             MessageLookupByLibrary.simpleMessage("حدد مدرسة أخرى"),
-        "choose_day": MessageLookupByLibrary.simpleMessage("حدد اليوم"),
+        "choose_day": MessageLookupByLibrary.simpleMessage("اختر يوم"),
         "choose_maoth": MessageLookupByLibrary.simpleMessage("حدد الشهر"),
         "choose_school": MessageLookupByLibrary.simpleMessage("تحديد المدرسة"),
         "choose_week": MessageLookupByLibrary.simpleMessage("حدد الإسبوع"),
-        "choose_year": MessageLookupByLibrary.simpleMessage("حدد السنة"),
+        "choose_year": MessageLookupByLibrary.simpleMessage("اختر سنة"),
         "classes": MessageLookupByLibrary.simpleMessage("الحصص"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "برجاء ادخال بريدإلكتروني صحيح"),
         "invalid_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر غير مطابقة"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "logout_massge": MessageLookupByLibrary.simpleMessage(
@@ -88,7 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_notifications":
             MessageLookupByLibrary.simpleMessage("لا يوجد الإشعارات"),
         "no_open_link":
-            MessageLookupByLibrary.simpleMessage("لا يمكن فتح الرابط: "),
+            MessageLookupByLibrary.simpleMessage("لا يمكنك فتح هذا الرابط"),
         "no_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة"),
         "no_reviews": MessageLookupByLibrary.simpleMessage("لا يوجد تحفيز"),
@@ -129,6 +130,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "schedules": MessageLookupByLibrary.simpleMessage("الحصص اليومية"),
         "school": MessageLookupByLibrary.simpleMessage("مدرسة "),
         "school_code": MessageLookupByLibrary.simpleMessage("كود المدرسة"),
+        "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "st_degree": MessageLookupByLibrary.simpleMessage("درجة الطالب: "),
         "st_info": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
         "student_type": MessageLookupByLibrary.simpleMessage("حالة الطالب: "),
