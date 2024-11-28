@@ -24,12 +24,14 @@ class NotificationsRepoImpl implements NotificationsRepo {
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
 
       int id = await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
-
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
         endPoint: "student/getNotifications?student_id=${studentId ?? id}",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       NotificationsModel notificationsModel = NotificationsModel.fromJson(data);

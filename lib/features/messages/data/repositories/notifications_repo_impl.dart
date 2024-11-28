@@ -24,11 +24,14 @@ class MessagesRepoImpl implements MessagesRepo {
 
       int id = await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
 
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
         endPoint: "student/getMessages?student_id=$id",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       MessagesModel messagesModel = MessagesModel.fromJson(data);

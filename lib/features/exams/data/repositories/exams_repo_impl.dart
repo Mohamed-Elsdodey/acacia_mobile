@@ -20,6 +20,8 @@ class ExamsRepoImpl implements ExamsRepo {
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       int childernId =
           await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
       Map<String, dynamic> data = await apiService.get(
@@ -27,6 +29,7 @@ class ExamsRepoImpl implements ExamsRepo {
         endPoint: "student/getExams?student_id=$childernId",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       ExamsModel examsModel = ExamsModel.fromJson(data);

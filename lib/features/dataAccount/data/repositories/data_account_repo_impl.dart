@@ -22,6 +22,8 @@ class DataAccountRepoImpl implements DataAccountRepo {
     try {
       String schoolDomain =
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
       Map<String, dynamic> data = await apiService.post(
@@ -34,6 +36,7 @@ class DataAccountRepoImpl implements DataAccountRepo {
         }),
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       DataAccountModel dataAccountModel = DataAccountModel.fromJson(data);

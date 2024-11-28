@@ -24,7 +24,8 @@ class HomeWorkRepoImpl implements HomeWorkRepo {
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
-
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       int studentId =
           await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
 
@@ -34,6 +35,7 @@ class HomeWorkRepoImpl implements HomeWorkRepo {
             "student/home_work?year=$year&month=$month&day=$day&student_id=$studentId",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
 

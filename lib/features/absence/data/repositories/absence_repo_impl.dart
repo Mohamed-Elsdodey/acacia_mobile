@@ -21,6 +21,9 @@ class AbsenceRepoImpl implements AbsenceRepo {
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
+
       int childernId =
           await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
       Map<String, dynamic> data = await apiService.get(
@@ -29,6 +32,8 @@ class AbsenceRepoImpl implements AbsenceRepo {
             "student/getAbsencesByMonth?student_id=$childernId&month=$month",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
+
         },
       );
       AbsenceModel absenceModel = AbsenceModel.fromJson(data);

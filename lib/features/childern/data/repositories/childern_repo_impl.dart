@@ -20,11 +20,14 @@ class ChildernRepoImpl implements ChildernRepo {
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
         endPoint: "student/children",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       ChildernModel childernModel = ChildernModel.fromJson(data);

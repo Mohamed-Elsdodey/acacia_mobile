@@ -21,6 +21,8 @@ class SchedulesRepoImpl implements SchedulesRepo {
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       int studentId =
           await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
       var data = await apiService.get(
@@ -28,6 +30,7 @@ class SchedulesRepoImpl implements SchedulesRepo {
         endPoint: "student/schedules?student_id=$studentId",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       List<SchedulesModel> listSchedules = [];
@@ -60,11 +63,14 @@ class SchedulesRepoImpl implements SchedulesRepo {
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
         endPoint: "student/sessions",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       SessionsModel sessionsModel = SessionsModel.fromJson(data);

@@ -38,6 +38,8 @@ void logoutNotifications({required String tokenFirebase}) async {
         await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
     String token =
         await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+    String lang =
+        await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
     String type = "";
     if (Platform.isAndroid) {
       type = "android";
@@ -53,6 +55,7 @@ void logoutNotifications({required String tokenFirebase}) async {
       }),
       headers: {
         "Authorization": "Bearer $token",
+        "lang": lang,
       },
     );
   } catch (e) {

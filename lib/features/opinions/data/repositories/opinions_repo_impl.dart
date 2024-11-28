@@ -23,13 +23,15 @@ class OpinionsRepoImpl implements OpinionsRepo {
 
       int studentId =
           await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
-
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
         endPoint:
             "student/student_performance_evaluations?student_id=$studentId",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
 

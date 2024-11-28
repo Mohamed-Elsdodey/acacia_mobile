@@ -29,6 +29,8 @@ class WeeklyMessageRepoImpl implements WeeklyMessageRepo {
 
       int studentId =
           await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
 
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
@@ -36,6 +38,7 @@ class WeeklyMessageRepoImpl implements WeeklyMessageRepo {
             "student/weekly_messages?month=$month&week_number=$weekNumber&start_week_date=$startWeek&end_week_date=$endWeek&student_id=$studentId",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
 
@@ -62,12 +65,15 @@ class WeeklyMessageRepoImpl implements WeeklyMessageRepo {
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
 
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
         endPoint: "student/weeks_by_month?month=$month",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
 

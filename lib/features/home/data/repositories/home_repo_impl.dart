@@ -22,11 +22,14 @@ class HomeRepoImpl implements HomeRepo {
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
         endPoint: "student/children",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       ChildernModel childernModel = ChildernModel.fromJson(data);
@@ -55,12 +58,15 @@ class HomeRepoImpl implements HomeRepo {
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
         endPoint:
             "student/behavioral_academic_report?student_id=$studentId&month=$month",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       AcademicReportModel academicReportModel =
@@ -90,11 +96,14 @@ class HomeRepoImpl implements HomeRepo {
           await Pref.getStringFromPref(key: AppStrings.schoolDomainKey) ?? "";
       String token =
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
         endPoint: "student/category_reports?student_id=$studentId&month=$month",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       SubjectReportModel subjectReportModel = SubjectReportModel.fromJson(data);

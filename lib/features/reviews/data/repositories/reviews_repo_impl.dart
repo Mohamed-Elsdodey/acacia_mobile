@@ -22,11 +22,14 @@ class ReviewsRepoImpl implements ReviewsRepo {
           await Pref.getStringFromPref(key: AppStrings.parantTokenKey) ?? "";
       int childernId =
           await Pref.getIntFromPref(key: AppStrings.childernIdKey) ?? -1;
+      String lang =
+          await Pref.getStringFromPref(key: AppStrings.langKey) ?? "ar";
       Map<String, dynamic> data = await apiService.get(
         host: schoolDomain,
         endPoint: "student/getReviews?student_id=$childernId",
         headers: {
           "Authorization": "Bearer $token",
+          "lang": lang,
         },
       );
       ReviewsModel reviewsModel = ReviewsModel.fromJson(data);
