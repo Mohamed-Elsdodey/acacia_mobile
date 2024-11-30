@@ -70,7 +70,13 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
                       ),
                       const SizedBox(height: 2),
                       Linkify(
-                        onOpen: onOpenLink,
+                        onOpen: (link) async {
+              if (await canLaunchUrl(Uri.parse(link.url))) {
+              await launchUrl(Uri.parse(link.url));
+              } else {
+              throw '${S.of(context).no_open_link}${link.url}';
+              }
+              },
                         text: widget.notificationItem.text.toString(),
                         options: LinkifyOptions(humanize: false),
                         style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
@@ -138,13 +144,6 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
         return AppAssets.warning;
       default:
         return null;
-    }
-  }
-  Future<void> onOpenLink(LinkableElement link) async {
-    if (await canLaunchUrl(Uri.parse(link.url))) {
-      await launchUrl(Uri.parse(link.url));
-    } else {
-      throw '${S.of(context).no_open_link}${link.url}';
     }
   }
 }
